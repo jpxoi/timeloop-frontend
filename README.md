@@ -32,6 +32,18 @@ This README contains all the information you need to get started with the projec
 - [Testing](#testing)
   - [Postman](#postman)
 - [Deployment](#deployment)
+- [OS Reccomendations](#os-reccomendations)
+- [Terminal Reccomendations](#terminal-reccomendations)
+
+## Requirements
+
+- [Node.js](https://nodejs.org/en/) (LTS version)
+- [Git](https://git-scm.com/)
+- [Visual Studio Code](https://code.visualstudio.com/) (recommended)
+
+### Package Manager
+
+For this project, we will be using [npm](https://www.npmjs.com/) as the package manager. This means that we will be using [npm](https://www.npmjs.com/) to install all the dependencies. The package manager [npm](https://www.npmjs.com/) comes pre-installed with [Node.js](https://nodejs.org/en/), so you don't need to install it separately.
 
 ## Getting Started
 
@@ -62,8 +74,6 @@ Finally, run the following command to start the development server:
 ```bash
 npm run dev
 ```
-
-If everything went well, you should see a url in the terminal that you can open in your browser. If you open it, you should see the Timeloop application.
 
 If you want to run the development server exposing it to the network, run the following command instead:
 
@@ -247,3 +257,21 @@ For this project, we will be using [Vercel](https://vercel.com/) for hosting the
 Given that we are using a self-hosted GitLab instance, we will need to configure [Vercel](https://vercel.com/) to use our self-hosted GitLab instance.
 
 Further instructions on how to configure [Vercel](https://vercel.com/) to use our self-hosted GitLab instance will be provided in the future.
+
+## OS Reccomendations
+
+There are no limitations on the OS you can use for this project. However, it is recommended to use **Linux** or **MacOS** instead of **Windows**.
+
+## Terminal Reccomendations
+
+Since the whole team is not fully familiarized with the terminal, you can use the following tools to make your life easier:
+
+It is recommended to use zsh instead of bash, since it has a lot of useful features that will make your life easier. However, you can use bash if you want.
+
+If you are using **MacOS**, you can use [iTerm2](https://iterm2.com/) instead of the default terminal.
+
+If you decide to use **zsh**, you can use [Oh My Zsh](https://ohmyz.sh/) to have a better terminal experience.
+
+To enhance the look of your terminal, you can use [Powerlevel10k](https://github.com/romkatv/powerlevel10k) to have a better looking terminal.
+
+Detailed instructions on how to install and configure these tools is available [here - Oh My Zsh + Powerlevel10k](https://dev.to/abdfnx/oh-my-zsh-powerlevel10k-cool-terminal-1no0).
