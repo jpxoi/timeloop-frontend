@@ -2,6 +2,37 @@
 
 Welcome to the front-end of Timeloop! This is a React application that uses Vite as a bundler. It is written in JavaScript and uses Tailwind CSS for styling.
 
+This README contains all the information you need to get started with the project. It also contains some guidelines that you should follow when working on the project. Please read it carefully before starting to work on the project.
+
+## Table of Contents
+
+- [Getting Started](#getting-started)
+- [Git Workflow](#git-workflow)
+  - [Branch Naming](#branch-naming)
+  - [Commit Messages](#commit-messages)
+  - [Git Pull/Push](#git-pullpush)
+  - [Pull/Merge Requests](#pullmerge-requests)
+- [Code Editor](#code-editor)
+  - [Required Extensions](#required-extensions)
+  - [Optional Extensions](#optional-extensions)
+- [Guidelines](#guidelines)
+  - [Code Style](#code-style)
+  - [Code Structure](#code-structure)
+  - [Components](#components)
+    - [What is a Component?](#what-is-a-component)
+    - [Component Structure](#component-structure)
+  - [Containers](#containers)
+    - [What is a Container?](#what-is-a-container)
+    - [Container Structure](#container-structure)
+  - [Pages](#pages)
+    - [What is a Page?](#what-is-a-page)
+    - [Page Structure](#page-structure)
+  - [Styling](#styling)
+  - [Utility Functions](#utility-functions)
+- [Testing](#testing)
+  - [Postman](#postman)
+- [Deployment](#deployment)
+
 ## Getting Started
 
 To get started, first be sure to have **Node.js** installed. If you don't, you can download it [here](https://nodejs.org/en/).
@@ -62,6 +93,22 @@ For this project, we will be using the following branch naming convention:
 ### Commit Messages
 
 For this project, we won't be using any specific commit message format. However, it is encouraged that your commit messages are descriptive and follow the [Seven Rules of a Great Git Commit Message](https://chris.beams.io/posts/git-commit/#seven-rules).
+
+### Git Pull/Push
+
+For this project, we will follow good practices when it comes to pulling and pushing changes to the repository. This means that we will always pull before pushing and we will always push to the correct branch.
+
+Example:
+
+```bash
+# Pull changes from the remote repository
+git pull
+
+# Push changes to the remote repository
+git push origin <branch-name>
+```
+
+Where `<branch-name>` is the name of the branch you want to push to.
 
 ### Pull/Merge Requests
 
