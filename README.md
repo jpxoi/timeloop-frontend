@@ -18,6 +18,7 @@ This README contains all the information you need to get started with the projec
 - [Guidelines](#guidelines)
   - [Code Style](#code-style)
   - [Code Structure](#code-structure)
+  - [Env Variables and Modes](#env-variables-and-modes)
   - [Components](#components)
     - [What is a Component?](#what-is-a-component)
     - [Component Structure](#component-structure)
