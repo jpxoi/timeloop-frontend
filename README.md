@@ -162,6 +162,27 @@ For this project, we will be using the [Atomic Design](https://bradfrost.com/blo
 - `src/styles` for stylesheets
 - `src/utils` for utility functions
 
+### Env Variables and Modes
+
+For this project, we will be using [dotenv](https://www.npmjs.com/package/dotenv) for managing environment variables. This means that we will be using a `.env` file to store all the environment variables.
+
+The `.env` file should be placed in the root directory of the project. It should not be committed to the repository.
+
+The `.env` file should contain the following environment variables:
+
+- `VITE_APP_NAME` for the name of the application
+- `VITE_APP_DESCRIPTION` for the description of the application
+- `VITE_BASE_URL` for the base URL of the application (without the trailing slash)
+- `VITE_API_URL` for the base URL of the API and the version (without the trailing slash)
+- `VITE_API_KEY` for the API key
+- `VITE_TOKEN_NAME` for the name of the token that handles user authentication
+
+When running the application in development mode, the `.env.local` file will be used. When running the application in production mode, the `.env` file will be used. The `.env.local` file is already created for you, so you don't need to create it, just modify it.
+
+For deployment, we will be using [Vercel](https://vercel.com/). This means that we will be using [Vercel](https://vercel.com/) to manage the environment variables. The environment variables will be stored in the [Vercel](https://vercel.com/) dashboard.
+
+Please refer to the `.env.example` file for an example of how the .env file should look like.
+
 ### Components
 
 #### What is a Component?
