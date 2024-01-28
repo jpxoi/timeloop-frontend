@@ -245,15 +245,15 @@ For this project, we will be using [Tailwind CSS](https://tailwindcss.com/) for 
 
 The Tailwind CSS configuration file is located at `tailwind.config.js`. You can use this file to configure Tailwind CSS.
 
-The Tailwind CSS stylesheets are located at `src/styles`. You can use these stylesheets to add custom styles.
+The Tailwind CSS stylesheets are located at `src/index.css`. You can use these stylesheets to add custom styles.
 
-If you want to use Tailwind CSS classes in your components, containers or pages, you can import the `tailwind.css` stylesheet in your component. For example, if you have a component called `Button`, you can import the `tailwind.css` stylesheet in your component like this:
+For more information on how to use Tailwind CSS, please refer to the [Tailwind CSS Documentation](https://tailwindcss.com/docs).
 
-```jsx
-import React from 'react';
-import styles from './Button.module.css';
-import './tailwind.css';
-```
+You are allowed to use existing Tailwind CSS components. I recommend using [Tailwind UI](https://tailwindui.com/) for this. However, you can also refer to [Flowbite](https://flowbite.com/) for more components. Remember to always use the [Tailwind CSS Documentation](https://tailwindcss.com/docs) as a reference and ensure that the components are appropriate for the project design.
+
+### Icons
+
+For this project, we will be using [Heroicons](https://heroicons.com/) for icons.
 
 ### Utility Functions
 
