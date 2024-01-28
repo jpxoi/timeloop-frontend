@@ -11,7 +11,6 @@ This README is only intended for the developent process. Once the project is fin
 ## Table of Contents
 
 - [Requirements](#requirements)
-  - [Package Manager](#package-manager)
 - [Getting Started](#getting-started)
 - [Git Workflow](#git-workflow)
   - [Branch Naming](#branch-naming)
@@ -57,10 +56,6 @@ This README is only intended for the developent process. Once the project is fin
 - [npm](https://www.npmjs.com/) (comes pre-installed with Node.js)
 - [Git](https://git-scm.com/)
 - [Visual Studio Code](https://code.visualstudio.com/) (recommended)
-
-### Package Manager
-
-For this project, we will be using [npm](https://www.npmjs.com/) as the package manager. This means that we will be using [npm](https://www.npmjs.com/) to install all the dependencies. The package manager [npm](https://www.npmjs.com/) comes pre-installed with [Node.js](https://nodejs.org/en/), so you don't need to install it separately.
 
 ## Getting Started
 
