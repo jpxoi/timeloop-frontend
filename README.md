@@ -45,7 +45,7 @@ This README is only intended for the developent process. Once the project is fin
   - [Utility Functions / Helpers](#utility-functions--helpers)
   - [Hooks](#hooks)
 - [Testing](#testing)
-  - [Postman](#postman)
+  - [Thunder Client](#thunder-client)
 - [Deployment](#deployment)
 - [OS Reccomendations](#os-reccomendations)
 - [Terminal Reccomendations](#terminal-reccomendations)
@@ -149,7 +149,7 @@ If you don't want to use Visual Studio Code, you can use any other code editor t
 - [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) (required) for code linting (see [Code Style](#code-style))
 - [Tailwind CSS IntelliSense](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss) (required) for Tailwind CSS support.
 - [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) (required) for code formatting (see [Code Style](#code-style))
-- [Postman](https://marketplace.visualstudio.com/items?itemName=humao.rest-client) (required) for testing API endpoints.
+- [Thunder Client](https://marketplace.visualstudio.com/items?itemName=rangav.vscode-thunder-client) (required) for testing the API connections.
 
 ### Optional Extensions
 
@@ -416,11 +416,11 @@ All custom hooks should be placed in the `src/Hooks` directory. You should not p
 
 ## Testing
 
-For this project, all the testing will be done manually. This means that we won't be using any automated testing tools like [Jest](https://jestjs.io/) or [Cypress](https://www.cypress.io/). Instead, we will be using [Postman](https://www.postman.com/) for testing the API endpoints.
+For this project, all the testing will be done manually. This means that we won't be using any automated testing tools like [Jest](https://jestjs.io/) or [Cypress](https://www.cypress.io/). Instead, we will be using [Thunder Client](https://www.thunderclient.com/) for testing the API endpoints.
 
-### Postman
+### Thunder Client
 
-For this project, we will be using [Postman](https://www.postman.com/) for testing the API endpoints manually. This means that we will be using the [Postman](https://marketplace.visualstudio.com/items?itemName=humao.rest-client) extension for [Visual Studio Code](https://code.visualstudio.com/) to send requests to the API endpoints.
+For this project, we will be using [Thunder Client](https://www.thunderclient.com/) for testing the API endpoints manually. This means that we will be using the [Thunder Client](https://marketplace.visualstudio.com/items?itemName=rangav.vscode-thunder-client) extension for [Visual Studio Code](https://code.visualstudio.com/) to send requests to the API endpoints.
 
 ## Deployment
 
