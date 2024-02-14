@@ -12,6 +12,6 @@ function SmallCalendar(month=dayjs().month(),year=dayjs().year()) {
     ArrayOfDays.push(FirstDateOfMonth.date(i));
   }
   return ArrayOfDays
-};
+}
 
 export default SmallCalendar;

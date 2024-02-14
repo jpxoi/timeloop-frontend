@@ -1,7 +1,7 @@
 import React from 'react';
-import Navbar from './Organisms/NavBar';
-import Sidebar from './Organisms/Sidebar';
-import CalenderHeader from './Atoms/GetMonth';
+import Navbar from '../Organisms/NavBar';
+import Sidebar from '../Organisms/Sidebar';
+import CalenderHeader from '../Atoms/GetMonth';
 
 function App() {
   return (

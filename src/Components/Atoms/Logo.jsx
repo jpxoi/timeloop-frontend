@@ -1,5 +1,5 @@
 import React from 'react';
-import LogoImg from '/home/sam/Timeloop/timeloop-frontend/src/assets/images/logo.webp';
+import LogoImg from '/src/assets/images/logo.webp';
 
 const Logo = () => {
     return (
