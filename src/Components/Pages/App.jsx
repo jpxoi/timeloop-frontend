@@ -1,24 +1,22 @@
-import React from 'react';
-import Navbar from '../Organisms/NavBar';
-import Sidebar from '../Organisms/Sidebar';
-import CalenderHeader from '../Atoms/GetMonth';
+import React from "react";
+import Navbar from "../Organisms/NavBar";
+import Sidebar from "../Organisms/Sidebar";
+import CalenderHeader from "../Atoms/GetMonth";
 
 function App() {
   return (
-    <div className='h-screen flex flex-col'>
+    <div className="h-screen flex flex-col">
       <header>
-        <Navbar/>
+        <Navbar />
       </header>
 
       <aside>
-        <Sidebar/>
+        <Sidebar />
       </aside>
 
-      <section>
-      </section>
-
+      <section></section>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

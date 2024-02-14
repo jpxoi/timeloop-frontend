@@ -1,14 +1,12 @@
-import React from 'react'
-import {ArrowLeftIcon} from '@heroicons/react/24/outline'
+import React from "react";
+import { ArrowLeftIcon } from "@heroicons/react/24/outline";
 
-const LeftArrow = ({buttonparams, iconparams}) => {
+const LeftArrow = ({ buttonparams, iconparams }) => {
   return (
-    <div>
-      <button className={`${buttonparams}`}>
-        <ArrowLeftIcon className={`${iconparams}`}/>
-      </button>  
-    </div>
-  )
-}
+    <button className={`${buttonparams}`}>
+      <ArrowLeftIcon className={`${iconparams}`} />
+    </button>
+  );
+};
 
-export default LeftArrow
+export default LeftArrow;
