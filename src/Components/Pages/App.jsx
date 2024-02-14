@@ -10,7 +10,7 @@ function App() {
         <Navbar />
       </header>
 
-      <div className="flex flex-row h-[94vh]">
+      <div className="flex flex-row h-full">
         <Sidebar />
         <section className="flex justify-center w-full">
           <WeekView />
