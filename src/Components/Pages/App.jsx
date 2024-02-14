@@ -9,11 +9,12 @@ function App() {
         <Navbar />
       </header>
 
-      <aside>
+      <div className="flex flex-row h-[94vh]">
         <Sidebar />
-      </aside>
-
-      <section></section>
+        <section className="flex justify-center items-center">
+          <h1 className="text-4xl font-bold">The Calendar View Goes Here</h1>
+        </section>
+      </div>
     </div>
   );
 }

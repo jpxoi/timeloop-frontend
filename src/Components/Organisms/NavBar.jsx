@@ -9,7 +9,7 @@ import SidebarIcon from '../Atoms/SidebarIcon';
 
 export default function NavBar(){
   return (
-    <div className="px-4 flex items-center justify-between border-b">
+    <div className="px-4 flex h-[7vh] items-center justify-between border-b">
       <div className="flex items-center"> {/* Wrapper for Logo and Calendar and Today button */}
         <SidebarIcon />
         <Logo/>
