@@ -1,5 +1,4 @@
 import React from "react";
-import SmallCalendar from "../Molecules/SmallCalendar";
 import DisplayMonthYear from "../Molecules/DisplayMonthYear";
 
 export default function Sidebar() {
