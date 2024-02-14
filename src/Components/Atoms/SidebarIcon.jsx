@@ -4,7 +4,7 @@ import { Bars3BottomLeftIcon } from "@heroicons/react/24/outline";
 function SidebarIcon() {
 
   const handleSidebar = () => {
-    const sidebar = document.querySelector("aside");
+    const sidebar = document.getElementById("app-sidebar");
     sidebar.classList.toggle("hidden");
   }
 
