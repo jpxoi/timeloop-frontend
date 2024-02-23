@@ -20,7 +20,7 @@ function App() {
         <Navbar currentMonth={NavCurrentMonth} setCurrentMonth={NavSetCurrentMonth} onTodayButtonClick={handleTodayButtonClick} />
       </header>
 
-      <div id="app-container" className="flex flex-row h-full">
+      <div id="app-container" className="flex flex-row h-full min-w-fit">
         <Sidebar currentMonth={SideCurrentMonth} setCurrentMonth={SideSetCurrentMonth} />
         <section className="flex justify-center w-full">
           <WeekView />

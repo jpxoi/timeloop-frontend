@@ -1,7 +1,7 @@
 import React from "react";
 
 function DayColumn({ day }) {
-  const hourBlockStyle = "border border-gray-300 bg-[#D9EFFF] min-h-12";
+  const hourBlockStyle = "border-b border-l border-gray-200 min-h-12";
   const dayHours = [
     "12:00 AM",
     "1:00 AM",
