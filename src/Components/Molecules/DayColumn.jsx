@@ -1,83 +1,44 @@
 import React from "react";
 
-function DayColumn({day}) {
-    const hourBlockStyle = "border-2 border-gray-300 bg-[#D9EFFF] h-10";
-    return (
-        <table className="border-x-2 border-gray-300 bg-[#D9EFFF] min-w-full">
-            <tr className={hourBlockStyle}>
-                <th></th>
-            </tr>
-            <tr className={hourBlockStyle}>
-                
-            </tr>
-            <tr className={hourBlockStyle}>
-                
-            </tr>
-            <tr className={hourBlockStyle}>
-                
-            </tr>
-            <tr className={hourBlockStyle}>
-                
-            </tr>
-            <tr className={hourBlockStyle}>
-                
-            </tr>
-            <tr className={hourBlockStyle}>
-                
-            </tr>
-            <tr className={hourBlockStyle}>
-                
-            </tr>
-            <tr className={hourBlockStyle}>
-                
-            </tr>
-            <tr className={hourBlockStyle}>
-                
-            </tr>
-            <tr className={hourBlockStyle}>
-                
-            </tr>
-            <tr className={hourBlockStyle}>
-                
-            </tr>
-            <tr className={hourBlockStyle}>
-                
-            </tr>
-            <tr className={hourBlockStyle}>
-                
-            </tr>
-            <tr className={hourBlockStyle}>
-                
-            </tr>
-            <tr className={hourBlockStyle}>
-                
-            </tr>
-            <tr className={hourBlockStyle}>
-                
-            </tr>
-            <tr className={hourBlockStyle}>
-                
-            </tr>
-            <tr className={hourBlockStyle}>
-                
-            </tr>
-            <tr className={hourBlockStyle}>
-                
-            </tr>
-            <tr className={hourBlockStyle}>
-                
-            </tr>
-            <tr className={hourBlockStyle}>
-                
-            </tr>
-            <tr className={hourBlockStyle}>
-                
-            </tr>
-            <tr className={hourBlockStyle}>
-                
-            </tr>
-        </table>
-    );
+function DayColumn({ day }) {
+  const hourBlockStyle = "border border-gray-300 bg-[#D9EFFF] min-h-12";
+  const dayHours = [
+    "12:00 AM",
+    "1:00 AM",
+    "2:00 AM",
+    "3:00 AM",
+    "4:00 AM",
+    "5:00 AM",
+    "6:00 AM",
+    "7:00 AM",
+    "8:00 AM",
+    "9:00 AM",
+    "10:00 AM",
+    "11:00 AM",
+    "12:00 PM",
+    "1:00 PM",
+    "2:00 PM",
+    "3:00 PM",
+    "4:00 PM",
+    "5:00 PM",
+    "6:00 PM",
+    "7:00 PM",
+    "8:00 PM",
+    "9:00 PM",
+    "10:00 PM",
+    "11:00 PM",
+  ];
+
+  return (
+    <div className="min-w-full">
+      {dayHours.map((hour, index) => {
+        return (
+          <div key={index} className={hourBlockStyle}>
+          </div>
+        );
+      })}
+    </div>
+  );
 }
 
 export default DayColumn;
