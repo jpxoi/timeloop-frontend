@@ -15,12 +15,12 @@ function App() {
   };
 
   return (
-    <div className="h-screen flex flex-col">
+    <div className="h-screen flex flex-col overflow-auto">
       <header>
         <Navbar currentMonth={NavCurrentMonth} setCurrentMonth={NavSetCurrentMonth} onTodayButtonClick={handleTodayButtonClick} />
       </header>
 
-      <div className="flex flex-row h-full">
+      <div id="app-container" className="flex flex-row h-full">
         <Sidebar currentMonth={SideCurrentMonth} setCurrentMonth={SideSetCurrentMonth} />
         <section className="flex justify-center w-full">
           <WeekView />
