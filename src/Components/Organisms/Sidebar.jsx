@@ -21,8 +21,7 @@ export default function Sidebar({ currentMonth, setCurrentMonth }) {
   };
   
   return (
-    <nav className="h-full flex flex-col w-1/5 pt-6 px-5 py-10 border border-t-0 relative">
-
+    <nav className="h-screen flex flex-col w-1/5 border border-t-0 pt-6 px-5 py-10 relative">
       <div className="flex  items-center justify-between mb-4 space-x-6">
         <div>
           <DisplayDayWeek params="bg-blue-600 rounded p-2" />

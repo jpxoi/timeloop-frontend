@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import Logo from "../Atoms/Logo";
 import NavbarProfile from "../Atoms/NavbarProfile";
 import Button from "../Atoms/Button";
 import LeftArrow from "../Atoms/LeftArrow";
 import RightArrow from "../Atoms/RightArrow";
 import DisplayMonthYear from "../Molecules/DisplayMonthYear";
+import SidebarIcon from '../Atoms/SidebarIcon';
 import dayjs from "dayjs";
 
 export default function NavBar({ currentMonth, setCurrentMonth, onTodayButtonClick }) {
@@ -20,8 +21,9 @@ export default function NavBar({ currentMonth, setCurrentMonth, onTodayButtonCli
   };
 
   return (
-    <div className="px-4 flex items-center justify-between border-b">
+    <div className="px-4 flex min-h-16 items-center justify-between border-b">
       <div className="flex items-center">
+        <SidebarIcon />
         <Logo />
         <h1 className="mr-10 text-lg text-blue-400">Calendar</h1>
         <Button
@@ -30,10 +32,10 @@ export default function NavBar({ currentMonth, setCurrentMonth, onTodayButtonCli
           action={onTodayButtonClick}
         />
         <div className="flex justify-between mx-7">
-          <LeftArrow buttonparams="" iconparams="w-3 h-3 mr-3 hover:bg-gray-100 rounded-full" action={GetPreviousMonth} />
-          <RightArrow buttonparams="" iconparams="w-3 h-3 ml-3 hover:bg-gray-100 rounded-full" action={GetNextMonth} />
+          <LeftArrow buttonparams="" iconparams="w-4 h-4 mr-2 hover:bg-gray-100 rounded-full" action={GetPreviousMonth} />
+          <RightArrow buttonparams="" iconparams="w-4 h-4 ml-2 hover:bg-gray-100 rounded-full" action={GetNextMonth} />
         </div>
-        <DisplayMonthYear params="text-black font-[400] text-[17px]" date={currentMonth} />
+        <DisplayMonthYear params="text-black font-[400] text-lg" date={currentMonth} />
       </div>
       <div className="flex items-center">
         <NavbarProfile />
