@@ -1,15 +1,12 @@
 import React from "react";
-import GetMonth from "../Atoms/GetMonth";
-import GetYear from "../Atoms/GetYear";
+import dayjs from "dayjs";
 
-function DisplayMonthYear({ params }) {
+function DisplayMonthYear({date = dayjs().format('MMMM YYYY'), params}) {
+
   return (
-    <div className="flex">
-      <p className={`${params} text-wrap flex`}>
-        <span className="inline">{GetMonth()}</span>
-        <span className="inline mx-2">{GetYear()}</span>
-      </p>
-    </div>
+      <div className={`${params}`}>
+        {date}
+      </div>
   );
 }
 
