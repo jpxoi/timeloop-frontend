@@ -1,10 +1,10 @@
 import React from "react";
-import { ArrowRightIcon } from "@heroicons/react/24/outline";
+import { ChevronRightIcon } from "@heroicons/react/24/outline";
 
-const RightArrow = ({ buttonparams, iconparams }) => {
+const RightArrow = ({ buttonparams, iconparams, action }) => {
   return (
-    <button className={`${buttonparams}`}>
-      <ArrowRightIcon className={`${iconparams}`} />
+    <button onClick={action} className={`${buttonparams}`}>
+      <ChevronRightIcon className={`${iconparams}`} />
     </button>
   );
 };
