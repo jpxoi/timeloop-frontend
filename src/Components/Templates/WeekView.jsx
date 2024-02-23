@@ -1,4 +1,5 @@
 import React from "react";
+import DayColumn from "../Molecules/DayColumn";
 
 function WeekView() {
   return (
@@ -7,7 +8,7 @@ function WeekView() {
         <h1 className="text-4xl font-bold">Week View</h1>
       </div>
       <div className="flex flex-col justify-center items-center h-full w-full overflow-y-scroll">
-        <h1 className="text-2xl font-bold">Week Grid</h1>
+        <DayColumn day="Monday 12"/>
       </div>
     </div>
   );
