@@ -5,18 +5,25 @@ import Button from "../Atoms/Button";
 import LeftArrow from "../Atoms/LeftArrow";
 import RightArrow from "../Atoms/RightArrow";
 import DisplayMonthYear from "../Molecules/DisplayMonthYear";
-import SidebarIcon from '../Atoms/SidebarIcon';
+import SidebarIcon from "../Atoms/SidebarIcon";
 import dayjs from "dayjs";
 
-export default function NavBar({ currentMonth, setCurrentMonth, onTodayButtonClick }) {
-
+export default function NavBar({
+  currentMonth,
+  setCurrentMonth,
+  onTodayButtonClick,
+}) {
   const GetNextMonth = () => {
-    const newMonth = dayjs(currentMonth, "MMMM YYYY").add(1, "month").format("MMMM YYYY");
+    const newMonth = dayjs(currentMonth, "MMMM YYYY")
+      .add(1, "month")
+      .format("MMMM YYYY");
     setCurrentMonth(newMonth);
   };
 
   const GetPreviousMonth = () => {
-    const newMonth = dayjs(currentMonth, "MMMM YYYY").subtract(1, "month").format("MMMM YYYY");
+    const newMonth = dayjs(currentMonth, "MMMM YYYY")
+      .subtract(1, "month")
+      .format("MMMM YYYY");
     setCurrentMonth(newMonth);
   };
 
@@ -31,10 +38,21 @@ export default function NavBar({ currentMonth, setCurrentMonth, onTodayButtonCli
           action={onTodayButtonClick}
         />
         <div className="flex justify-between mx-7">
-          <LeftArrow buttonparams="" iconparams="w-4 h-4 mr-2 hover:bg-gray-100 rounded-full" action={GetPreviousMonth} />
-          <RightArrow buttonparams="" iconparams="w-4 h-4 ml-2 hover:bg-gray-100 rounded-full" action={GetNextMonth} />
+          <LeftArrow
+            buttonparams=""
+            iconparams="w-4 h-4 mr-2 hover:bg-gray-100 rounded-full"
+            action={GetPreviousMonth}
+          />
+          <RightArrow
+            buttonparams=""
+            iconparams="w-4 h-4 ml-2 hover:bg-gray-100 rounded-full"
+            action={GetNextMonth}
+          />
         </div>
-        <DisplayMonthYear params="text-black font-[400] text-[15px]" date={currentMonth} />
+        <DisplayMonthYear
+          params="text-black font-[400] text-[15px]"
+          date={currentMonth}
+        />
       </div>
       <div className="flex items-center">
         <NavbarProfile />
@@ -42,4 +60,3 @@ export default function NavBar({ currentMonth, setCurrentMonth, onTodayButtonCli
     </div>
   );
 }
-

@@ -21,7 +21,10 @@ function WeekView() {
         <div className="week-hours">
           {Array.from({ length: 23 }).map((_, index) => {
             return (
-              <div key={index} className="hour h-12 flex justify-end items-end px-4">
+              <div
+                key={index}
+                className="hour h-12 flex justify-end items-end px-4"
+              >
                 <span className="text-xs font-semibold text-gray-500 translate-y-2">
                   {index < 9 ? `0${index + 1}:00` : `${index + 1}:00`}
                 </span>
