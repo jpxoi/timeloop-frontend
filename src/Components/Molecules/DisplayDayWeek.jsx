@@ -2,6 +2,8 @@ import React from "react";
 import dayjs from "dayjs";
 
 function DisplayDayWeek({ date = dayjs(), params }) {
+  const dayOfMonth = date.format("D");
+  const weekday = date.format("ddd");
 
     const dayOfMonth = date.format('D');
     const weekday = date.format('ddd');
