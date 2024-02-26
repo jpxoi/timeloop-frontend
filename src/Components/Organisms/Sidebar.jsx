@@ -27,12 +27,13 @@ export default function Sidebar({ currentMonth, setCurrentMonth }) {
   return (
     <nav
       id="app-sidebar"
-      className="h-auto flex flex-col w-1/5 border-r pt-6 px-5 py-10 relative"
+      className="h-auto flex flex-col w-1/5 border-r pt-4 px-5 py-10 relative"
     >
       <div className="flex  items-center justify-between mb-4 space-x-6">
         <div>
           <DisplayDayWeek params="rounded p-2" />
         </div>
+
       </div>
 
       <div className="border-2 rounded p-2 mt-1">
