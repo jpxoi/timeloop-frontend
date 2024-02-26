@@ -8,7 +8,8 @@ import { MiniCalendar } from "../Molecules/MiniCalendar";
 import cn from "classnames";
 
 export default function Sidebar({ currentMonth, setCurrentMonth }) {
-  const day = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
+
+  const day=["Su","Mo","Tu","We","Th","Fr","Sa"];
 
   const GetNextMonth = () => {
     const newMonth = dayjs(currentMonth, "MMMM YYYY")
@@ -33,6 +34,7 @@ export default function Sidebar({ currentMonth, setCurrentMonth }) {
         <div>
           <DisplayDayWeek params="rounded p-2" />
         </div>
+
       </div>
 
       <div className="border-2 rounded p-2 mt-1">
@@ -70,19 +72,15 @@ export default function Sidebar({ currentMonth, setCurrentMonth }) {
         </div>
 
         <div className="h-40 grid grid-cols-7 mt-1">
-          {MiniCalendar({
-            month: dayjs(currentMonth).month(),
-            year: dayjs(currentMonth).year(),
-          }).map(({ date, currentMonth, today }, index) => {
+
+          {MiniCalendar({ month: dayjs(currentMonth).month(), year: dayjs(currentMonth).year() }).map(({ date, currentMonth, today }, index) => {
             return (
               <div key={index} className="text-[9px] grid place-content-center">
-                <h1
-                  className={cn(
-                    currentMonth ? "font-[400]" : "text-gray-400",
-                    today ? "bg-blue-500 text-white" : "",
-                    "h-5 w-5 grid place-content-center rounded-full hover:bg-gray-200 transition-all cursor-pointer"
-                  )}
-                >
+                <h1 className={cn(
+                  currentMonth ? "font-[400]": "text-gray-400",
+                  today ? "bg-blue-500 text-white" : "",
+                  "h-5 w-5 grid place-content-center rounded-full hover:bg-gray-200 transition-all cursor-pointer"
+                  )}>
                   {date.date()}
                 </h1>
               </div>
