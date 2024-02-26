@@ -22,10 +22,9 @@ export default function NavBar({ currentMonth, setCurrentMonth, onTodayButtonCli
 
   return (
     <div className="px-4 flex min-h-16 items-center justify-between border-b">
-      <div className="flex items-center">
+      <div className="flex items-center space-x-3">
         <SidebarIcon />
         <Logo />
-        <h1 className="mr-10 text-lg text-blue-400">Calendar</h1>
         <Button
           params="hover:bg-gray-100 border rounded py-2 px-3 mx-1 text-xs border-gray-300"
           text="Today"
@@ -35,7 +34,7 @@ export default function NavBar({ currentMonth, setCurrentMonth, onTodayButtonCli
           <LeftArrow buttonparams="" iconparams="w-4 h-4 mr-2 hover:bg-gray-100 rounded-full" action={GetPreviousMonth} />
           <RightArrow buttonparams="" iconparams="w-4 h-4 ml-2 hover:bg-gray-100 rounded-full" action={GetNextMonth} />
         </div>
-        <DisplayMonthYear params="text-black font-[400] text-lg" date={currentMonth} />
+        <DisplayMonthYear params="text-black font-[400] text-[15px]" date={currentMonth} />
       </div>
       <div className="flex items-center">
         <NavbarProfile />
