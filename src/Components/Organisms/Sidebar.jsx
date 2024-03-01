@@ -6,6 +6,7 @@ import LeftArrow from "../Atoms/LeftArrow";
 import RightArrow from "../Atoms/RightArrow";
 import { MiniCalendar } from "../Molecules/MiniCalendar";
 import cn from "classnames";
+import CalendarSelect from "../Atoms/CalendarSelect";
 
 export default function Sidebar({ currentMonth, setCurrentMonth }) {
   const day = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
@@ -90,6 +91,10 @@ export default function Sidebar({ currentMonth, setCurrentMonth }) {
           })}
         </div>
       </div>
+      <CalendarSelect
+        name="Calendar 1"
+        colour="gray-400"
+      />
     </nav>
   );
 }
