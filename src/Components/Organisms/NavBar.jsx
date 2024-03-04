@@ -28,7 +28,7 @@ export default function NavBar({
   };
 
   return (
-    <div className="px-4 flex min-h-16 items-center justify-between border-b">
+    <div className="px-4 pr-6 flex min-h-14 items-center justify-between border-b">
       <div className="flex items-center space-x-3">
         <SidebarIcon />
         <Logo />
@@ -54,7 +54,7 @@ export default function NavBar({
           date={currentMonth}
         />
       </div>
-      <div className="flex items-center">
+      <div className="flex">
         <NavbarProfile />
       </div>
     </div>

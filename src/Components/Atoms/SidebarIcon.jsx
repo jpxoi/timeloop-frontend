@@ -10,7 +10,7 @@ function SidebarIcon() {
 
   return (
     <button onClick={handleSidebar} className="flex items-center hover:bg-gray-200 p-2 rounded-md">
-      <Bars3BottomLeftIcon className="w-8 h-8" />
+      <Bars3BottomLeftIcon className="w-7 h-7" />
     </button>
   );
 }
