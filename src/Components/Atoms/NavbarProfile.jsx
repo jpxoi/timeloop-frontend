@@ -41,7 +41,7 @@ const NavbarProfile = () => {
         type="button"
         onMouseEnter={imgMouseEnter}
         onMouseLeave={imgMouseLeave}
-        className="w-[2.2rem] h-[2.2rem] rounded-full cursor-pointer border-2"
+        className="w-[2.2rem] h-[2.2rem] rounded-full cursor-pointer"
         src={RndProfilePic}
         alt="User dropdown"
       />
@@ -49,13 +49,21 @@ const NavbarProfile = () => {
       {isDropdownOpen && (
         <div
           id="userDropdown"
-          className="border absolute z-20 right-0 mt-0 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600"
+          className="border absolute z-20 right-0 mt-0 bg-white divide-y divide-gray-100 rounded-lg shadow w-[17rem] dark:bg-gray-700 dark:divide-gray-600"
           onMouseEnter={dropdownMouseEnter}
           onMouseLeave={dropdownMouseLeave}
         >
-          <div className="px-4 py-3 text-sm text-gray-900 dark:text-white">
-            <div>Riccardo Romano</div>
-            <div className="font-medium truncate">name@1234.com</div>
+          <div className="px-6 py-6 text-sm text-gray-900 dark:text-white">
+            <div className="flex justify-start items-center space-x-4">
+
+              <img src={RndProfilePic} alt="Avatar" className="w-[5rem] h-[5rem] rounded-full"/>
+
+              <div className="leading-8">
+                <div className="font-[300] text-[14px]">Micheal Cooper</div>
+                <span className="font-[500] text-[12px] text-yellow-500 border-2 border-yellow-500 p-[0.1rem] rounded">AWAY</span>
+              </div>
+
+            </div>
           </div>
           <ul
             className="py-2 text-sm text-gray-700 dark:text-gray-200"

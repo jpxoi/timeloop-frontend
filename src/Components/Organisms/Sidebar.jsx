@@ -6,6 +6,9 @@ import LeftArrow from "../Atoms/LeftArrow";
 import RightArrow from "../Atoms/RightArrow";
 import { MiniCalendar } from "../Molecules/MiniCalendar";
 import cn from "classnames";
+import { PlusIcon } from "@heroicons/react/24/solid";
+import EventCard from "../Atoms/EventCard";
+import Avatar from "../Atoms/Avatar";
 
 export default function Sidebar({ currentMonth, setCurrentMonth }) {
   const day = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
@@ -24,45 +27,68 @@ export default function Sidebar({ currentMonth, setCurrentMonth }) {
     setCurrentMonth(newMonth);
   };
 
+
   return (
     <nav
       id="app-sidebar"
-      className="h-auto flex flex-col w-1/5 border-r pt-4 px-5 py-10 relative"
+      className="h-full flex flex-col w-[23%] border-r px-4 py-2 relative bg-gray-100 "
     >
-      <div className="flex  items-center justify-between mb-4 space-x-6">
-        <div>
-          <DisplayDayWeek params="rounded p-2" />
-        </div>
+      <div className="flex px-4 py-4  space-x-5 rounded-[0.5rem] bg-white my-2">
+        <Avatar/>
+        <span class="bottom-0 left-0 absolute w-[0.65rem] h-[0.65rem] bg-amber-400 border-2 border-white dark:border-gray-800 rounded-full"></span>
 
+        <div className="font-[500]">
+          Micheal Cooper
+        </div>
       </div>
 
-      <div className="border-2 rounded p-2 mt-1">
-        <div className="flex items-center justify-between">
+      <div className="flex justify-between space-x-6 my-1 bg-white rounded-[0.5rem] shadow-sm items-start p-3 ">
+        <div className="">
+          <DisplayDayWeek params="rounded-[0.5rem] p-2 text-black" />
+        </div>
+      </div>
+
+      <div className="mt-3 bg-white rounded-[0.5rem] p-4 shadow-sm">
+        <div className="flex items-center justify-between text-black">
+          <div className="flex justify-between">
+            <div className="">
+              <LeftArrow
+                buttonparams=""
+                iconparams="w-4 h-4"
+                action={GetPreviousMonth}
+              />
+            </div>
+
+            <div>
+              <RightArrow
+                buttonparams=""
+                iconparams="w-4 h-4"
+                action={GetNextMonth}
+              />
+            </div>
+          </div>
+
           <div>
             <DisplayMonthYear
-              params="text-black font-[450] text-[11px]"
+              params="font-[450] text-[16px] text-blue-900"
               date={currentMonth}
             />
           </div>
-          <div>
-            <LeftArrow
-              buttonparams=""
-              iconparams="w-3 h-3 mr-1 hover:bg-gray-100 rounded-full"
-              action={GetPreviousMonth}
-            />
-            <RightArrow
-              buttonparams=""
-              iconparams="w-3 h-3 ml-1 hover:bg-gray-100 rounded-full"
-              action={GetNextMonth}
-            />
-          </div>
+
         </div>
 
-        <div className="grid grid-cols-7 mt-3">
+        <div className="grid grid-cols-7 mt-4 ">
           {day.map((day, index) => {
+            let textColorClass = "text-blue-500"; // Default text color class
+            if (day === "Su" || day === "Sa") {
+              textColorClass = "text-rose-500"; // Change text color class for "Su" and "Sa"
+            }
+
             return (
               <div key={index}>
-                <h1 className="text-[11px] font-[500] grid place-content-center text-blue-700">
+                <h1
+                  className={`text-[12px] font-[500] grid place-content-center ${textColorClass} mb-1`}
+                >
                   {day}
                 </h1>
               </div>
@@ -76,12 +102,12 @@ export default function Sidebar({ currentMonth, setCurrentMonth }) {
             year: dayjs(currentMonth).year(),
           }).map(({ date, currentMonth, today }, index) => {
             return (
-              <div key={index} className="text-[9px] grid place-content-center">
+              <div key={index} className="text-[10px] grid place-content-center">
                 <h1
                   className={cn(
-                    currentMonth ? "font-[400]" : "text-gray-400",
-                    today ? "bg-blue-500 text-white" : "",
-                    "h-5 w-5 grid place-content-center rounded-full hover:bg-gray-200 transition-all cursor-pointer"
+                    currentMonth ? "font-[400]" : "text-gray-400 font-[500]",
+                    today ? "bg-green-500 text-white" : "",
+                    "h-5 w-5 grid place-content-center rounded hover:border-purple-500 hover:border-2 hover:bg-white hover:text-black transition-all cursor-pointer"
                   )}
                 >
                   {date.date()}
@@ -91,6 +117,7 @@ export default function Sidebar({ currentMonth, setCurrentMonth }) {
           })}
         </div>
       </div>
+
     </nav>
   );
 }

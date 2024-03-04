@@ -28,12 +28,12 @@ export default function NavBar({
   };
 
   return (
-    <div className="px-4 pr-6 flex min-h-14 items-center justify-between border-b">
+    <div className="px-4 pr-6 flex min-h-12 items-center justify-between border-b border-b-gray-200">
       <div className="flex items-center space-x-3">
         <SidebarIcon />
         <Logo />
         <Button
-          params="hover:bg-gray-100 border rounded py-2 px-3 mx-1 text-xs border-gray-300"
+          params="hover:bg-gray-100 border rounded py-1 px-2 mx-1 text-xs border-gray-300"
           text="Today"
           action={onTodayButtonClick}
         />
