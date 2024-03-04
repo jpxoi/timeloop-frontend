@@ -3,7 +3,7 @@ import dayjs from "dayjs";
 
 function DisplayDayWeek({ date = dayjs(), params }) {
   const dayOfMonth = date.format("D");
-  const weekday = date.format("ddd");
+  const weekday = date.format("ddd").toUpperCase();
 
   return (
     <div className={`${params} flex flex-col items-center text-black`}>
