@@ -28,19 +28,25 @@ export default function Sidebar({ currentMonth, setCurrentMonth }) {
 
 
   return (
-    <nav id="app-sidebar" className="h-full flex flex-col w-[28%] border-r px-4 py-2 bg-slate-100">
+    <nav id="app-sidebar" className="flex flex-col w-[28%] h-auto overflow-y-auto border-r px-4 py-2 bg-slate-100">
 
       <div className="">
         <DropdownMenu/>
       </div>
 
-      <div className="flex justify-between space-x-6 mt-3 bg-white rounded-[0.5rem] items-start p-3 shadow-sm ">
-        <div className="">
-          <DisplayDayWeek params="rounded-[0.5rem] p-2 text-black" />
-        </div>
+      <div className="bg-white rounded-[0.5rem] px-3 py-2 mt-2 shadow-sm">
+          <div className="text-[15px] font-[450] my-2">
+            Dashboard
+          </div>
+          <div class="flex justify-between bg-">
+            <div class="rounded-[0.7rem] bg-sky-500 h-20 w-[85px]"></div>
+            <div class="rounded-[0.7rem] bg-yellow-400 h-20 w-[85px]"></div>
+            <div class="rounded-[0.7rem] bg-fuchsia-500 h-20 w-[85px]"></div>
+          </div>
+
       </div>
 
-      <div className="mt-3 bg-white rounded-[0.5rem] p-4 shadow-sm">
+      <div className="mt-2 bg-white rounded-[0.5rem] p-4 shadow-sm">
         <div className="flex items-center justify-between text-black">
           <div className="flex justify-between">
             <div className="">

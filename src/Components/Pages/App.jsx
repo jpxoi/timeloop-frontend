@@ -19,12 +19,12 @@ function App() {
   };
 
   return (
-    <div id="app-container" className="h-[110vh] flex flex-row">
+    <div id="app-container" className="h-screen flex flex-row">
 
-      <Sidebar
-        currentMonth={SideCurrentMonth}
-        setCurrentMonth={SideSetCurrentMonth}
-      />
+        <Sidebar
+          currentMonth={SideCurrentMonth}
+          setCurrentMonth={SideSetCurrentMonth}
+        />
 
       <div className="h-screen flex flex-col w-full ">
 
