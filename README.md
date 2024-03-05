@@ -43,7 +43,12 @@ This README is only intended for the developent process. Once the project is fin
     - [Icons](#icons)
     - [Colors](#colors)
   - [Utility Functions / Helpers](#utility-functions--helpers)
-  - [Hooks](#hooks)
+  - [Custom Hooks](#custom-hooks)
+    - [useFetch](#usefetch)
+      - [Key Parameters](#key-parameters)
+      - [Returned Values](#returned-values)
+      - [Additional Notes](#additional-notes)
+      - [Example Usage](#example-usage)
 - [Testing](#testing)
   - [Thunder Client](#thunder-client)
 - [Deployment](#deployment)
@@ -402,7 +407,7 @@ The file extension for the utility functions should be `.js`. For example, if yo
 
 All utility functions should be placed in the `src/Helpers` directory. You should not place the utility functions directly in the `src` directory.
 
-### Hooks
+### Custom Hooks
 
 For this project, we will be using [React Hooks](https://reactjs.org/docs/hooks-intro.html) for writing custom hooks.
 
@@ -413,6 +418,62 @@ All custom hooks should be named using the [camelCase](https://en.wikipedia.org/
 The file extension for the custom hooks should be `.js`. For example, if you have a custom hook called `useFetch`, you should place it in a file called `useFetch.js`.
 
 All custom hooks should be placed in the `src/Hooks` directory. You should not place the custom hooks directly in the `src` directory.
+
+#### useFetch
+
+For this project, there is already a custom hook called `useFetch` that is used for fetching data from the API. You should use this custom hook for fetching data from the API. You should not use the `fetch` function directly.
+
+The `useFetch` custom hook is located at `src/Hooks/useFetch.js`. You should not modify this file. If you feel like the `useFetch` custom hook should be modified, please open an issue and discuss it with the team.
+
+The `useFetch` custom hook is already configured to handle the API requests. You don't need to configure it. You can use it as is.
+
+##### Key Parameters
+
+- `url`: Required String. The URL of the API endpoint to fetch data from.
+- `method`: Optional String. HTTP request method (default: "GET"). Can be "POST", "PUT", "DELETE", etc.
+- `headers`: Optional Object. Custom headers to include in the request.
+
+##### Returned Values
+
+- `data`: Any. The fetched data, parsed as JSON by default.
+- `loading`: Boolean. True while the request is in progress, false otherwise.
+- `error`: Object or null. Any error object encountered during the request, or null if successful.
+- `handleCancelRequest`: Function. Cancels the in-progress request if present.
+
+##### Additional Notes
+
+- The useEffect hook ensures the request runs only once on initial component render.
+- The custom handleError logic in ErrorA's response is omitted, as it's more suitable for specific use cases than general documentation.
+- The handleCancelRequest functionality and its return value are clarified.
+- Error handling is improved by including the error.message in the error display when available.
+- Explanations are made more concise and direct.
+
+##### Example Usage
+
+```jsx
+import useFetch from "../Hooks/useFetch"; // Import the custom hook
+
+function MyComponent() {
+  const { data, loading, error, handleCancelRequest } = useFetch("https://api.example.com/data");
+
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+
+  if (error) {
+    return <p>Error: {error.message}</p>;
+  }
+
+  return (
+    <div>
+      {data.map((item) => (
+        <p key={item.id}>{item.name}</p>
+      ))}
+      <button onClick={handleCancelRequest}>Cancel Request</button>
+    </div>
+  );
+}
+```
 
 ## Testing
 
