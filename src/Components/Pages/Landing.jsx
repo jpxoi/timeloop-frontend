@@ -3,6 +3,8 @@ import LandingHeader from "../Organisms/LandingHeader";
 import LandingBackground from "/src/assets/images/LandingBackground.png"
 import Card1 from "/src/assets/images/Card1.png"
 import Card2 from "/src/assets/images/Card2.png"
+import Sync2City from "/src/assets/images/Sync2City.png";
+import WeekWrapped from "/src/assets/images/WeekWrapped.png";
 
 function Landing() {
   return (
@@ -16,6 +18,9 @@ function Landing() {
         <img src={Card1} className="absolute left-0 w-[150px] h-auto"/>
         <img src={Card2} className="absolute right-0 w-[150px] h-auto"/>
       </div>
+
+      <img src={Sync2City} className="w-[300px] h-auto m-10 mr-52 ml-20 float-left"/>
+      <img src={WeekWrapped} className="w-[300px] h-auto mt-10"/>
     </div>
   );
 }
