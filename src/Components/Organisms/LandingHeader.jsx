@@ -4,7 +4,7 @@ import Button from "../Atoms/Button";
 
 
 function LandingHeader() {
-    function onClick(){
+    function openLink(){
         //pass
     }
 
@@ -15,7 +15,7 @@ function LandingHeader() {
             </div>
             <Button params={"text-white bg-[#0094FF] px-4 rounded-full absolute right-2 h-7"}
                     text={"Sign up"} 
-                    action={onClick()}/>
+                    action={openLink()}/>
         </header>
     );
 }
