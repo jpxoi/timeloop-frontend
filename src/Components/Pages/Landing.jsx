@@ -1,7 +1,10 @@
+import React from "react";
+import LandingHeader from "../Organisms/LandingHeader";
+
 function Landing() {
   return (
-    <div>
-      <h1>Welcome to the landing page!</h1>
+    <div className="flex">
+      <LandingHeader />
     </div>
   );
 }
