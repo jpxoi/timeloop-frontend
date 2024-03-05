@@ -28,13 +28,13 @@ export default function Sidebar({ currentMonth, setCurrentMonth }) {
 
 
   return (
-    <nav id="app-sidebar" className="h-full flex flex-col w-[28%] border-r px-4 py-2 ">
+    <nav id="app-sidebar" className="h-full flex flex-col w-[28%] border-r px-4 py-2 bg-slate-100">
 
       <div className="">
         <DropdownMenu/>
       </div>
 
-      <div className="flex justify-between space-x-6 mt-5 bg-white rounded-[0.5rem] items-start p-3 ">
+      <div className="flex justify-between space-x-6 mt-3 bg-white rounded-[0.5rem] items-start p-3 shadow-sm ">
         <div className="">
           <DisplayDayWeek params="rounded-[0.5rem] p-2 text-black" />
         </div>

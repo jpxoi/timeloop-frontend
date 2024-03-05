@@ -1,10 +1,10 @@
 import React from "react";
-import AvatarImg from "/src/assets/images/RndProfilePic_2_.webp";
 
-const Avatar = () => {
+const Avatar = ({Img}) => {
+
   return (
     <div className="">
-      <img src={AvatarImg} alt="Random Profile Image" className={"w-[2.3rem] h-[2.3rem] rounded-full"} />
+      <img src={Img} alt="Random Profile Image" className={"w-[2rem] h-[2rem] rounded-full"} />
     </div>
   );
 };
