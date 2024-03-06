@@ -1,4 +1,5 @@
 import React from "react";
+import WeekViewHeader from "../Organisms/WeekViewHeader";
 import DayColumn from "../Molecules/DayColumn";
 
 const daysWeek = [
@@ -14,9 +15,7 @@ const daysWeek = [
 function WeekView() {
   return (
     <div className="flex flex-col h-full w-full">
-      <div className="flex justify-center items-center h-20 w-full border-b border-gray-300">
-        <h1 className="text-4xl font-bold">Week View</h1>
-      </div>
+      <WeekViewHeader /> 
       <div className="week-container grid grid-cols-[1fr_14fr] max-h-full overflow-y-scroll">
         <div className="week-hours">
           {Array.from({ length: 23 }).map((_, index) => {
