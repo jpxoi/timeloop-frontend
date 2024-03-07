@@ -1,14 +1,42 @@
 import React from "react";
-import { XIcon } from "@heroicons/react/24/solid";
+import { XMarkIcon } from "@heroicons/react/24/solid";
+import dayjs from "dayjs";
 
-const EventCard = ({ onClose }) => {
+const EventCard = ({selectedDate, onClose}) => {
+  let hourNow = dayjs().hour();
+  let hourNext = dayjs().add(1, "hour").format("HH");
+
   return (
-    <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-[0.5rem] p-4 max-w-md w-full z-50">
-      <button className="absolute top-0 left-0 p-2" onClick={onClose}>
-        <XIcon className="h-6 w-6 text-gray-600" />
-      </button>
-      <h2 className="text-lg font-semibold mb-4">Event Title</h2>
-      <p className="text-gray-700">Event description goes here...</p>
+    <div className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-20">
+      <div className="flex flex-col bg-white rounded-lg p-4 w-96 shadow-sm">
+        <div  className="flex space-x-2 justify-between items-center">
+          <div className="text-[17px] font-[390] text-gray-600">
+            Add schedule
+          </div>
+          <div>
+            <button>
+              <div className="rounded-full px-2 bg-yellow-400 text-white">
+                {`${hourNow}:00 - ${hourNext}:00`}
+
+              </div>
+            </button>
+            <button className="" onClick={onClose}>
+             <XMarkIcon className="w-4 h-4 fill-red-500"/>
+            </button>
+          </div>
+        </div>
+
+
+        <div className="bg-gray-100 rounded-[0.5rem] w-full min-h-32 my-5">
+
+        </div>
+        <p>Date: {selectedDate}</p>
+
+        <button className="bg-blue-500 rounded-full text-white">
+          Add
+        </button>
+
+      </div>
     </div>
   );
 };
