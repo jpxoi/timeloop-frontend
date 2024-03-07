@@ -4,13 +4,19 @@ import not_found_image from "../../assets/illustrations/not-found.svg";
 
 function NotFound() {
   return (
-    <div className="flex flex-col items-center justify-center h-screen bg-gray-100 space-y-4">
-      <img src={not_found_image} alt="404 Not Found" className="w-96 mb-4" />
-      <h1 className="text-4xl font-bold">404 Not Found</h1>
-      <p className="text-2xl">The page you are looking for does not exist.</p>
-      <Link to="/" className="text-2xl text-blue-500 hover:underline">
-        Go back to the home page
-      </Link>
+    <div className="grid h-screen place-content-center bg-white px-4">
+      <div className="text-center">
+        <object className="mx-auto w-96" data={not_found_image} type="image/svg+xml"/>
+        <h1 className="mt-6 text-2xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+          Uh-oh!
+        </h1>
+
+        <p className="mt-4 text-gray-500">We can&apos;t find that page.</p>
+
+        <Link to="/" className="mt-6 inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-blue-600 border border-transparent rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+          Go back home
+        </Link>
+      </div>
     </div>
   );
 }
