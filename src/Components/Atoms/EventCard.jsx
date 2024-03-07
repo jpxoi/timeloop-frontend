@@ -1,5 +1,5 @@
 import React from "react";
-import { XMarkIcon } from "@heroicons/react/24/solid";
+import { XMarkIcon, PaperClipIcon, LinkIcon } from "@heroicons/react/24/solid";
 import dayjs from "dayjs";
 
 const EventCard = ({selectedDate, onClose}) => {
@@ -27,14 +27,20 @@ const EventCard = ({selectedDate, onClose}) => {
         </div>
 
 
-        <div className="bg-gray-100 rounded-[0.5rem] w-full min-h-32 my-5">
-
+        <div className="flex flex-col bg-gray-100 rounded-[0.5rem] w-full min-h-32 my-5 text-gray-400 p-3">
+          <div className="flex justify-end space-x-2 ">
+            <button><PaperClipIcon className="w-4 h-4 hover:fill-blue-600"/></button>
+            <button><LinkIcon className="w-4 h-4 hover:fill-blue-600"/></button>
+          </div>
+          Add task description...
         </div>
-        <p>Date: {selectedDate}</p>
 
-        <button className="bg-blue-500 rounded-full text-white">
-          Add
-        </button>
+        <div>
+
+          <button className="bg-blue-600 px-3 rounded-full text-white text-[13px]">
+            Add
+          </button>
+        </div>
 
       </div>
     </div>
