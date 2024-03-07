@@ -8,6 +8,7 @@ import { MiniCalendar } from "../Molecules/MiniCalendar";
 import cn from "classnames";
 import DropdownMenu from "../Atoms/DropdownMenu";
 import EventCard from "../Atoms/EventCard";
+import Dashboard from "../Atoms/Dashboard";
 
 
 export default function Sidebar({ currentMonth, setCurrentMonth }) {
@@ -49,16 +50,8 @@ export default function Sidebar({ currentMonth, setCurrentMonth }) {
         <DropdownMenu/>
       </div>
 
-      <div className="bg-white rounded-[0.5rem] px-3 py-2 mt-2 shadow-sm">
-          <div className="text-[14px] font-[450] my-2">
-            Dashboard
-          </div>
-          <div class="flex justify-between bg-">
-            <div class="rounded-[0.7rem] bg-sky-500 h-20 w-[85px]"></div>
-            <div class="rounded-[0.7rem] bg-yellow-400 h-20 w-[85px]"></div>
-            <div class="rounded-[0.7rem] bg-fuchsia-500 h-20 w-[85px]"></div>
-          </div>
-
+      <div>
+        <Dashboard/>
       </div>
 
       <div className="mt-2 bg-white rounded-[0.5rem] p-4 shadow-sm">
@@ -129,6 +122,8 @@ export default function Sidebar({ currentMonth, setCurrentMonth }) {
             );
           })}
         </div>
+
+
 
       </div>
 

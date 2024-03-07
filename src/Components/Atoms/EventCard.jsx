@@ -10,17 +10,17 @@ const EventCard = ({selectedDate, onClose}) => {
     <div className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-20">
       <div className="flex flex-col bg-white rounded-lg p-4 w-96 shadow-sm">
         <div  className="flex space-x-2 justify-between items-center">
-          <div className="text-[17px] font-[390] text-gray-600">
+          <div className="text-[16px] font-[390] text-gray-600">
             Add schedule
           </div>
           <div>
             <button>
-              <div className="rounded-full px-2 bg-yellow-400 text-white">
+              <div className="rounded-full px-2 bg-yellow-400 text-white text-[15px]">
                 {`${hourNow}:00 - ${hourNext}:00`}
 
               </div>
             </button>
-            <button className="" onClick={onClose}>
+            <button className="imtes-center" onClick={onClose}>
              <XMarkIcon className="w-4 h-4 fill-red-500"/>
             </button>
           </div>
