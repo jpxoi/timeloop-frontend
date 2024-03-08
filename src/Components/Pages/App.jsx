@@ -19,25 +19,30 @@ function App() {
   };
 
   return (
-    <div className="h-screen flex flex-col overflow-auto">
-      <header>
-        <Navbar
-          currentMonth={NavCurrentMonth}
-          setCurrentMonth={NavSetCurrentMonth}
-          onTodayButtonClick={handleTodayButtonClick}
-        />
-      </header>
+    <div id="app-container" className="h-screen flex flex-row">
 
-      <div id="app-container" className="flex flex-row h-full min-w-fit">
         <Sidebar
           currentMonth={SideCurrentMonth}
           setCurrentMonth={SideSetCurrentMonth}
         />
-        <section className="flex justify-center w-full">
+
+      <div className="h-screen flex flex-col w-full ">
+
+        <header>
+          <Navbar
+            currentMonth={NavCurrentMonth}
+            setCurrentMonth={NavSetCurrentMonth}
+            onTodayButtonClick={handleTodayButtonClick}
+          />
+        </header>
+
+        <section className="flex justify-center overflow-auto">
           <WeekView />
         </section>
+
       </div>
     </div>
+
   );
 }
 

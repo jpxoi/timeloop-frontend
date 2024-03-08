@@ -1,6 +1,5 @@
 import React from "react";
 import Logo from "../Atoms/Logo";
-import NavbarProfile from "../Atoms/NavbarProfile";
 import Button from "../Atoms/Button";
 import LeftArrow from "../Atoms/LeftArrow";
 import RightArrow from "../Atoms/RightArrow";
@@ -53,9 +52,6 @@ export default function NavBar({
           params="text-black font-[400] text-[15px]"
           date={currentMonth}
         />
-      </div>
-      <div className="flex">
-        <NavbarProfile />
       </div>
     </div>
   );

@@ -6,9 +6,8 @@ import LeftArrow from "../Atoms/LeftArrow";
 import RightArrow from "../Atoms/RightArrow";
 import { MiniCalendar } from "../Molecules/MiniCalendar";
 import cn from "classnames";
-import { PlusIcon } from "@heroicons/react/24/solid";
-import EventCard from "../Atoms/EventCard";
-import Avatar from "../Atoms/Avatar";
+import DropdownMenu from "../Atoms/DropdownMenu";
+
 
 export default function Sidebar({ currentMonth, setCurrentMonth }) {
   const day = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
@@ -29,26 +28,25 @@ export default function Sidebar({ currentMonth, setCurrentMonth }) {
 
 
   return (
-    <nav
-      id="app-sidebar"
-      className="h-full flex flex-col w-[23%] border-r px-4 py-2 relative bg-gray-100 "
-    >
-      <div className="flex px-4 py-4  space-x-5 rounded-[0.5rem] bg-white my-2">
-        <Avatar/>
-        <span class="bottom-0 left-0 absolute w-[0.65rem] h-[0.65rem] bg-amber-400 border-2 border-white dark:border-gray-800 rounded-full"></span>
+    <nav id="app-sidebar" className="flex flex-col w-[28%] h-auto overflow-y-auto border-r px-4 py-2 bg-slate-100">
 
-        <div className="font-[500]">
-          Micheal Cooper
-        </div>
+      <div className="">
+        <DropdownMenu/>
       </div>
 
-      <div className="flex justify-between space-x-6 my-1 bg-white rounded-[0.5rem] shadow-sm items-start p-3 ">
-        <div className="">
-          <DisplayDayWeek params="rounded-[0.5rem] p-2 text-black" />
-        </div>
+      <div className="bg-white rounded-[0.5rem] px-3 py-2 mt-2 shadow-sm">
+          <div className="text-[15px] font-[450] my-2">
+            Dashboard
+          </div>
+          <div class="flex justify-between bg-">
+            <div class="rounded-[0.7rem] bg-sky-500 h-20 w-[85px]"></div>
+            <div class="rounded-[0.7rem] bg-yellow-400 h-20 w-[85px]"></div>
+            <div class="rounded-[0.7rem] bg-fuchsia-500 h-20 w-[85px]"></div>
+          </div>
+
       </div>
 
-      <div className="mt-3 bg-white rounded-[0.5rem] p-4 shadow-sm">
+      <div className="mt-2 bg-white rounded-[0.5rem] p-4 shadow-sm">
         <div className="flex items-center justify-between text-black">
           <div className="flex justify-between">
             <div className="">
