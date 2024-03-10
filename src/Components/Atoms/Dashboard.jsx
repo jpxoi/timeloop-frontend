@@ -13,8 +13,7 @@ const Dashboard = () => {
                     <PencilSquareIcon className="w-5 h-5 "/>
                     <div>Notes</div>
                 </div>
-                <div class="rounded-[0.7rem] bg-yellow-400 h-20 w-[85px]"></div>
-                <div class="rounded-[0.7rem] bg-fuchsia-500 h-20 w-[85px]"></div>
+
             </div>
         </div>
     );
