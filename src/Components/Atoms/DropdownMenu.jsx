@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Navigate } from "react-router-dom";
 import { ChevronDownIcon, ChevronUpIcon, CheckBadgeIcon } from "@heroicons/react/24/solid";
 import { ArrowRightEndOnRectangleIcon, Cog8ToothIcon, UserCircleIcon } from "@heroicons/react/24/outline";
 import Avatar from "./Avatar";
@@ -15,6 +16,7 @@ const DropdownMenu = () => {
 
   const log_out_handler = () => {
     logout();
+    return <Navigate to="/login" replace />;
   };
 
   useEffect(() => {

@@ -7,7 +7,6 @@ export function checkAuth() {
 
 export function logout() {
   localStorage.removeItem("AuthToken");
-  window.location.href = "/login";
 }
 
 // Path: src/Helpers/Auth.js
