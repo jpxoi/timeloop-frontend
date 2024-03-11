@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "../Organisms/NavBar";
 import Sidebar from "../Organisms/Sidebar";
 import dayjs from "dayjs";
 import WeekView from "../Templates/WeekView";
+import NotFound from "./NotFound";
 
 function App() {
   const [NavCurrentMonth, NavSetCurrentMonth] = useState(
@@ -20,14 +22,12 @@ function App() {
 
   return (
     <div id="app-container" className="h-screen flex flex-row">
-
-        <Sidebar
-          currentMonth={SideCurrentMonth}
-          setCurrentMonth={SideSetCurrentMonth}
-        />
+      <Sidebar
+        currentMonth={SideCurrentMonth}
+        setCurrentMonth={SideSetCurrentMonth}
+      />
 
       <div className="h-screen flex flex-col w-full ">
-
         <header>
           <Navbar
             currentMonth={NavCurrentMonth}
@@ -37,12 +37,12 @@ function App() {
         </header>
 
         <section className="flex justify-center overflow-auto">
-          <WeekView />
+          <Routes>
+            <Route index element={<WeekView />} />
+          </Routes>
         </section>
-
       </div>
     </div>
-
   );
 }
 
