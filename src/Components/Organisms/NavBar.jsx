@@ -50,7 +50,7 @@ export default function NavBar({
           />
         </div>
         <DisplayMonthYear
-          params="text-black font-[400] text-[17px]"
+          params="text-black font-[400] text-[15px]"
           date={currentMonth}
         />
       </div>
