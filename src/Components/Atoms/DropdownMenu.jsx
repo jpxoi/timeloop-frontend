@@ -26,7 +26,7 @@ const DropdownMenu = () => {
   return (
     <div className="flex flex-col rounded-[0.5rem] bg-white relative">
 
-      <div className="flex items-center justify-between text-[11px] font-normal my-1 mx-1">
+      <div className="flex items-center justify-between text-[0.7rem] mx-1">
         <div className="flex items-center space-x-3 font-[500]">
           <button onClick={toggleMenu}>
             <Avatar Img={AvatarImg} />
