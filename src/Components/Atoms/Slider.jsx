@@ -15,7 +15,10 @@ const Slider = ({ days }) => {
     <div className="slider-container">
       <button onClick={handlePrev}>&lt;</button>
       <div className="slider">
-        <div className="slide-track" style={{ transform: `translateX(-${startIndex * 100}px)` }}>
+        <div
+          className="slide-track"
+          style={{ transform: `translateX(-${startIndex * 100}px)` }}
+        >
           {days.slice(startIndex, startIndex + 10).map((day, index) => (
             <div key={index} className="slide">
               {day}

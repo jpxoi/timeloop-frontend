@@ -2,17 +2,16 @@ import React, { useState } from "react";
 import { XMarkIcon, PaperClipIcon, LinkIcon } from "@heroicons/react/24/solid";
 
 const EventCard = ({ selectedDate, onClose }) => {
-  const [inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useState("");
   const [inputList, setInputList] = useState([]);
 
   const handleAddInput = () => {
-    if (inputValue.trim() !== '') {
+    if (inputValue.trim() !== "") {
       setInputList([inputList, inputValue]);
-      setInputValue('');
+      setInputValue("");
       onClose();
-  
     }
-  }
+  };
 
   return (
     <div className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-20">
@@ -22,7 +21,6 @@ const EventCard = ({ selectedDate, onClose }) => {
             Add schedule
           </div>
           <div>
-
             <button className="items-center" onClick={onClose}>
               <XMarkIcon className="w-4 h-4 fill-red-500" />
             </button>
@@ -30,14 +28,17 @@ const EventCard = ({ selectedDate, onClose }) => {
         </div>
 
         <input
-        type="text"
-        value={inputValue}
-        onChange={(e) => setInputValue(e.target.value)}
-        placeholder="Enter task.."
+          type="text"
+          value={inputValue}
+          onChange={(e) => setInputValue(e.target.value)}
+          placeholder="Enter task.."
         />
 
         <div>
-          <button onClick={handleAddInput}  className="bg-blue-600 px-3 rounded-full text-white text-[13px]">
+          <button
+            onClick={handleAddInput}
+            className="bg-blue-600 px-3 rounded-full text-white text-[13px]"
+          >
             Add
           </button>
         </div>
@@ -47,6 +48,3 @@ const EventCard = ({ selectedDate, onClose }) => {
 };
 
 export default EventCard;
-
-
-

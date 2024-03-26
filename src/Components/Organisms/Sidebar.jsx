@@ -55,9 +55,8 @@ export default function Sidebar({ currentMonth, setCurrentMonth }) {
             </div>
           </div>
 
-
           <div>
-            <WeatherCard/>
+            <WeatherCard />
           </div>
 
           <div className="my-4 rounded-[0.5rem] px-2 pt-2 ">
@@ -89,7 +88,7 @@ export default function Sidebar({ currentMonth, setCurrentMonth }) {
               {day.map((day, index) => {
                 let textColorClass = "text-blue-500";
                 if (day === "SU" || day === "SA") {
-                  textColorClass = "text-rose-500"; 
+                  textColorClass = "text-rose-500";
                 }
 
                 return (
@@ -129,10 +128,8 @@ export default function Sidebar({ currentMonth, setCurrentMonth }) {
                   </div>
                 );
               })}
-              
             </div>
           </div>
-          
         </div>
 
         <div className="border-t-2">

@@ -15,7 +15,7 @@ const daysWeek = [
 function WeekView() {
   return (
     <div className="flex flex-col h-full w-full">
-      <WeekViewHeader /> 
+      <WeekViewHeader />
       <div className="week-container grid grid-cols-[1fr_14fr] max-h-full overflow-y-scroll">
         <div className="week-hours">
           {Array.from({ length: 23 }).map((_, index) => {

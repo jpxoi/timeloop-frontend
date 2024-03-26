@@ -26,7 +26,6 @@ export default function NavBar({
     setCurrentMonth(newMonth);
   };
 
-
   return (
     <div className="px-4 pr-6 flex min-h-14 items-center justify-between border-b border-b-gray-200">
       <div className="flex items-center space-x-3">
