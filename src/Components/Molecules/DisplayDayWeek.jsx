@@ -8,9 +8,9 @@ function DisplayDayWeek({ date = dayjs(), params }) {
   return (
     <div className={`${params} flex flex-col items-center justify-center bg-white rounded-[0.8rem] shadow-md`}>
       <div className="bg-yellow-300  px-3 rounded-t-[0.8rem] shadow-md">
-        <div className="font-[400] text-[12px] leading-5">{weekday}</div>
+        <div className="font-[400] text-[0.5rem] leading-4">{weekday}</div>
       </div>
-      <div className="text-[21px] leading-none py-1">{dayOfMonth}</div>
+      <div className="text-[1rem] leading-none py-1">{dayOfMonth}</div>
     </div>
   );
 }

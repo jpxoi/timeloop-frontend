@@ -8,7 +8,7 @@ import { MiniCalendar } from "../Molecules/MiniCalendar";
 import cn from "classnames";
 import DropdownMenu from "../Atoms/DropdownMenu";
 import EventCard from "../Atoms/EventCard";
-import { PlusCircleIcon } from "@heroicons/react/24/solid";
+import WeatherCard from "../Atoms/Weather";
 
 export default function Sidebar({ currentMonth, setCurrentMonth }) {
   const day = ["SU", "MO", "TU", "WE", "TH", "FR", "SA"];
@@ -45,7 +45,7 @@ export default function Sidebar({ currentMonth, setCurrentMonth }) {
     >
       <div className="flex flex-col justify-between w-full">
         <div className="px-4">
-          <div className="flex bg-gray-50 p-3 rounded border my-2 space-x-4 items-center">
+          <div className="flex bg-gray-50 p-3 rounded border my-4 space-x-4 items-center">
             <DisplayDayWeek params="" />
             <div className="text-gray-600 text-[12px] font-[400]">
               <div>Today</div>
@@ -55,8 +55,13 @@ export default function Sidebar({ currentMonth, setCurrentMonth }) {
             </div>
           </div>
 
-          <div className="my-4 rounded-[0.5rem] px-2 pt-2 border-2">
-            <div className="flex items-center justify-between text-gray-800 bg-gray-100 rounded-full px-4 py-2">
+
+          <div>
+            <WeatherCard/>
+          </div>
+
+          <div className="my-4 rounded-[0.5rem] px-2 pt-2 ">
+            <div className="flex items-center justify-between text-gray-800 bg-gray-100 rounded-[0.5rem] px-4 py-2">
               <div>
                 <DisplayMonthYear
                   params="font-[450] text-[13px]"
@@ -90,7 +95,7 @@ export default function Sidebar({ currentMonth, setCurrentMonth }) {
                 return (
                   <div key={index}>
                     <h1
-                      className={`text-[10px] font-[500] grid place-content-center ${textColorClass} mb-1`}
+                      className={`text-[0.5rem] font-[500] grid place-content-center ${textColorClass} mb-1`}
                     >
                       {day}
                     </h1>
@@ -107,7 +112,7 @@ export default function Sidebar({ currentMonth, setCurrentMonth }) {
                 return (
                   <div
                     key={index}
-                    className="text-[9px] grid place-content-center"
+                    className="text-[0.5rem] grid place-content-center"
                   >
                     <button
                       onClick={() => handleEventClick(date.date())}
@@ -124,20 +129,10 @@ export default function Sidebar({ currentMonth, setCurrentMonth }) {
                   </div>
                 );
               })}
-            </div>
-
-            <div className="mt-4 mb-2">
-              <button
-                onClick={() => handleEventClick(dayjs().date())}
-                className="font-[400] text-[10px] bg-gray-100 rounded-full shadow-md transition-all hover:translate-x-2 "
-              >
-                <div className="flex space-x-2 items-center rounded-full px-2 py-1">
-                  <PlusCircleIcon className="w-5 h-5 fill-green-500" />
-                  <div>Add event</div>
-                </div>
-              </button>
+              
             </div>
           </div>
+          
         </div>
 
         <div className="border-t-2">
