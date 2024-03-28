@@ -1,8 +1,10 @@
 import React from "react";
 import LandingHeader from "../Organisms/LandingHeader";
-import LandingBackground from "/src/assets/images/LandingBackground.webp"
-import Card1 from "/src/assets/illustrations/Card1.svg"
-import Card2 from "/src/assets/illustrations/Card2.svg"
+import LandingBackground from "/src/assets/images/LandingBackground.webp";
+import Card1 from "/src/assets/illustrations/Card1.svg";
+import Card2 from "/src/assets/illustrations/Card2.svg";
+import GlobeSymbol from "/src/assets/illustrations/GlobeSymbol.svg";
+import WeekWrappedSymbol from "/src/assets/illustrations/WeekWrappedSymbol.svg";
 import {Link} from "react-router-dom";
 
 function Landing() {
@@ -20,17 +22,21 @@ function Landing() {
       </div>
 
       <h1 className="flex font-semibold text-4xl justify-center pt-28 text-center">Organise your time with the TimeLoop calendar</h1>
-      <p className="flex text-2xl justify-center pt-2 text-center"> TimeLoop provides you with an organised calendar environment to plan your time with.</p>
+      <p className="flex text-2xl justify-center pt-2 text-center">TimeLoop provides you with an organised calendar environment to plan your time with.</p>
       <p className="flex justify-center">(Week view image here)</p>
 
-      <div className="grid grid-cols-3 gap-10 auto-cols-max justify-evenly justify-items-stretch items-center my-28 mx-40 p-10 bg-[#F1FBFF] rounded-lg">
-        <div className="h-96 bg-white rounded-lg shadow-xl">
-
+      <div className="min-w-max max-w-screen grid grid-cols-3 gap-10 auto-cols-max justify-evenly justify-items-stretch items-center my-28 mx-40 p-10 bg-[#F1FBFF] rounded-lg">
+        <div className="h-96 bg-white rounded-lg shadow-xl min-w-40">
+          <h1 className="font-semibold text-2xl p-4"> <img src={GlobeSymbol} className="inline"></img> Sync<p className="inline text-red-600">2City</p> </h1>
+          <p className="p-4 w-80">Easily view multiple time zones at a glance, enabling you to coordinate with colleagues, clients, or friends around the world.</p>
         </div>
-        <div className="bg-black h-60">
 
+        <div className="h-96 bg-white rounded-lg shadow-xl min-w-40">
+          <h1 className="font-semibold text-2xl p-4"> <img src={WeekWrappedSymbol} className="inline"></img> Your Week Wrapped</h1>
+          <p className="p-4 w-80">View a summary of how much time you spend doing what in your week, letting you optimise your schedule.</p>
         </div>
-        <div className="bg-black h-60">
+
+        <div className="h-96 bg-white rounded-lg shadow-xl min-w-40">
   
         </div>
       </div>
