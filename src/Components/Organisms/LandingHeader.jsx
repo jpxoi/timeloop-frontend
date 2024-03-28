@@ -17,7 +17,7 @@ function LandingHeader() {
 
             <Link to="/Login" className="absolute right-28">
                 <Button params={"text-black px-4 rounded-full min-h-8 border-2 border-black"}
-                        text={"Sign up"}/>
+                        text={"Log in"}/>
             </Link>
         </header>
     );
