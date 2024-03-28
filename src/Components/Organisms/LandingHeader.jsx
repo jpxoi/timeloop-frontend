@@ -10,8 +10,13 @@ function LandingHeader() {
             <div className="p-1 w-fit">
                 <Logo />
             </div>
-            <Link to="/Signup" className="absolute right-2 h-7">
-                <Button params={"text-white bg-[#0094FF] px-4 rounded-full"}
+            <Link to="/Signup" className="absolute right-2">
+                <Button params={"text-white bg-[#0094FF] px-4 rounded-full min-h-8"}
+                        text={"Sign up"}/>
+            </Link>
+
+            <Link to="/Login" className="absolute right-28">
+                <Button params={"text-black px-4 rounded-full min-h-8 border-2 border-black"}
                         text={"Sign up"}/>
             </Link>
         </header>
