@@ -15,9 +15,9 @@ function Signup() {
 
         <input type="text" placeholder="First Name" className="ml-32 border-gray-300 rounded-xl"/>
         <input type="text" placeholder="Last Name" className="mr-32 border-gray-300 rounded-xl"/>
-        <input type="text" placeholder="E-mail" className="col-span-2 border-gray-300 rounded-xl"/>
-        <input type="text" placeholder="User Name" className="col-span-2 border-gray-300 rounded-xl"/>
-        <input type="text" placeholder="Create Password" className="col-span-2 border-gray-300 rounded-xl"/>
+        <input type="text" placeholder="E-mail" className="col-span-2 border-gray-300 rounded-xl w-96"/>
+        <input type="text" placeholder="User Name" className="col-span-2 border-gray-300 rounded-xl w-96"/>
+        <input type="text" placeholder="Create Password" className="col-span-2 border-gray-300 rounded-xl w-96"/>
       </div>
     </div>
   );
