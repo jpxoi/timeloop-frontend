@@ -24,7 +24,7 @@ function Landing() {
         <img src={Logo} className="absolute top-6 w-[250px]"></img>
         <h1 className="absolute top-36 text-4xl font-semibold flex">Effortless scheduling for busy lives</h1>
         <p className="absolute top-48 flex text-2xl">Give yourself some free time by scheduling with TimeLoop.</p>
-        <Link to="/Signup" className="flex absolute top-60 font-bold underline text-sky-600 hover:text-sky-500"><h2>Get started with TimeLoop here</h2></Link>
+        <Link to="/Signup" className="flex absolute top-60 font-bold underline text-sky-600 hover:text-sky-400"><h2>Get started with TimeLoop here</h2></Link>
 
         <img src={Card1} className="absolute left-0 w-[150px] h-auto"/>
         <img src={Card2} className="absolute right-0 w-[150px] h-auto"/>
