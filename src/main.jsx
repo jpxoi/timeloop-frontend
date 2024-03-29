@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import PublicRoutes from "./Helpers/publicRoutes.jsx";
 import PrivateRoutes from "./Helpers/privateRoutes.jsx";
 import App from "./Components/Pages/App.jsx";
+import AccountSettings from "./Components/Pages/AccountSettings.jsx";
 import Landing from "./Components/Pages/Landing.jsx";
 import Login from "./Components/Pages/Login.jsx";
 import Signup from "./Components/Pages/Signup.jsx";
@@ -20,6 +21,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       </Route>
       <Route element={<PrivateRoutes />} >
         <Route path="/app" element={<App />} />
+        <Route path="/app/account" element={<AccountSettings />} />
       </Route>
       <Route path="*" element={<NotFound />} />
     </Routes>

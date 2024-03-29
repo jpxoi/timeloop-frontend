@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "../Organisms/NavBar";
 import Sidebar from "../Organisms/Sidebar";
 import dayjs from "dayjs";
 import WeekView from "../Templates/WeekView";
+import NotFound from "./NotFound";
 
 function App() {
   const [NavCurrentMonth, NavSetCurrentMonth] = useState(
@@ -19,22 +21,25 @@ function App() {
   };
 
   return (
-    <div className="h-screen flex flex-col overflow-auto">
-      <header>
-        <Navbar
-          currentMonth={NavCurrentMonth}
-          setCurrentMonth={NavSetCurrentMonth}
-          onTodayButtonClick={handleTodayButtonClick}
-        />
-      </header>
+    <div id="app-container" className="h-screen flex flex-row">
+      <Sidebar
+        currentMonth={SideCurrentMonth}
+        setCurrentMonth={SideSetCurrentMonth}
+      />
 
-      <div id="app-container" className="flex flex-row h-full min-w-fit">
-        <Sidebar
-          currentMonth={SideCurrentMonth}
-          setCurrentMonth={SideSetCurrentMonth}
-        />
-        <section className="flex justify-center w-full">
-          <WeekView />
+      <div className="h-screen flex flex-col w-full ">
+        <header>
+          <Navbar
+            currentMonth={NavCurrentMonth}
+            setCurrentMonth={NavSetCurrentMonth}
+            onTodayButtonClick={handleTodayButtonClick}
+          />
+        </header>
+
+        <section className="flex justify-center overflow-auto ">
+          <Routes>
+            <Route index element={<WeekView className="" />} />
+          </Routes>
         </section>
       </div>
     </div>

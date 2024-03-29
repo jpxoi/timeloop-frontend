@@ -1,6 +1,5 @@
 import React from "react";
 import Logo from "../Atoms/Logo";
-import NavbarProfile from "../Atoms/NavbarProfile";
 import Button from "../Atoms/Button";
 import LeftArrow from "../Atoms/LeftArrow";
 import RightArrow from "../Atoms/RightArrow";
@@ -28,7 +27,7 @@ export default function NavBar({
   };
 
   return (
-    <div className="px-4 pr-6 flex min-h-12 items-center justify-between border-b border-b-gray-200">
+    <div className="px-4 pr-6 flex min-h-14 items-center justify-between border-b border-b-gray-200">
       <div className="flex items-center space-x-3">
         <SidebarIcon />
         <Logo />
@@ -53,9 +52,6 @@ export default function NavBar({
           params="text-black font-[400] text-[15px]"
           date={currentMonth}
         />
-      </div>
-      <div className="flex">
-        <NavbarProfile />
       </div>
     </div>
   );
