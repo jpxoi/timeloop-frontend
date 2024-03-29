@@ -2,6 +2,7 @@ import React from "react";
 import LandingHeader from "../Organisms/LandingHeader";
 import LandingBackground from "/src/assets/images/LandingBackground.webp";
 import LandingTimePanel from "../Atoms/LandingTimePanel";
+import LandingFooter from "../Organisms/LandingFooter";
 
 import Card1 from "/src/assets/illustrations/Card1.svg";
 import Card2 from "/src/assets/illustrations/Card2.svg";
@@ -17,12 +18,11 @@ function Landing() {
     <div>
       <LandingHeader />
 
-
       <div className="min-w-max h-96 relative flex items-center justify-center">
         <img src={LandingBackground} className="w-full h-full"/>
 
         <img src={Logo} className="absolute top-6 w-[250px]"></img>
-        <h1 className="absolute top-36 text-4xl font-semibold flex">Effortless scheduling for busy lives.</h1>
+        <h1 className="absolute top-36 text-4xl font-semibold flex">Effortless scheduling for busy lives</h1>
         <p className="absolute top-48 flex text-2xl">Give yourself some free time by scheduling with TimeLoop.</p>
         <Link to="/Signup" className="flex absolute top-60 font-bold underline text-sky-600 hover:text-sky-500"><h2>Get started with TimeLoop here</h2></Link>
 
@@ -66,6 +66,8 @@ function Landing() {
           <p className="p-4 w-80">Share events with other people on TimeLoop, making coordination effortless. </p>
         </div>
       </div>
+
+      <LandingFooter />
     </div>
   );
 }
