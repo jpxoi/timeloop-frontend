@@ -36,7 +36,7 @@ function Landing() {
       <p className="flex justify-center">(Week view image here)</p>
 
 
-      <div className="min-w-max max-w-screen grid grid-cols-3 gap-10 auto-cols-max justify-evenly justify-items-stretch items-center my-28 mx-40 p-10 bg-[#F1FBFF] rounded-lg">
+      <div className="min-w-max max-w-screen grid grid-cols-3 gap-10 auto-cols-max justify-evenly justify-items-stretch items-center my-28 mx-28 p-10 bg-[#F1FBFF] rounded-lg">
         <div className="h-96 bg-white rounded-lg shadow-xl min-w-40">
           <h1 className="font-semibold text-2xl p-4"> <img src={GlobeSymbol} className="inline"></img> Sync<p className="inline text-red-600">2City</p> </h1>
           <p className="p-4 w-80">Easily view multiple time zones at a glance, enabling you to synchronise with colleagues, clients, or friends around the world.</p>
