@@ -15,7 +15,7 @@ function Login() {
   function handleClick() {
     setIsLoading(true);
 
-    const button = document.querySelector("button");
+    const button = document.getElementById("login-button")
     const errormsg = document.getElementById("error-message");
     const errorbox = document.getElementById("error-box");
 
@@ -80,8 +80,9 @@ function Login() {
             className="border border-gray-300 mt-4 rounded-md"
           />
           <button
+            id="login-button"
             onClick={handleClick}
-            className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded mt-4"
+            className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded mt-4 disabled:bg-blue-300 disabled:cursor-not-allowed"
           >
             {loadingMessage}
           </button>

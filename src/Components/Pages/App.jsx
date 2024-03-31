@@ -39,6 +39,8 @@ function App() {
         <section className="flex justify-center overflow-auto ">
           <Routes>
             <Route index element={<WeekView className="" />} />
+            <Route path="/week" element={<WeekView className="" />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </section>
       </div>
