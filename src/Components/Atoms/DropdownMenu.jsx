@@ -11,7 +11,6 @@ import {
   UserCircleIcon,
 } from "@heroicons/react/24/outline";
 import Avatar from "./Avatar";
-import AvatarImg from "/src/assets/images/RndProfilePic_2_.webp";
 import { logout } from "../../Helpers/Auth";
 import { Link } from "react-router-dom";
 
@@ -19,6 +18,9 @@ const DropdownMenu = () => {
   const navigate = useNavigate();
 
   const [isOpen, setIsOpen] = useState(false);
+  const user_first_name = localStorage.getItem("first_name");
+  const username = localStorage.getItem("username");
+  const AvatarImg = localStorage.getItem("avatar_url");
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -48,11 +50,11 @@ const DropdownMenu = () => {
               className="flex flex-col justify-start"
             >
               <div className="flex items-center space-x-1">
-                <div>Hello, Micheal</div>
+                <div>Hello, {user_first_name}</div>
                 <CheckBadgeIcon className="w-4 h-4 fill-blue-500" />
               </div>
               <div className="text-gray-500 font-light">
-                michealrtn@mail.com
+                @{username}
               </div>
             </button>
           </div>

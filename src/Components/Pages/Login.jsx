@@ -1,6 +1,12 @@
 import React from "react";
 import { login } from "../../Helpers/Auth";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+
+import LandingHeader from "../Organisms/LandingHeader";
+
+import CloudDeco from "../../assets/illustrations/CloudDeco.svg";
+import CloudDecoInvert from "../../assets/illustrations/CloudDecoInvert.svg";
 
 function Login() {
   const navigate = useNavigate();
@@ -9,20 +15,24 @@ function Login() {
   function handleClick() {
     setIsLoading(true);
 
-    let button = document.querySelector("button");
-    let errorbox = document.getElementById("error-message");
-    
+    const button = document.getElementById("login-button")
+    const errormsg = document.getElementById("error-message");
+    const errorbox = document.getElementById("error-box");
+
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+
     // Disable the button
     button.disabled = true;
 
-    login(document.querySelector("input[type='text']").value, document.querySelector("input[type='password']").value)
+    login(username, password)
       .then((data) => {
         console.log(data);
         navigate("/app", { replace: true });
       })
       .catch((error) => {
-        console.error(error);
-        errorbox.innerText = error.message;
+        errormsg.innerText = `Error: ${error.message}`;
+        errorbox.classList.remove("hidden");
 
         // Enable the button
         button.disabled = false;
@@ -35,21 +45,64 @@ function Login() {
   const loadingMessage = isLoading ? "Loading..." : "Login";
 
   return (
-    <div className="flex flex-col justify-center items-center h-screen">
-      <h1>Login to Your Account</h1>
-      <input
-        type="text"
-        placeholder="Username"
-        className="border border-gray-400 p-2 mt-4"
-      />
-      <input
-        type="password"
-        placeholder="Password"
-        className="border border-gray-400 p-2 mt-4"
-      />
-      <br />
-      <button onClick={handleClick} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">{loadingMessage}</button>
-      <p id="error-message" className="mt-4 text-red-500"></p>
+    <div className="flex flex-col h-screen min-w-max relative">
+      <LandingHeader />
+
+      <div className="bg-[#F1FBFF] rounded-xl shadow-xl p-8 grid grid-cols-2 gap-8 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+        <div className="col-span-2 self-start py-0">
+          <h1 className="font-semibold text-3xl text-center p-2">Log in</h1>
+          <h1 className="text-center">
+            Or{" "}
+            <Link
+              to="/Signup"
+              className="text-sky-600 hover:text-sky-400 underline"
+            >
+              create an account
+            </Link>{" "}
+            if you don&apos;t have one.
+          </h1>
+        </div>
+
+        <form
+          className="flex flex-col col-span-2"
+          onSubmit={(e) => e.preventDefault()}
+        >
+          <input
+            id="username"
+            type="text"
+            placeholder="Username"
+            className="border border-gray-300 mt-4 rounded-md"
+            required
+          />
+          <input
+            id="password"
+            type="password"
+            placeholder="Password"
+            className="border border-gray-300 mt-4 rounded-md"
+            required
+          />
+          <button
+            id="login-button"
+            onClick={handleClick}
+            className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded mt-4 disabled:bg-blue-300 disabled:cursor-not-allowed"
+          >
+            {loadingMessage}
+          </button>
+        </form>
+      </div>
+
+      <div
+        id="error-box"
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 bg-red-100 px-4 py-2 rounded-md hidden"
+      >
+        <p id="error-message" className="text-center text-red-500"></p>
+      </div>
+
+      <img src={CloudDeco} className="w-[150px] absolute top-48"></img>
+      <img
+        src={CloudDecoInvert}
+        className="w-[150px] absolute right-0 bottom-48"
+      ></img>
     </div>
   );
 }

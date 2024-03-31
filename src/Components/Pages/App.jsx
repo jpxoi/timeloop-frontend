@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Navbar from "../Organisms/NavBar";
 import Sidebar from "../Organisms/Sidebar";
 import dayjs from "dayjs";
@@ -39,6 +39,8 @@ function App() {
         <section className="flex justify-center overflow-auto ">
           <Routes>
             <Route index element={<WeekView className="" />} />
+            <Route path="/week" element={<WeekView className="" />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </section>
       </div>

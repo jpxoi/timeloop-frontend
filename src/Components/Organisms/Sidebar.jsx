@@ -41,7 +41,7 @@ export default function Sidebar({ currentMonth, setCurrentMonth }) {
   return (
     <nav
       id="app-sidebar"
-      className="flex w-[26%] h-screen overflow-y-auto border-r py-2"
+      className="flex w-[26%] h-screen overflow-y-auto border-r py-2 min-w-[300px] max-w-[400px]"
     >
       <div className="flex flex-col justify-between w-full">
         <div className="px-4">
