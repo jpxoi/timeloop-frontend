@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { signup } from "../../Helpers/Auth";
+import { login, signup } from "../../Helpers/Auth";
 import { useNavigate } from "react-router-dom";
 
 import CloudDeco from "../../assets/illustrations/CloudDeco.svg";
@@ -16,7 +16,8 @@ function Signup() {
     setIsLoading(true);
 
     const button = document.querySelector("button");
-    const errorbox = document.getElementById("error-message");
+    const errormsg = document.getElementById("error-message");
+    const errorbox = document.getElementById("error-box");
 
     const firstName = document.getElementById("first-name").value;
     const lastName = document.getElementById("last-name").value;
@@ -30,17 +31,18 @@ function Signup() {
     signup(firstName, lastName, email, username, password)
       .then((data) => {
         console.log(data);
+        navigate("/app", { replace: true });
       })
       .catch((error) => {
-        console.error(error);
-        errorbox.innerText = error.message;
+        errormsg.innerText = `Error: ${error.message}`;
+        errorbox.classList.remove("hidden");
 
         // Enable the button
         button.disabled = false;
       })
       .finally(() => {
+        login(username, password);
         setIsLoading(false);
-        navigate("/app", { replace: true });
       });
   }
 
@@ -65,7 +67,10 @@ function Signup() {
           </h1>
         </div>
 
-        <form className="flex flex-col col-span-2 self-start py-0" onSubmit={(e) => e.preventDefault()}>
+        <form
+          className="flex flex-col col-span-2 self-start py-0"
+          onSubmit={(e) => e.preventDefault()}
+        >
           <div className="grid grid-cols-2 gap-5 mt-4">
             <input
               id="first-name"
@@ -109,7 +114,10 @@ function Signup() {
         </form>
       </div>
 
-      <div className="absolute bottom-8 w-full text-center">
+      <div
+        id="error-box"
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 bg-red-100 px-4 py-2 rounded-md hidden"
+      >
         <p id="error-message" className="text-center text-red-500"></p>
       </div>
 

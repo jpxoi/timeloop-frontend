@@ -8,6 +8,11 @@ export function checkAuth() {
 export function logout() {
   removeAuthToken();
   localStorage.removeItem("username");
+  localStorage.removeItem("user_id");
+  localStorage.removeItem("first_name");
+  localStorage.removeItem("last_name");
+  localStorage.removeItem("email");
+  localStorage.removeItem("avatar_url");
 }
 
 // Path: src/Helpers/Auth.js
@@ -25,7 +30,7 @@ export function login(username, password) {
       .then((data) => {
         if (data.token) {
           setAuthToken(data.token);
-          setUserData(username);
+          setUserData(username, data.user_id, data.first_name, data.last_name, data.email, data.avatar_url);
           resolve(data);
         } else {
           reject(data);
@@ -41,6 +46,7 @@ export function signup(first_name, last_name, email, username, password) {
       reject({ message: "Please fill in all the fields." });
       return;
     }
+
     fetch("https://timeloop-backend.onrender.com/api/v1/auth/signup", {
       method: "POST",
       headers: {
@@ -50,10 +56,10 @@ export function signup(first_name, last_name, email, username, password) {
     })
       .then((res) => res.json())
       .then((data) => {
-        if (data.message === "User created successfully") {
-          login(username, password)
-            .then((data) => resolve(data))
-            .catch((error) => reject(error));
+        if (data.status === "success") {
+          resolve(data);
+        } else {
+          reject(data);
         }
       })
       .catch((error) => reject(error));
@@ -76,6 +82,11 @@ export function removeAuthToken() {
 
 // Path: src/Helpers/Auth.js
 
-export function setUserData(username) {
+export function setUserData(username, user_id, first_name, last_name, email, avatar_url) {
   localStorage.setItem("username", username);
+  localStorage.setItem("user_id", user_id);
+  localStorage.setItem("first_name", first_name);
+  localStorage.setItem("last_name", last_name);
+  localStorage.setItem("email", email);
+  localStorage.setItem("avatar_url", avatar_url);
 }

@@ -15,20 +15,24 @@ function Login() {
   function handleClick() {
     setIsLoading(true);
 
-    let button = document.querySelector("button");
-    let errorbox = document.getElementById("error-message");
-    
+    const button = document.querySelector("button");
+    const errormsg = document.getElementById("error-message");
+    const errorbox = document.getElementById("error-box");
+
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+
     // Disable the button
     button.disabled = true;
 
-    login(document.querySelector("input[type='text']").value, document.querySelector("input[type='password']").value)
+    login(username, password)
       .then((data) => {
         console.log(data);
         navigate("/app", { replace: true });
       })
       .catch((error) => {
-        console.error(error);
-        errorbox.innerText = error.message;
+        errormsg.innerText = `Error: ${error.message}`;
+        errorbox.classList.remove("hidden");
 
         // Enable the button
         button.disabled = false;
@@ -42,7 +46,7 @@ function Login() {
 
   return (
     <div className="flex flex-col h-screen min-w-max relative">
-      <LandingHeader/>
+      <LandingHeader />
 
       <div className="bg-[#F1FBFF] rounded-xl shadow-xl p-8 grid grid-cols-2 gap-8 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
         <div className="col-span-2 self-start py-0">
@@ -55,29 +59,47 @@ function Login() {
             >
               create an account
             </Link>{" "}
-            if you don't have one.
+            if you don&apos;t have one.
           </h1>
         </div>
 
-        <form className="flex flex-col col-span-2">
+        <form
+          className="flex flex-col col-span-2"
+          onSubmit={(e) => e.preventDefault()}
+        >
           <input
+            id="username"
             type="text"
             placeholder="Username"
             className="border border-gray-300 mt-4 rounded-md"
           />
           <input
+            id="password"
             type="password"
             placeholder="Password"
             className="border border-gray-300 mt-4 rounded-md"
           />
-          <button onClick={handleClick} className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded mt-4">{loadingMessage}</button>
+          <button
+            onClick={handleClick}
+            className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded mt-4"
+          >
+            {loadingMessage}
+          </button>
         </form>
       </div>
-      
-      <p id="error-message" className="mt-4 text-red-500"></p>
+
+      <div
+        id="error-box"
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 bg-red-100 px-4 py-2 rounded-md hidden"
+      >
+        <p id="error-message" className="text-center text-red-500"></p>
+      </div>
 
       <img src={CloudDeco} className="w-[150px] absolute top-48"></img>
-      <img src={CloudDecoInvert} className="w-[150px] absolute right-0 bottom-48"></img>
+      <img
+        src={CloudDecoInvert}
+        className="w-[150px] absolute right-0 bottom-48"
+      ></img>
     </div>
   );
 }
