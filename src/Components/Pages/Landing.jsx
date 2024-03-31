@@ -24,7 +24,7 @@ function Landing() {
         <img src={Logo} className="absolute top-6 w-[250px]"></img>
         <h1 className="absolute top-36 text-4xl font-semibold flex">Effortless scheduling for busy lives</h1>
         <p className="absolute top-48 flex text-2xl">Give yourself some free time by scheduling with TimeLoop.</p>
-        <Link to="/Signup" className="flex absolute top-60 font-bold underline text-sky-600 hover:text-sky-500"><h2>Get started with TimeLoop here</h2></Link>
+        <Link to="/Signup" className="flex absolute top-60 font-bold underline text-sky-600 hover:text-sky-400"><h2>Get started with TimeLoop here</h2></Link>
 
         <img src={Card1} className="absolute left-0 w-[150px] h-auto"/>
         <img src={Card2} className="absolute right-0 w-[150px] h-auto"/>
@@ -36,7 +36,7 @@ function Landing() {
       <p className="flex justify-center">(Week view image here)</p>
 
 
-      <div className="min-w-max max-w-screen grid grid-cols-3 gap-10 auto-cols-max justify-evenly justify-items-stretch items-center my-28 mx-40 p-10 bg-[#F1FBFF] rounded-lg">
+      <div className="min-w-max max-w-screen grid grid-cols-3 gap-10 auto-cols-max justify-evenly justify-items-stretch items-center my-28 mx-28 p-10 bg-[#F1FBFF] rounded-lg">
         <div className="h-96 bg-white rounded-lg shadow-xl min-w-40">
           <h1 className="font-semibold text-2xl p-4"> <img src={GlobeSymbol} className="inline"></img> Sync<p className="inline text-red-600">2City</p> </h1>
           <p className="p-4 w-80">Easily view multiple time zones at a glance, enabling you to synchronise with colleagues, clients, or friends around the world.</p>

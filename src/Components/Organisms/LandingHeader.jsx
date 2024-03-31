@@ -8,7 +8,9 @@ function LandingHeader() {
     return(
         <header className="min-h-12 w-full flex items-center border-b-2 border-gray-200">
             <div className="p-1 w-fit">
-                <Logo />
+                <Link to="/">
+                    <Logo />
+                </Link>
             </div>
             <Link to="/Signup" className="absolute right-2">
                 <Button params={"text-white bg-[#0094FF] px-4 rounded-full min-h-8"}
