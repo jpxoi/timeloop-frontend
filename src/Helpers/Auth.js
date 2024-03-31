@@ -19,6 +19,10 @@ export function logout() {
 
 export function login(username, password) {
   return new Promise((resolve, reject) => {
+    if (!username || !password) {
+      reject({ message: "Please fill in all the fields." });
+      return;
+    }
     fetch("https://timeloop-backend.onrender.com/api/v1/auth/login", {
       method: "POST",
       headers: {

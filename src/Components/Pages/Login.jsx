@@ -72,12 +72,14 @@ function Login() {
             type="text"
             placeholder="Username"
             className="border border-gray-300 mt-4 rounded-md"
+            required
           />
           <input
             id="password"
             type="password"
             placeholder="Password"
             className="border border-gray-300 mt-4 rounded-md"
+            required
           />
           <button
             id="login-button"

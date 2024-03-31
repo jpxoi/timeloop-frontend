@@ -77,12 +77,14 @@ function Signup() {
               type="text"
               placeholder="First Name"
               className="border-gray-300 rounded-md"
+              required
             />
             <input
               id="last-name"
               type="text"
               placeholder="Last Name"
               className="border-gray-300 rounded-md"
+              required
             />
           </div>
 
@@ -91,24 +93,28 @@ function Signup() {
             type="email"
             placeholder="E-mail"
             className="col-span-2 border-gray-300 rounded-md mt-4"
+            required
           />
           <input
             id="username"
             type="text"
             placeholder="Username"
             className="col-span-2 border-gray-300 rounded-md mt-4"
+            required
           />
           <input
             id="password"
             type="password"
             placeholder="Create Password"
             className="col-span-2 border-gray-300 rounded-md mt-4"
+            required
           />
 
           <button
             id="signup-button"
             onClick={handleClick}
             className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded mt-4 disabled:bg-blue-300 disabled:cursor-not-allowed"
+            required
           >
             {loadingMessage}
           </button>
