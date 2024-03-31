@@ -11,7 +11,6 @@ import {
   UserCircleIcon,
 } from "@heroicons/react/24/outline";
 import Avatar from "./Avatar";
-import AvatarImg from "/src/assets/images/RndProfilePic_2_.webp";
 import { logout } from "../../Helpers/Auth";
 import { Link } from "react-router-dom";
 
@@ -21,6 +20,7 @@ const DropdownMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
   const user_first_name = localStorage.getItem("first_name");
   const username = localStorage.getItem("username");
+  const AvatarImg = localStorage.getItem("avatar_url");
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
