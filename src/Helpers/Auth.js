@@ -35,6 +35,31 @@ export function login(username, password) {
   });
 }
 
+export function signup(first_name, last_name, email, username, password) {
+  return new Promise((resolve, reject) => {
+    if (!first_name || !last_name || !email || !username || !password) {
+      reject({ message: "Please fill in all the fields." });
+      return;
+    }
+    fetch("https://timeloop-backend.onrender.com/api/v1/auth/signup", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ first_name, last_name, email, username, password }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.message === "User created successfully") {
+          login(username, password)
+            .then((data) => resolve(data))
+            .catch((error) => reject(error));
+        }
+      })
+      .catch((error) => reject(error));
+  });
+}
+
 // Path: src/Helpers/Auth.js
 
 export function setAuthToken(token) {
