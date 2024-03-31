@@ -31,7 +31,17 @@ function Signup() {
     signup(firstName, lastName, email, username, password)
       .then((data) => {
         console.log(data);
-        navigate("/app", { replace: true });
+        login(username, password)
+          .then(() => {
+            navigate("/app", { replace: true });
+          })
+          .catch((error) => {
+            errormsg.innerText = `Error: ${error.message}`;
+            errorbox.classList.remove("hidden");
+
+            // Enable the button
+            button.disabled = false;
+          });
       })
       .catch((error) => {
         errormsg.innerText = `Error: ${error.message}`;
@@ -41,7 +51,6 @@ function Signup() {
         button.disabled = false;
       })
       .finally(() => {
-        login(username, password)
         setIsLoading(false);
       });
   }
