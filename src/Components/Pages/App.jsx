@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Navbar from "../Organisms/NavBar";
 import Sidebar from "../Organisms/Sidebar";
 import dayjs from "dayjs";
