@@ -5,6 +5,9 @@ import { Link } from "react-router-dom";
 
 import LandingHeader from "../Organisms/LandingHeader";
 
+import CloudDeco from "../../assets/illustrations/CloudDeco.svg";
+import CloudDecoInvert from "../../assets/illustrations/CloudDecoInvert.svg";
+
 function Login() {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = React.useState(false);
@@ -72,6 +75,9 @@ function Login() {
       </div>
       
       <p id="error-message" className="mt-4 text-red-500"></p>
+
+      <img src={CloudDeco} className="w-[150px] absolute top-48"></img>
+      <img src={CloudDecoInvert} className="w-[150px] absolute right-0 bottom-48"></img>
     </div>
   );
 }
