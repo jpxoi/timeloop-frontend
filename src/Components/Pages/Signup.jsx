@@ -7,6 +7,10 @@ import CloudDecoInvert from "/src/assets/illustrations/CloudDecoInvert.svg";
 import LandingHeader from "../Organisms/LandingHeader";
 
 function Signup() {
+function handleClick() {
+  alert("Sign up button pressed");
+}
+
   return (
     <div className="flex flex-col h-screen min-w-max relative">
       <LandingHeader />
@@ -22,7 +26,8 @@ function Signup() {
         <input type="text" placeholder="User Name" className="col-span-2 border-gray-300 rounded-xl w-96"/>
         <input type="text" placeholder="Create Password" className="col-span-2 border-gray-300 rounded-xl w-96"/>
 
-        <button className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded-md col-start-2 ml-6">Sign up</button>
+
+        <button className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded-md col-start-2 ml-6" onClick={handleClick}>Sign up</button>
       </div>
 
       <img src={CloudDeco} className="w-[150px] absolute bottom-36"></img>
