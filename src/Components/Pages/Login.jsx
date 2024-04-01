@@ -25,7 +25,7 @@ function Login() {
     // Disable the button
     button.disabled = true;
 
-    login(username, password)
+    login(username.toLowerCase(), password)
       .then((data) => {
         console.log(data);
         navigate("/app", { replace: true });
@@ -71,14 +71,17 @@ function Login() {
             id="username"
             type="text"
             placeholder="Username"
-            className="border border-gray-300 mt-4 rounded-md"
+            minLength={3}
+            maxLength={20}
+            className="border border-gray-300 mt-4 rounded-md hover:border-gray-400 focus:border-blue-500"
             required
           />
           <input
             id="password"
             type="password"
             placeholder="Password"
-            className="border border-gray-300 mt-4 rounded-md"
+            minLength={8}
+            className="border border-gray-300 mt-4 rounded-md hover:border-gray-400 focus:border-blue-500"
             required
           />
           <button

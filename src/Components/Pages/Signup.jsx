@@ -22,13 +22,13 @@ function Signup() {
     const firstName = document.getElementById("first-name").value;
     const lastName = document.getElementById("last-name").value;
     const email = document.getElementById("email").value;
-    const username = document.getElementById("username").value;
+    const username = document.getElementById("username").value
     const password = document.getElementById("password").value;
 
     // Disable the button
     button.disabled = true;
 
-    signup(firstName, lastName, email, username, password)
+    signup(firstName, lastName, email, username.toLowerCase(), password)
       .then((data) => {
         console.log(data);
         login(username, password)
@@ -85,14 +85,14 @@ function Signup() {
               id="first-name"
               type="text"
               placeholder="First Name"
-              className="border-gray-300 rounded-md"
+              className="border-gray-300 rounded-md hover:border-gray-400 focus:invalid:border-red-500 focus:valid:border-green-500 valid:border-green-500"
               required
             />
             <input
               id="last-name"
               type="text"
               placeholder="Last Name"
-              className="border-gray-300 rounded-md"
+              className="border-gray-300 rounded-md hover:border-gray-400 focus:invalid:border-red-500 focus:valid:border-green-500 valid:border-green-500"
               required
             />
           </div>
@@ -101,21 +101,24 @@ function Signup() {
             id="email"
             type="email"
             placeholder="E-mail"
-            className="col-span-2 border-gray-300 rounded-md mt-4"
+            className="col-span-2 border-gray-300 rounded-md mt-4 hover:border-gray-400 focus:invalid:border-red-500 focus:valid:border-green-500 valid:border-green-500"
             required
           />
           <input
             id="username"
             type="text"
             placeholder="Username"
-            className="col-span-2 border-gray-300 rounded-md mt-4"
+            minLength={3}
+            maxLength={20}
+            className="col-span-2 border-gray-300 rounded-md mt-4 hover:border-gray-400 focus:invalid:border-red-500 focus:valid:border-green-500 valid:border-green-500"
             required
           />
           <input
             id="password"
             type="password"
             placeholder="Create Password"
-            className="col-span-2 border-gray-300 rounded-md mt-4"
+            minLength={8}
+            className="col-span-2 border-gray-300 rounded-md mt-4 hover:border-gray-400 focus:invalid:border-red-500 focus:valid:border-green-500 valid:border-green-500"
             required
           />
 

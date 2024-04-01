@@ -34,7 +34,14 @@ export function login(username, password) {
       .then((data) => {
         if (data.token) {
           setAuthToken(data.token);
-          setUserData(username, data.user_id, data.first_name, data.last_name, data.email, data.avatar_url);
+          setUserData(
+            username,
+            data.user_id,
+            data.first_name,
+            data.last_name,
+            data.email,
+            data.avatar_url
+          );
           resolve(data);
         } else {
           reject(data);
@@ -51,12 +58,54 @@ export function signup(first_name, last_name, email, username, password) {
       return;
     }
 
+    if (!email.includes(".") || !email.includes("@")) {
+      reject({ message: "Please enter a valid email address." });
+      return;
+    }
+
+    if (username.length < 3) {
+      reject({ message: "Username must be at least 3 characters long." });
+      return;
+    }
+
+    if (username.length > 20) {
+      reject({ message: "Username must be at most 20 characters long." });
+      return;
+    }
+
+    if (!username.match(/^[a-zA-Z0-9_]+$/)) {
+      reject({
+        message:
+          "Username must contain only letters, numbers, and underscores.",
+      });
+      return;
+    }
+
+    if (password.length < 8) {
+      reject({ message: "Password must be at least 8 characters long." });
+      return;
+    }
+
+    if (!password.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/)) {
+      reject({
+        message:
+          "Password must contain at least 1 uppercase letter, 1 lowercase letter, and 1 number.",
+      });
+      return;
+    }
+
     fetch("https://timeloop-backend.onrender.com/api/v1/auth/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ first_name, last_name, email, username, password }),
+      body: JSON.stringify({
+        first_name,
+        last_name,
+        email,
+        username,
+        password,
+      }),
     })
       .then((res) => res.json())
       .then((data) => {
@@ -86,7 +135,14 @@ export function removeAuthToken() {
 
 // Path: src/Helpers/Auth.js
 
-export function setUserData(username, user_id, first_name, last_name, email, avatar_url) {
+export function setUserData(
+  username,
+  user_id,
+  first_name,
+  last_name,
+  email,
+  avatar_url
+) {
   localStorage.setItem("username", username);
   localStorage.setItem("user_id", user_id);
   localStorage.setItem("first_name", first_name);
