@@ -10,6 +10,8 @@ import { MiniCalendar } from "../Molecules/MiniCalendar";
 import DisplayMonthYear from "../Molecules/DisplayMonthYear";
 import cn from "classnames";
 import dayjs from "dayjs";
+import { WeatherIcon } from 'react-icons-weather';
+
 
 
 export default function CalendarComponent({ currentMonth, setCurrentMonth }) {
@@ -35,27 +37,21 @@ export default function CalendarComponent({ currentMonth, setCurrentMonth }) {
       .format("MMMM YYYY");
     setCurrentMonth(newMonth);
   };
+  
 
   return (
-    <div className="flex flex-col p-2 rounded-[0.5rem] text-gray-700 bg-white relative border">
+    <div className="flex flex-col p-2 rounded-[0.5rem] text-gray-700 bg-white border relative">
       <div
-        className="flex space-x-3 items-center  text-[0.9rem] font-[500] cursor-pointer"
+        className="flex space-x-3 items-center  text-[0.9rem] font-[400] cursor-pointer"
         onClick={toggleCalendar}
       >
-        <button className="flex items-center ">
-          {showCalendar ? (
-            <ChevronDownIcon className="h-4 w-4 font-[600]" />
-          ) : (
-            <ChevronRightIcon className="h-4 w-4 font-[600] " />
-          )}
-        </button>
 
-        <CalendarDaysIcon className="w-5 h-5 text-gray-700 cursor-pointer " />
+        <CalendarDaysIcon className="w-5 h-5 text-gray-700 cursor-pointer font-thin" />
         <div>Calendar</div>
       </div>
 
       <div
-        className={`transition-all duration-[500ms] ${
+        className={`transition-all duration-[700ms] ${
           showCalendar ? "max-h-[500px]" : "max-h-0"
         } overflow-hidden`}
       >
@@ -69,18 +65,17 @@ export default function CalendarComponent({ currentMonth, setCurrentMonth }) {
                 />
               </div>
 
-              <div className="items-center">
+              <div className="items-center space-x-2 pr-2">
                 <LeftArrow
                   buttonparams=""
-                  iconparams="w-4 h-4"
+                  iconparams="w-4 h-4 border rounded"
                   action={GetPreviousMonth}
                 />
 
                 <RightArrow
                   buttonparams=""
-                  iconparams="w-4 h-4"
+                  iconparams="w-4 h-4 border rounded"
                   action={GetNextMonth}
-                  className={`transition-all duration-[800ms] `}
                 />
               </div>
             </div>
@@ -118,10 +113,10 @@ export default function CalendarComponent({ currentMonth, setCurrentMonth }) {
                   <button
                     className={cn(
                       currentMonth
-                        ? "font-[400] text-[0.6rem]"
-                        : "text-gray-400 font-[400]",
+                        ? "font-[500] text-[0.6rem]"
+                        : "text-gray-400 font-[500]",
                       today ? "bg-blue-600 text-white font-bold" : "",
-                      "h-5 w-5 grid place-content-center rounded hover:border-blue-600 hover:border-2 hover:bg-white hover:text-black transition-all cursor-pointer"
+                      "h-5 w-5 grid place-content-center rounded hover:border-blue-500 hover:border-2 hover:bg-white hover:text-black transition-all cursor-pointer"
                     )}
                   >
                     {date.date()}

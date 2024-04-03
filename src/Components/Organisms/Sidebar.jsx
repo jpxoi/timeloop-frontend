@@ -18,25 +18,22 @@ export default function Sidebar({ currentMonth, setCurrentMonth }) {
   return (
     <nav
       id="app-sidebar"
-      className="flex w-[26%] h-screen overflow-y-auto border-r py-2 bg-slate-50"
+      className="flex w-[26%] h-screen overflow-y-auto border-r py-2 bg-gray-100"
     >
       <div className="flex flex-col justify-between w-full">
-        <div className="px-4">
-          <div className="flex bg-white p-3 rounded border mt-2 mb-4 space-x-4 items-center">
+        <div className="px-3">
+          <div className="flex rounded  mt-2 mb-2 space-x-4 items-center">
             <DisplayDayWeek params="" />
-            <div className="text-gray-600 text-[12px] font-[400]">
-              <div>Today</div>
+            <div className="w-full rounded-[0.5rem] px-2 py-1 bg-white border text-gray-600 text-[12px] font-[400]">
+              <div className="font-[500]">Today</div>
               <div className="font-normal text-[13px] leading-5">
                 No events scheduled
               </div>
             </div>
           </div>
 
-          <div>
-            <WeatherCard />
-          </div>
 
-          <div className="my-2">
+          <div className="mt-6 ">
             <CalendarComponent
               currentMonth={currentMonth}
               setCurrentMonth={setCurrentMonth}
@@ -45,13 +42,10 @@ export default function Sidebar({ currentMonth, setCurrentMonth }) {
 
         </div>
 
-
-             
-
-        <div className="border-t-2">
-          <div className="py-2 px-4">
-            <DropdownMenu />
-          </div>
+        <div className="">
+            <div className="px-3 py-1">
+              <DropdownMenu />
+            </div>
         </div>
 
       </div>
