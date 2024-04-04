@@ -19,10 +19,10 @@ function WeekView() {
     date: currentWeek.add(index, "day").format("D"),
   }));
 
-  var currentTime = new Date();
-  var currentTimezone = currentTime.getTimezoneOffset();
+  let currentTime = new Date();
+  let currentTimezone = currentTime.getTimezoneOffset();
   currentTimezone = (currentTimezone / 60) * -1;
-  var gmt = "GMT";
+  let gmt = "GMT";
   if (currentTimezone !== 0) {
     gmt += currentTimezone > 0 ? " +" : " ";
     gmt += currentTimezone;
