@@ -9,8 +9,6 @@ export default function Sidebar({ currentMonth, setCurrentMonth }) {
   const [showCard, setShowCard] = useState(false);
   const [dateClick, setDateClick] = useState(null);
 
-
-
   const handleEventClose = () => {
     setShowCard(false);
   };
@@ -32,22 +30,19 @@ export default function Sidebar({ currentMonth, setCurrentMonth }) {
             </div>
           </div>
 
-
           <div className="mt-6 ">
             <CalendarComponent
               currentMonth={currentMonth}
               setCurrentMonth={setCurrentMonth}
             />
           </div>
-
         </div>
 
         <div className="">
-            <div className="px-3 py-1">
-              <DropdownMenu />
-            </div>
+          <div className="px-3 py-1">
+            <DropdownMenu />
+          </div>
         </div>
-
       </div>
 
       {showCard && (

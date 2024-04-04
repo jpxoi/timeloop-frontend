@@ -47,9 +47,11 @@ function WeekView() {
       {/* Header */}
       <div className="week-header grid grid-cols-[1fr_14fr]">
         <div className="week-timezone flex justify-center items-center border-b border-gray-200">
-          <p className="text-xs text-gray-500">
-            {gmt}
-          </p>
+          <div className="px-4">
+            <p className="text-xs text-gray-500">
+              {gmt}
+            </p>
+          </div>
         </div>
         <div className="grid grid-cols-7 border-b border-gray-200">
           {daysWeek.map((day, index) => (

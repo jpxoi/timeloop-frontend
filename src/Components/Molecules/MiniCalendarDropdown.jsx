@@ -10,15 +10,11 @@ import { MiniCalendar } from "../Molecules/MiniCalendar";
 import DisplayMonthYear from "../Molecules/DisplayMonthYear";
 import cn from "classnames";
 import dayjs from "dayjs";
-import { WeatherIcon } from 'react-icons-weather';
-
-
+import { WeatherIcon } from "react-icons-weather";
 
 export default function CalendarComponent({ currentMonth, setCurrentMonth }) {
-
-  const [showCalendar, setShowCalendar] = useState(false);
+  const [showCalendar, setShowCalendar] = useState(true);
   const day = ["SU", "MO", "TU", "WE", "TH", "FR", "SA"];
-
 
   const toggleCalendar = () => {
     setShowCalendar((prevState) => !prevState);
@@ -37,7 +33,6 @@ export default function CalendarComponent({ currentMonth, setCurrentMonth }) {
       .format("MMMM YYYY");
     setCurrentMonth(newMonth);
   };
-  
 
   return (
     <div className="flex flex-col p-2 rounded-[0.5rem] text-gray-700 bg-white border relative">
@@ -45,7 +40,6 @@ export default function CalendarComponent({ currentMonth, setCurrentMonth }) {
         className="flex space-x-3 items-center  text-[0.9rem] font-[400] cursor-pointer"
         onClick={toggleCalendar}
       >
-
         <CalendarDaysIcon className="w-5 h-5 text-gray-700 cursor-pointer font-thin" />
         <div>Calendar</div>
       </div>
@@ -127,8 +121,6 @@ export default function CalendarComponent({ currentMonth, setCurrentMonth }) {
           </div>
         </div>
       </div>
-
     </div>
   );
-};
-
+}
