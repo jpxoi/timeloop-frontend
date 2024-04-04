@@ -8,12 +8,33 @@ function DayColumn() {
   const [taskDescription, setTaskDescription] = useState("");
   const [allDay, setAllDay] = useState(false);
   const [tasks, setTasks] = useState({});
-  const hourBlockStyle = "border-b border-l border-gray-200 min-h-12 hover:bg-gray-100";
+  const hourBlockStyle =
+    "border-b border-l border-gray-200 min-h-12 hover:bg-gray-100";
   const dayHours = [
-    "12:00 AM", "1:00 AM", "2:00 AM", "3:00 AM", "4:00 AM", "5:00 AM", "6:00 AM",
-    "7:00 AM", "8:00 AM", "9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "1:00 PM",
-    "2:00 PM", "3:00 PM", "4:00 PM", "5:00 PM", "6:00 PM", "7:00 PM", "8:00 PM",
-    "9:00 PM", "10:00 PM", "11:00 PM",
+    "12:00 AM",
+    "1:00 AM",
+    "2:00 AM",
+    "3:00 AM",
+    "4:00 AM",
+    "5:00 AM",
+    "6:00 AM",
+    "7:00 AM",
+    "8:00 AM",
+    "9:00 AM",
+    "10:00 AM",
+    "11:00 AM",
+    "12:00 PM",
+    "1:00 PM",
+    "2:00 PM",
+    "3:00 PM",
+    "4:00 PM",
+    "5:00 PM",
+    "6:00 PM",
+    "7:00 PM",
+    "8:00 PM",
+    "9:00 PM",
+    "10:00 PM",
+    "11:00 PM",
   ];
 
   const handleBlockClick = (hour) => {
@@ -35,7 +56,14 @@ function DayColumn() {
 
   const handleAddTask = () => {
     if (selectedHour && taskTitle.trim() && taskDescription.trim() !== "") {
-      setTasks({ ...tasks, [selectedHour]: { title: taskTitle, description: taskDescription, allDay: allDay } });
+      setTasks({
+        ...tasks,
+        [selectedHour]: {
+          title: taskTitle,
+          description: taskDescription,
+          allDay: allDay,
+        },
+      });
       setTaskTitle("");
       setTaskDescription("");
       setAllDay(false);
@@ -110,7 +138,10 @@ function DayColumn() {
             </div>
 
             <div className="flex justify-center mt-4 text-[0.85rem]">
-              <button onClick={handleAddTask} className="bg-blue-600 text-white px-3 py-1 rounded-md mr-2">
+              <button
+                onClick={handleAddTask}
+                className="bg-blue-600 text-white px-3 py-1 rounded-md mr-2"
+              >
                 Add
               </button>
             </div>
