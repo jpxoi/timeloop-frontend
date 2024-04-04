@@ -88,9 +88,9 @@ function DayColumn() {
             onClick={() => handleBlockClick(hour)}
           >
             {tasks[hour] && (
-              <div className="px-3 py-2 flex flex-col text-wrap border-t-4 border-t-blue-600 bg-blue-50 m-1">
-                <div className="text-[0.85rem]">{tasks[hour].title}</div>
-                <div className="text-[0.7rem]">{tasks[hour].description}</div>
+              <div className="px-2 py-1 flex flex-col text-wrap border-t-4 border-t-blue-600 bg-blue-50 max-h-[42px] mb-1 mr-2 rounded-md">
+                <h3 className="text-[0.75rem] leading-none"><strong>{tasks[hour].title}</strong></h3>
+                <p className="text-[0.65rem]">{tasks[hour].description.trim()}</p>
               </div>
             )}
           </div>
@@ -99,9 +99,9 @@ function DayColumn() {
 
       {isOpen && (
         <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center">
-          <div className="flex flex-col p-6 bg-white rounded-md text-gray-100 w-[30%] justify-evenly">
+          <div className="flex flex-col p-6 bg-white rounded-md text-gray-100 w-[30%] min-w-[400px] justify-evenly">
             <div className="flex text-black font-[600] text-[14px] justify-between mb-4">
-              <div>Create New Task</div>
+              <div>Create New Event</div>
               <button onClick={handleClose}>
                 <XMarkIcon className="w-5 h-5 fill-gray-400" />
               </button>
@@ -113,17 +113,17 @@ function DayColumn() {
                 placeholder="Title..."
                 value={taskTitle}
                 onChange={handleTitleChange}
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mb-2"
               />
             </div>
 
             <div className="flex text-[11px]">
-              <input
-                type="text"
+              <textarea
                 placeholder="Description..."
                 value={taskDescription}
                 onChange={handleDescriptionChange}
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                rows="5"
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 resize-none"
               />
             </div>
 
@@ -132,7 +132,7 @@ function DayColumn() {
                 type="checkbox"
                 checked={allDay}
                 onChange={handleAllDayToggle}
-                className="mr-2"
+                className="mr-2 rounded-md"
               />
               <label htmlFor="allDay">All Day</label>
             </div>
@@ -140,9 +140,9 @@ function DayColumn() {
             <div className="flex justify-center mt-4 text-[0.85rem]">
               <button
                 onClick={handleAddTask}
-                className="bg-blue-600 text-white px-3 py-1 rounded-md mr-2"
+                className="bg-blue-600 text-white px-3 py-1 rounded-md mr-2 hover:bg-blue-700"
               >
-                Add
+                Add Event
               </button>
             </div>
           </div>
