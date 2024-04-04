@@ -26,33 +26,47 @@ export default function NavBar({
     setCurrentMonth(newMonth);
   };
 
+
   return (
-    <div className="px-4 pr-6 flex min-h-14 items-center justify-between border-b border-b-gray-200">
-      <div className="flex items-center space-x-3">
-        <SidebarIcon />
-        <Logo />
-        <Button
-          params="hover:bg-gray-100 border rounded py-1 px-2 mx-1 text-xs border-gray-300"
-          text="Today"
-          action={onTodayButtonClick}
-        />
-        <div className="flex justify-between mx-7">
-          <LeftArrow
-            buttonparams=""
-            iconparams="w-4 h-4 mr-2 hover:bg-gray-100 rounded-full"
-            action={GetPreviousMonth}
+    <div className="flex px-4 pr-6 min-h-14 items-center border-b border-b-gray-200">
+      <div className="flex w-full items-center justify-between space-x-3">
+        
+        <div className="flex space-x-3 items-center">
+          <SidebarIcon />
+          <Logo />
+
+        </div>
+
+        <div className="flex space-x-6 items-center">
+
+          <DisplayMonthYear
+            params="text-black font-[500] text-[1rem]"
+            date={currentMonth}
           />
-          <RightArrow
-            buttonparams=""
-            iconparams="w-4 h-4 ml-2 hover:bg-gray-100 rounded-full"
-            action={GetNextMonth}
+
+          <div className="flex justify-between items-center ">
+            <LeftArrow
+              buttonparams=""
+              iconparams="w-4 h-4 mr-2 hover:bg-gray-100 rounded-full"
+              action={GetPreviousMonth}
+            />
+            <RightArrow
+              buttonparams=""
+              iconparams="w-4 h-4 ml-2 hover:bg-gray-100 rounded-full"
+              action={GetNextMonth}
+            />
+          </div>
+
+          <Button
+            params="hover:bg-white border-2 rounded py-1 px-3 mx-1 bg-gray-200 leading-4 text-gray-800 text-[0.8rem] rounded-[0.5rem]"
+            text="Today"
+            action={onTodayButtonClick}
           />
         </div>
-        <DisplayMonthYear
-          params="text-black font-[400] text-[15px]"
-          date={currentMonth}
-        />
+
       </div>
+
     </div>
   );
 }
+
