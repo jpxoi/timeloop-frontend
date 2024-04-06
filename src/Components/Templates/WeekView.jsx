@@ -50,7 +50,7 @@ function WeekView() {
         <button onClick={goToPreviousWeek}>
           <ChevronLeftIcon className="w-6 h-6" />
         </button>
-        <div className="text-center">
+        <div className="text-center text-[1rem]">
           {currentWeek.format("MMM DD")} -{" "}
           {currentWeek.endOf("week").format("MMM DD, YYYY")}
         </div>
@@ -75,7 +75,7 @@ function WeekView() {
                 day.name === dayjs().format("ddd").toUpperCase() && day.date === dayjs().format("DD") ? 'text-red-500' : 'text-gray-700'
               }`}
             >
-              <div className="text-[0.7rem] font-[500] flex space-x-1">
+              <div className="text-[0.9rem] font-[500] flex space-x-2">
                 <div>{day.name}</div>
                 <div>{day.date}</div>
               </div>
@@ -93,7 +93,7 @@ function WeekView() {
               key={index}
               className="hour h-12 flex justify-end items-start px-4"
             >
-              <span className="text-xs text-gray-500 translate-y--1">
+              <span className="text-sm text-gray-500 translate-y--1">
                 {index % 12 === 0
                   ? "12" + (index < 12 ? " am" : " pm")
                   : (index % 12) + (index < 12 ? " am" : " pm")}

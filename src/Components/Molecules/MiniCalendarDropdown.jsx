@@ -37,33 +37,33 @@ export default function CalendarComponent({ currentMonth, setCurrentMonth }) {
   return (
     <div className="flex flex-col p-2 rounded-[0.5rem] text-gray-700 bg-white border relative">
       <div
-        className="flex space-x-3 items-center  text-[0.9rem] font-[400] cursor-pointer"
+        className="flex space-x-3  items-center  text-[0.9rem] font-[400] cursor-pointer"
         onClick={toggleCalendar}
       >
         <div
-        className="flex space-x-3 items-center text-[0.9rem] font-[400] cursor-pointer"
+        className="flex space-x-3 items-center  font-[350] cursor-pointer "
         >
           {showCalendar ? (
-          <ChevronDownIcon className="w-4 h-4 text-gray-700 cursor-pointer font-thin" />
+          <ChevronDownIcon className="w-4 h-4 cursor-pointer" />
           ) : (
-          <ChevronRightIcon className="w-4 h-4 text-gray-700 cursor-pointer font-thin" />
+          <ChevronRightIcon className="w-4 h-4 cursor-pointer " />
           )}
         </div>
-        <CalendarDaysIcon className="w-4 h-4 text-gray-700 cursor-pointer font-thin" />
-        <div>Calendar</div>
+        <CalendarDaysIcon className=" w-6 h-6 text-gray-800 cursor-pointer "/>
+        <div className="text-[1.15rem] text-gray-800">Calendar</div>
       </div>
 
       <div
         className={`transition-all duration-[700ms] ${
           showCalendar ? "max-h-[500px]" : "max-h-0"
-        } overflow-hidden`}
+        } overflow-hidden `}
       >
         <div className="rounded-[0.5rem] pt-2 items-center">
           <div className="flex flex-col text-gray-800 rounded-[0.5rem]">
             <div className="flex justify-between items-center pl-2 py-2">
               <div>
                 <DisplayMonthYear
-                  params="font-[600] text-[1rem]"
+                  params="font-[600] text-[1.2rem] pl-2"
                   date={currentMonth}
                 />
               </div>
@@ -71,13 +71,13 @@ export default function CalendarComponent({ currentMonth, setCurrentMonth }) {
               <div className="items-center space-x-2 pr-2">
                 <LeftArrow
                   buttonparams=""
-                  iconparams="w-4 h-4 border rounded"
+                  iconparams="w-5 h-5"
                   action={GetPreviousMonth}
                 />
 
                 <RightArrow
                   buttonparams=""
-                  iconparams="w-4 h-4 border rounded"
+                  iconparams="w-5 h-5"
                   action={GetNextMonth}
                 />
               </div>
@@ -94,7 +94,7 @@ export default function CalendarComponent({ currentMonth, setCurrentMonth }) {
               return (
                 <div key={index}>
                   <h1
-                    className={`text-[0.6rem] font-[500] grid place-content-center ${textColorClass}`}
+                    className={`text-[0.8rem] font-[450] grid place-content-center ${textColorClass}`}
                   >
                     {day}
                   </h1>
@@ -103,7 +103,7 @@ export default function CalendarComponent({ currentMonth, setCurrentMonth }) {
             })}
           </div>
 
-          <div className="h-[155px] grid grid-cols-7 mt-1">
+          <div className="h-[12rem] grid grid-cols-7 mt-1 mb-2">
             {MiniCalendar({
               month: dayjs(currentMonth).month(),
               year: dayjs(currentMonth).year(),
@@ -111,15 +111,15 @@ export default function CalendarComponent({ currentMonth, setCurrentMonth }) {
               return (
                 <div
                   key={index}
-                  className="text-[0.5rem] font-[600] grid place-content-center"
+                  className="text-[0.7rem] font-[600] grid place-content-center"
                 >
                   <button
                     className={cn(
                       currentMonth
-                        ? "font-[500] text-[0.6rem]"
+                        ? "font-[500] text-[0.7rem]"
                         : "text-gray-400 font-[500]",
-                      today ? "bg-blue-600 text-white font-bold" : "",
-                      "h-5 w-5 grid place-content-center rounded hover:border-blue-500 hover:border-2 hover:bg-white hover:text-black transition-all cursor-pointer"
+                      today ? "bg-green-500 text-white font-bold" : "",
+                      "h-5 w-5 grid place-content-center rounded hover:border-green-500 hover:border-2 hover:bg-white hover:text-black transition-all cursor-pointer"
                     )}
                   >
                     {date.date()}

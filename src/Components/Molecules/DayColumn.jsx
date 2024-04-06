@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { XMarkIcon } from "@heroicons/react/24/solid";
+import { XMarkIcon, ArrowRightIcon} from "@heroicons/react/24/solid";
+import HourInput from "../Atoms/HourSlider";
 
 function DayColumn({ day, events, addEvent }) {
   const [selectedHour, setSelectedHour] = useState(null);
@@ -7,6 +8,8 @@ function DayColumn({ day, events, addEvent }) {
   const [taskTitle, setTaskTitle] = useState("");
   const [taskDescription, setTaskDescription] = useState("");
   const [allDay, setAllDay] = useState(false);
+  const [startTime, setStartTime] = useState("");
+  const [endTime, setEndTime] = useState("");
 
   const hourBlockStyle =
     "border-b border-l border-gray-200 min-h-12 hover:bg-gray-100";
@@ -19,7 +22,11 @@ function DayColumn({ day, events, addEvent }) {
   const handleBlockClick = (hour) => {
     setSelectedHour(hour);
     setOpen(true);
+    // Set start and end times to the clicked hour
+    setStartTime(hour);
+    setEndTime(hour);
   };
+  
 
   const handleTitleChange = (event) => {
     setTaskTitle(event.target.value);
@@ -33,12 +40,25 @@ function DayColumn({ day, events, addEvent }) {
     setAllDay(!allDay);
   };
 
+  const handleStartTimeChange = (event) => {
+    setStartTime(event.target.value);
+  };
+
+  const handleEndTimeChange = (event) => {
+    setEndTime(event.target.value);
+  };
+
   const handleAddTask = () => {
     if (selectedHour && taskTitle.trim() && taskDescription.trim() !== "") {
-      addEvent(selectedHour, { title: taskTitle, description: taskDescription });
+      addEvent(selectedHour, {
+        title: taskTitle,
+        description: taskDescription,
+        startTime,
+        endTime,
+      });
       setTaskTitle("");
       setTaskDescription("");
-      setOpen(false);
+      setOpen(false); // Close the modal after adding event
     }
   };
 
@@ -62,7 +82,9 @@ function DayColumn({ day, events, addEvent }) {
               <h3 className="text-[0.75rem] leading-none">
                 <strong>{events[hour].title}</strong>
               </h3>
-              <p className="text-[0.65rem]">{events[hour].description.trim()}</p>
+              <p className="text-[0.65rem]">
+                {`${events[hour].startTime} - ${events[hour].endTime}`}
+              </p>
             </div>
           )}
         </div>
@@ -71,10 +93,13 @@ function DayColumn({ day, events, addEvent }) {
       {isOpen && (
         <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center">
           <div className="flex flex-col p-6 bg-white rounded-md text-gray-100 w-[30%] min-w-[400px] justify-evenly">
-            <div className="flex text-black font-[600] text-[14px] justify-between mb-4">
-              <div>Create New Event</div>
-              <button onClick={handleClose}>
-                <XMarkIcon className="w-5 h-5 fill-gray-400" />
+            <div className="flex text-black font-[450] text-[0.9rem] justify-between mb-4">
+              <div>Create event</div>
+              <button
+                onClick={handleClose}
+                className="bg-gray-100 rounded px-1"
+              >
+                <XMarkIcon className="w-3 h-3 fill-gray-900 " />
               </button>
             </div>
 
@@ -84,7 +109,8 @@ function DayColumn({ day, events, addEvent }) {
                 placeholder="Title..."
                 value={taskTitle}
                 onChange={handleTitleChange}
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 mb-2"
+                className=" text-gray-900 text-sm rounded-lg block w-full p-2.5 mb-2"
+                style={{ border: "none", outline: "none" }}
               />
             </div>
 
@@ -96,6 +122,16 @@ function DayColumn({ day, events, addEvent }) {
                 rows="5"
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 resize-none"
               />
+            </div>
+
+            <div className="flex space-x-10 mt-4">
+            <div>
+              <HourInput/>
+            </div>
+
+            <div>
+              <HourInput/>
+            </div>
             </div>
 
             <div className="flex items-center text-sm mt-2 text-black">
