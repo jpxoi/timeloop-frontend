@@ -40,7 +40,16 @@ export default function CalendarComponent({ currentMonth, setCurrentMonth }) {
         className="flex space-x-3 items-center  text-[0.9rem] font-[400] cursor-pointer"
         onClick={toggleCalendar}
       >
-        <CalendarDaysIcon className="w-5 h-5 text-gray-700 cursor-pointer font-thin" />
+        <div
+        className="flex space-x-3 items-center text-[0.9rem] font-[400] cursor-pointer"
+        >
+          {showCalendar ? (
+          <ChevronDownIcon className="w-4 h-4 text-gray-700 cursor-pointer font-thin" />
+          ) : (
+          <ChevronRightIcon className="w-4 h-4 text-gray-700 cursor-pointer font-thin" />
+          )}
+        </div>
+        <CalendarDaysIcon className="w-4 h-4 text-gray-700 cursor-pointer font-thin" />
         <div>Calendar</div>
       </div>
 

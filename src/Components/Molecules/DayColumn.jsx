@@ -1,41 +1,20 @@
 import React, { useState } from "react";
 import { XMarkIcon } from "@heroicons/react/24/solid";
 
-function DayColumn() {
+function DayColumn({ day, events, addEvent }) {
   const [selectedHour, setSelectedHour] = useState(null);
   const [isOpen, setOpen] = useState(false);
   const [taskTitle, setTaskTitle] = useState("");
   const [taskDescription, setTaskDescription] = useState("");
   const [allDay, setAllDay] = useState(false);
-  const [tasks, setTasks] = useState({});
+
   const hourBlockStyle =
     "border-b border-l border-gray-200 min-h-12 hover:bg-gray-100";
-  const dayHours = [
-    "12:00 AM",
-    "1:00 AM",
-    "2:00 AM",
-    "3:00 AM",
-    "4:00 AM",
-    "5:00 AM",
-    "6:00 AM",
-    "7:00 AM",
-    "8:00 AM",
-    "9:00 AM",
-    "10:00 AM",
-    "11:00 AM",
-    "12:00 PM",
-    "1:00 PM",
-    "2:00 PM",
-    "3:00 PM",
-    "4:00 PM",
-    "5:00 PM",
-    "6:00 PM",
-    "7:00 PM",
-    "8:00 PM",
-    "9:00 PM",
-    "10:00 PM",
-    "11:00 PM",
-  ];
+  const dayHours = Array.from({ length: 24 }).map((_, index) => {
+    const hour = index % 12 === 0 ? 12 : index % 12;
+    const period = index < 12 ? "am" : "pm";
+    return `${hour} ${period}`;
+  });
 
   const handleBlockClick = (hour) => {
     setSelectedHour(hour);
@@ -56,17 +35,9 @@ function DayColumn() {
 
   const handleAddTask = () => {
     if (selectedHour && taskTitle.trim() && taskDescription.trim() !== "") {
-      setTasks({
-        ...tasks,
-        [selectedHour]: {
-          title: taskTitle,
-          description: taskDescription,
-          allDay: allDay,
-        },
-      });
+      addEvent(selectedHour, { title: taskTitle, description: taskDescription });
       setTaskTitle("");
       setTaskDescription("");
-      setAllDay(false);
       setOpen(false);
     }
   };
@@ -80,22 +51,22 @@ function DayColumn() {
 
   return (
     <div className="min-w-full">
-      {dayHours.map((hour, index) => {
-        return (
-          <div
-            key={index}
-            className={hourBlockStyle}
-            onClick={() => handleBlockClick(hour)}
-          >
-            {tasks[hour] && (
-              <div className="px-2 py-1 flex flex-col text-wrap border-t-4 border-t-blue-600 bg-blue-50 max-h-[42px] mb-1 mr-2 rounded-md">
-                <h3 className="text-[0.75rem] leading-none"><strong>{tasks[hour].title}</strong></h3>
-                <p className="text-[0.65rem]">{tasks[hour].description.trim()}</p>
-              </div>
-            )}
-          </div>
-        );
-      })}
+      {dayHours.map((hour, index) => (
+        <div
+          key={index}
+          className={hourBlockStyle}
+          onClick={() => handleBlockClick(hour)}
+        >
+          {events && events[hour] && (
+            <div className="px-2 py-1 flex flex-col text-wrap border-t-4 border-t-blue-600 bg-blue-50 max-h-[42px] mb-1 mr-2 rounded-md">
+              <h3 className="text-[0.75rem] leading-none">
+                <strong>{events[hour].title}</strong>
+              </h3>
+              <p className="text-[0.65rem]">{events[hour].description.trim()}</p>
+            </div>
+          )}
+        </div>
+      ))}
 
       {isOpen && (
         <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center">
@@ -128,13 +99,19 @@ function DayColumn() {
             </div>
 
             <div className="flex items-center text-sm mt-2 text-black">
-              <input
-                type="checkbox"
-                checked={allDay}
-                onChange={handleAllDayToggle}
-                className="mr-2 rounded-md"
-              />
-              <label htmlFor="allDay">All Day</label>
+              <div
+                className={`relative inline-block w-9 h-5 mr-2 align-middle select-none transition duration-200 ease-in ${
+                  allDay ? "bg-blue-600" : "bg-gray-200"
+                } rounded-full p-0.5 cursor-pointer`}
+                onClick={handleAllDayToggle}
+              >
+                <div
+                  className={`absolute w-4 h-4 bg-white rounded-full shadow-sm transform transition-transform ${
+                    allDay ? "translate-x-full" : "translate-x-0"
+                  }`}
+                ></div>
+              </div>
+              <div className="text-sm">All Day</div>
             </div>
 
             <div className="flex justify-center mt-4 text-[0.85rem]">
@@ -153,3 +130,6 @@ function DayColumn() {
 }
 
 export default DayColumn;
+
+
+
