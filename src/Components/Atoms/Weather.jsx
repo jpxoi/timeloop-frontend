@@ -3,6 +3,7 @@ import { WEATHER_API_URL, WEATHER_API_KEY } from "../../../env";
 import WindSvg from "./WindWeather";
 import { MapPinIcon } from "@heroicons/react/24/solid";
 import dayjs from "dayjs";
+import HumidityWeather from "./HumidityWeather";
 
 const Weather = () => {
   const [showInput, setShowInput] = useState(false);
@@ -143,15 +144,14 @@ const Weather = () => {
             <div className="text-[0.9rem] ">Weather</div>
             <div className="text-[0.9rem]">{dayjs().format('dddd, MMMM D')}</div>
           </div>
-          <div className="flex p-2 justify-between items-center text-[0.7rem] font-[400]">
+          <div className="flex p-2 justify-between items-center text-[0.7rem] font-[400] mt-2">
 
               <div className="font-[500]">
-                <div className="text-[1.2rem]">
+                <div className="text-[1.2rem] text-orange-500">
                   {weatherData.weather[0].description.charAt(0).toUpperCase() +
                     weatherData.weather[0].description.slice(1)}
                 </div>
-                <div className="text-[1rem]">{weatherData.name}</div>
-                <div className="text-[0.9rem]">{weatherData.sys.country}</div>
+                <div className="text-[1rem]">{weatherData.name}, {weatherData.sys.country}</div>
               </div>
 
               <div className="text-[2.2rem] font-[450]">{Math.round(weatherData.main.temp)} °C</div>
@@ -160,11 +160,16 @@ const Weather = () => {
 
           </div>
 
-          <div className="flex flex-row justify-between font-[500] mt-2 bg-gray-100 rounded-[0.5rem] p-2">
-            <p>Humidity {weatherData.main.humidity}%</p>
-            <div className="flex space-x-2 ">
-              <WindSvg />
-              <p>{weatherData.wind.speed} m/s</p>
+          <div className="flex mt-3 rounded-[0.5rem] p-2">
+            
+            <div className="flex w-1/2 flex-col items-center justify-center">
+              <div className="flex space-x-3 text-[0.9rem] items-center"><HumidityWeather /> <div>Humidity</div></div>
+              <div className="text-[1.2rem]">{weatherData.main.humidity}%</div>
+            </div>
+
+            <div className="flex w-1/2 flex-col items-center justify-center">
+              <div className="flex space-x-3 text-[0.9rem] items-center"><WindSvg /> <div>Wind</div></div>
+              <div className="text-[1.2rem]">{weatherData.wind.speed} <span className="text-[0.75rem]">m/s</span></div>
             </div>
 
           </div>
