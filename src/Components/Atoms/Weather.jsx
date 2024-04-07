@@ -12,6 +12,7 @@ const Weather = () => {
   const [error, setError] = useState(null);
   const [city, setCity] = useState("");
   const [inputCity, setInputCity] = useState("");
+  const [unit, setUnit] = useState("metric");
 
   useEffect(() => {
     // Fetch the device's default location
@@ -46,6 +47,12 @@ const Weather = () => {
 
   const handleInputChange = (event) => {
     setInputCity(event.target.value);
+  };
+
+  const handleUnitToggle = () => {
+    // Toggle between Celsius and Fahrenheit
+    const newUnit = unit === "metric" ? "imperial" : "metric";
+    setUnit(newUnit);
   };
 
   const handleEnterKeyPress = (event) => {
@@ -95,22 +102,8 @@ const Weather = () => {
     }
   };
 
-  const getWeatherIcon = (weatherCode) => {
-    // Add logic here to select the appropriate icon based on the weather code
-    // Example:
-    switch (weatherCode) {
-      case "01d":
-        return sunnyIcon;
-      case "02d":
-      case "03d":
-        return cloudyIcon;
-      case "09d":
-      case "10d":
-        return rainyIcon;
-      // Add more cases for other weather conditions
-      default:
-        return null;
-    }
+  const celsiusToFahrenheit = (celsius) => {
+    return (celsius * 9) / 5 + 32;
   };
 
   return (
@@ -141,42 +134,58 @@ const Weather = () => {
       {weatherData && (
         <div className="text-[0.8rem] flex flex-col">
           <div className="flex justify-between font-[450] mb-1">
-            <div className="text-[0.9rem] ">Weather</div>
-            <div className="text-[0.9rem]">{dayjs().format('dddd, MMMM D')}</div>
+            <div className="text-[0.9rem]">Weather</div>
+            <div className="text-[0.9rem]">
+              {dayjs().format("dddd, MMMM D")}
+            </div>
           </div>
           <div className="flex p-2 justify-between items-center text-[0.7rem] font-[400] mt-2">
-
-              <div className="font-[500]">
-                <div className="text-[1.2rem] text-orange-500">
-                  {weatherData.weather[0].description.charAt(0).toUpperCase() +
-                    weatherData.weather[0].description.slice(1)}
-                </div>
-                <div className="text-[1rem]">{weatherData.name}, {weatherData.sys.country}</div>
+            <div className="font-[500]">
+              <div className="text-[1.2rem] text-orange-500">
+                {weatherData.weather[0].description.charAt(0).toUpperCase() +
+                  weatherData.weather[0].description.slice(1)}
               </div>
+              <div className="text-[1rem]">
+                {weatherData.name}, {weatherData.sys.country}
+              </div>
+            </div>
 
-              <div className="text-[2.2rem] font-[450]">{Math.round(weatherData.main.temp)} °C</div>
-
-
-
+            <div className="text-[2.2rem] font-[450]">
+              {unit === "metric"
+                ? Math.round(weatherData.main.temp)
+                : Math.round(celsiusToFahrenheit(weatherData.main.temp))}
+              {unit === "metric" ? "°C" : "°F"}
+            </div>
           </div>
 
           <div className="flex mt-3 rounded-[0.5rem] p-2">
-            
             <div className="flex w-1/2 flex-col items-center justify-center">
-              <div className="flex space-x-3 text-[0.9rem] items-center"><HumidityWeather /> <div>Humidity</div></div>
+              <div className="flex space-x-3 text-[0.9rem] items-center">
+                <HumidityWeather /> <div>Humidity</div>
+              </div>
               <div className="text-[1.2rem]">{weatherData.main.humidity}%</div>
             </div>
 
             <div className="flex w-1/2 flex-col items-center justify-center">
-              <div className="flex space-x-3 text-[0.9rem] items-center"><WindSvg /> <div>Wind</div></div>
-              <div className="text-[1.2rem]">{weatherData.wind.speed} <span className="text-[0.75rem]">m/s</span></div>
+              <div className="flex space-x-3 text-[0.9rem] items-center">
+                <WindSvg /> <div>Wind</div>
+              </div>
+              <div className="text-[1.2rem]">
+                {weatherData.wind.speed}{" "}
+                <span className="text-[0.75rem]">m/s</span>
+              </div>
             </div>
-
           </div>
 
+          <button
+            type="button"
+            onClick={handleUnitToggle}
+            className="bg-blue-500 text-white px-2 py-1 rounded"
+          >
+            {unit === "metric" ? "°F" : "°C"}
+          </button>
         </div>
       )}
-
     </div>
   );
 };
