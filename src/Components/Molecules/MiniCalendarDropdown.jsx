@@ -11,8 +11,13 @@ import DisplayMonthYear from "../Molecules/DisplayMonthYear";
 import cn from "classnames";
 import dayjs from "dayjs";
 import { WeatherIcon } from "react-icons-weather";
+import Button from "../Atoms/Button";
 
-export default function CalendarComponent({ currentMonth, setCurrentMonth }) {
+export default function CalendarComponent({
+  currentMonth,
+  setCurrentMonth,
+  todayButton,
+}) {
   const [showCalendar, setShowCalendar] = useState(true);
   const day = ["SU", "MO", "TU", "WE", "TH", "FR", "SA"];
 
@@ -40,17 +45,15 @@ export default function CalendarComponent({ currentMonth, setCurrentMonth }) {
         className="flex space-x-3  items-center  text-[0.9rem] font-[400] cursor-pointer"
         onClick={toggleCalendar}
       >
-        <div
-        className="flex space-x-3 items-center  font-[350] cursor-pointer "
-        >
+        <div className="flex space-x-3 items-center justify-center font-[350] cursor-pointer ">
           {showCalendar ? (
-          <ChevronDownIcon className="w-4 h-4 cursor-pointer" />
+            <ChevronDownIcon className="w-4 h-4 cursor-pointer" />
           ) : (
-          <ChevronRightIcon className="w-4 h-4 cursor-pointer " />
+            <ChevronRightIcon className="w-4 h-4 cursor-pointer " />
           )}
         </div>
-        <CalendarDaysIcon className=" w-6 h-6 text-gray-800 cursor-pointer "/>
-        <div className="text-[1.15rem] text-gray-800">Calendar</div>
+        <CalendarDaysIcon className=" w-5 h-5 cursor-pointer " />
+        <div className="text-[1.1rem]">Calendar</div>
       </div>
 
       <div
@@ -63,28 +66,38 @@ export default function CalendarComponent({ currentMonth, setCurrentMonth }) {
             <div className="flex justify-between items-center pl-2 py-2">
               <div>
                 <DisplayMonthYear
-                  params="font-[600] text-[1.2rem] pl-2"
+                  params="font-[600] text-[1.2rem] pl-1.5"
                   date={currentMonth}
                 />
               </div>
 
-              <div className="items-center space-x-2 pr-2">
-                <LeftArrow
-                  buttonparams=""
-                  iconparams="w-5 h-5"
-                  action={GetPreviousMonth}
+              <div className="flex justify-center items-center space-x-4 pr-2 relative">
+                <Button
+                  params="text-[0.85rem] text-blue-600 pr-5  font-[500]"
+                  text="Today"
+                  action={todayButton}
                 />
 
-                <RightArrow
-                  buttonparams=""
-                  iconparams="w-5 h-5"
-                  action={GetNextMonth}
-                />
+                <div className="flex justify-center items-center relative">
+                  <LeftArrow
+                    buttonparams=""
+                    iconparams="w-5 h-5"
+                    action={GetPreviousMonth}
+                  />
+
+                  <div className="h-5 w-[0.1rem] rounded-full bg-gray-300 absolute left-0 top-1/2 -translate-x-4 transform -translate-y-1/2"></div>
+
+                  <RightArrow
+                    buttonparams=""
+                    iconparams="w-5 h-5"
+                    action={GetNextMonth}
+                  />
+                </div>
               </div>
             </div>
           </div>
 
-          <div className="grid grid-cols-7 mt-1 rounded-[0.5rem] py-1 mb-2">
+          <div className="grid grid-cols-7 mt-2 rounded-[0.5rem] py-1 mb-2">
             {day.map((day, index) => {
               let textColorClass = "text-blue-500";
               if (day === "SU" || day === "SA") {

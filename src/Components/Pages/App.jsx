@@ -14,6 +14,7 @@ function App() {
     dayjs().format("MMMM YYYY")
   );
 
+
   const handleTodayButtonClick = () => {
     const today = dayjs().format("MMMM YYYY");
     NavSetCurrentMonth(today);
@@ -25,6 +26,7 @@ function App() {
       <Sidebar
         currentMonth={SideCurrentMonth}
         setCurrentMonth={SideSetCurrentMonth}
+        onTodayButtonClick={handleTodayButtonClick}
       />
 
       <div className="h-screen flex flex-col w-full ">

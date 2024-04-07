@@ -43,29 +43,38 @@ function HourInput({ initialValue, onChange }) {
     }
   };
 
-
   return (
     <div className="relative">
-<input
-  type="text"
-  value={`${hours < 10 ? `0${hours}` : hours}:${minutes < 10 ? `0${minutes}` : minutes}`}
-  onClick={toggleHourScroller}
-  readOnly
-  className="text-gray-900 text-sm rounded-lg p-2.5 items-center text-center" // Add text-center class here
-  style={{ border: "none", outline: "none", width: "4rem" }}
-/>
+      <input
+        type="text"
+        value={`${hours < 10 ? `0${hours}` : hours}:${
+          minutes < 10 ? `0${minutes}` : minutes
+        }`}
+        onClick={toggleHourScroller}
+        readOnly
+        className="text-gray-900 text-sm rounded-lg p-2.5 items-center text-center" // Add text-center class here
+        style={{ border: "none", outline: "none", width: "4rem" }}
+      />
 
       {isOpen && (
         <div className="flex items-center flex-row absolute bg-white border border-gray-300 text-gray-700 shadow-lg rounded-md p-2 top-full z-10">
           <div className="flex flex-col items-center">
-            <button className="mb-1" onClick={() => handleHourChange(-1)}><ChevronUpIcon className="w-3 h-3 fill-black" /></button>
+            <button className="mb-1" onClick={() => handleHourChange(-1)}>
+              <ChevronUpIcon className="w-3 h-3 fill-black" />
+            </button>
             <div>{hours}</div>
-            <button className="mt-1" onClick={() => handleHourChange(1)}><ChevronDownIcon className="w-3 h-3 fill-black" /></button>
+            <button className="mt-1" onClick={() => handleHourChange(1)}>
+              <ChevronDownIcon className="w-3 h-3 fill-black" />
+            </button>
           </div>
           <div className="flex flex-col items-center ml-2">
-            <button className="mb-1" onClick={() => handleMinuteChange(-1)}><ChevronUpIcon className="w-3 h-3 fill-black" /></button>
+            <button className="mb-1" onClick={() => handleMinuteChange(-1)}>
+              <ChevronUpIcon className="w-3 h-3 fill-black" />
+            </button>
             <div>{minutes}</div>
-            <button className="mt-1" onClick={() => handleMinuteChange(1)}><ChevronDownIcon className="w-3 h-3 fill-black" /></button>
+            <button className="mt-1" onClick={() => handleMinuteChange(1)}>
+              <ChevronDownIcon className="w-3 h-3 fill-black" />
+            </button>
           </div>
         </div>
       )}
