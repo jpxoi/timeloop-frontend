@@ -20,7 +20,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <Route path="/signup" element={<Signup />} />
       </Route>
       <Route element={<PrivateRoutes />} >
-        <Route path="/app/*" element={<App />} />
+        <Route path="/app" element={<App />} />
         <Route path="/app/account" element={<AccountSettings />} />
       </Route>
       <Route path="*" element={<NotFound />} />
