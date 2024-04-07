@@ -22,9 +22,9 @@ export default function Sidebar({ currentMonth, setCurrentMonth }) {
         <div className="px-3">
           <div className="flex rounded  mt-2 mb-2 space-x-4 items-center">
             <DisplayDayWeek params="" />
-            <div className="w-full rounded-[0.5rem] px-2 py-1 bg-white border text-gray-600 text-[12px] font-[400]">
+            <div className="w-full rounded-[0.5rem] px-2 py-1 bg-white border text-gray-600 text-[0.9rem] font-[400]">
               <div className="font-[500]">Today</div>
-              <div className="font-normal text-[13px] leading-5">
+              <div className="font-normal text-[0.9rem] leading-5">
                 No events scheduled
               </div>
             </div>
