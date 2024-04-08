@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { deleteAccount } from "../../Helpers/Auth";
 
 function DeleteAccount() {
+  const [loading, setLoading] = React.useState(false);
+
   useEffect(() => {
     const input = document.querySelector("input");
     const button = document.querySelector("button");
@@ -24,13 +26,25 @@ function DeleteAccount() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    setLoading(true);
+    const submitButton = document.querySelector("button");
+    submitButton.disabled = true;
+
     deleteAccount(localStorage.getItem("user_id"))
       .then((data) => {
         console.log(data);
         localStorage.clear();
         window.location.replace("/");
       })
-      .catch((error) => console.error(error));
+      .catch((error) => {
+        console.error(error);
+        alert("An error occurred. Please try again.");
+        submitButton.disabled = false;
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
   return (
@@ -55,7 +69,7 @@ function DeleteAccount() {
             type="submit"
             className="w-full p-2 bg-red-500 text-white font-semibold rounded-md disabled:opacity-50"
           >
-            Delete Account
+            {loading ? "Deleting Account..." : "Delete Account"}
           </button>
         </form>
 
