@@ -7,12 +7,7 @@ export function checkAuth() {
 
 export function logout() {
   removeAuthToken();
-  localStorage.removeItem("username");
-  localStorage.removeItem("user_id");
-  localStorage.removeItem("first_name");
-  localStorage.removeItem("last_name");
-  localStorage.removeItem("email");
-  localStorage.removeItem("avatar_url");
+  localStorage.clear();
 }
 
 // Path: src/Helpers/Auth.js
@@ -119,47 +114,14 @@ export function signup(first_name, last_name, email, username, password) {
   });
 }
 
-export function changePassword(old_password, new_password) {
+export function deleteAccount(user_id) {
   return new Promise((resolve, reject) => {
-    if (!old_password || !new_password) {
-      reject({ message: "Please fill in all the fields." });
-      return;
-    }
-
-    fetch("https://timeloop-backend.onrender.com/api/v1/auth/change-password", {
-      method: "POST",
+    fetch(`https://timeloop-backend.onrender.com/api/v1/users/${user_id}`, {
+      method: "DELETE",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${localStorage.getItem("AuthToken")}`,
       },
-      body: JSON.stringify({ old_password, new_password }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.status === "success") {
-          resolve(data);
-        } else {
-          reject(data);
-        }
-      })
-      .catch((error) => reject(error));
-  });
-}
-
-export function deleteAccount(password) {
-  return new Promise((resolve, reject) => {
-    if (!password) {
-      reject({ message: "Please fill in all the fields." });
-      return;
-    }
-
-    fetch("https://timeloop-backend.onrender.com/api/v1/auth/delete", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem("AuthToken")}`,
-      },
-      body: JSON.stringify({ password }),
     })
       .then((res) => res.json())
       .then((data) => {
