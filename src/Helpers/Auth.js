@@ -119,6 +119,61 @@ export function signup(first_name, last_name, email, username, password) {
   });
 }
 
+export function changePassword(old_password, new_password) {
+  return new Promise((resolve, reject) => {
+    if (!old_password || !new_password) {
+      reject({ message: "Please fill in all the fields." });
+      return;
+    }
+
+    fetch("https://timeloop-backend.onrender.com/api/v1/auth/change-password", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("AuthToken")}`,
+      },
+      body: JSON.stringify({ old_password, new_password }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.status === "success") {
+          resolve(data);
+        } else {
+          reject(data);
+        }
+      })
+      .catch((error) => reject(error));
+  });
+}
+
+export function deleteAccount(password) {
+  return new Promise((resolve, reject) => {
+    if (!password) {
+      reject({ message: "Please fill in all the fields." });
+      return;
+    }
+
+    fetch("https://timeloop-backend.onrender.com/api/v1/auth/delete", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("AuthToken")}`,
+      },
+      body: JSON.stringify({ password }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.status === "success") {
+          logout();
+          resolve(data);
+        } else {
+          reject(data);
+        }
+      })
+      .catch((error) => reject(error));
+  });
+}
+
 // Path: src/Helpers/Auth.js
 
 export function setAuthToken(token) {
