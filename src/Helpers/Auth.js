@@ -7,12 +7,7 @@ export function checkAuth() {
 
 export function logout() {
   removeAuthToken();
-  localStorage.removeItem("username");
-  localStorage.removeItem("user_id");
-  localStorage.removeItem("first_name");
-  localStorage.removeItem("last_name");
-  localStorage.removeItem("email");
-  localStorage.removeItem("avatar_url");
+  localStorage.clear();
 }
 
 // Path: src/Helpers/Auth.js
@@ -110,6 +105,58 @@ export function signup(first_name, last_name, email, username, password) {
       .then((res) => res.json())
       .then((data) => {
         if (data.status === "success") {
+          resolve(data);
+        } else {
+          reject(data);
+        }
+      })
+      .catch((error) => reject(error));
+  });
+}
+
+export function deleteAccount(user_id) {
+  return new Promise((resolve, reject) => {
+    fetch(`https://timeloop-backend.onrender.com/api/v1/users/${user_id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("AuthToken")}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.status === "success") {
+          logout();
+          resolve(data);
+        } else {
+          reject(data);
+        }
+      })
+      .catch((error) => reject(error));
+  });
+}
+
+export function updateProfile(user_id, first_name, last_name, email, avatar_url) {
+  return new Promise((resolve, reject) => {
+    fetch(`https://timeloop-backend.onrender.com/api/v1/users/${user_id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("AuthToken")}`,
+      },
+      body: JSON.stringify({ first_name, last_name, email, avatar_url }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.status === "success") {
+          setUserData(
+            localStorage.getItem("username"),
+            user_id,
+            first_name,
+            last_name,
+            email,
+            avatar_url
+          );
           resolve(data);
         } else {
           reject(data);

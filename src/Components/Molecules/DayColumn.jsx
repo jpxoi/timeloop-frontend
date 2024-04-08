@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { XMarkIcon, ArrowRightIcon} from "@heroicons/react/24/solid";
 import HourInput from "../Atoms/HourSlider";
+import Calendar from "./Calendar";
 
 function DayColumn({ day, events, addEvent }) {
   const [selectedHour, setSelectedHour] = useState(null);
@@ -92,73 +93,82 @@ function DayColumn({ day, events, addEvent }) {
 
       {isOpen && (
         <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center">
-          <div className="flex flex-col p-6 bg-white rounded-md text-gray-100 w-[30%] min-w-[400px] justify-evenly">
-            <div className="flex text-black font-[450] text-[0.9rem] justify-between mb-4">
-              <div>Create event</div>
-              <button
-                onClick={handleClose}
-                className="bg-gray-100 rounded px-1"
-              >
-                <XMarkIcon className="w-3 h-3 fill-gray-900 " />
-              </button>
-            </div>
-
-            <div className="flex text-[11px]">
-              <input
-                type="text"
-                placeholder="Title..."
-                value={taskTitle}
-                onChange={handleTitleChange}
-                className=" text-gray-900 text-sm rounded-lg block w-full p-2.5 mb-2"
-                style={{ border: "none", outline: "none" }}
-              />
-            </div>
-
-            <div className="flex text-[11px]">
-              <textarea
-                placeholder="Description..."
-                value={taskDescription}
-                onChange={handleDescriptionChange}
-                rows="5"
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 resize-none"
-              />
-            </div>
-
-            <div className="flex space-x-10 mt-4">
-            <div>
-              <HourInput/>
-            </div>
-
-            <div>
-              <HourInput/>
-            </div>
-            </div>
-
-            <div className="flex items-center text-sm mt-2 text-black">
-              <div
-                className={`relative inline-block w-9 h-5 mr-2 align-middle select-none transition duration-200 ease-in ${
-                  allDay ? "bg-blue-600" : "bg-gray-200"
-                } rounded-full p-0.5 cursor-pointer`}
-                onClick={handleAllDayToggle}
-              >
-                <div
-                  className={`absolute w-4 h-4 bg-white rounded-full shadow-sm transform transition-transform ${
-                    allDay ? "translate-x-full" : "translate-x-0"
-                  }`}
-                ></div>
+          <div className="flex flex-row p-6 bg-white rounded-md text-gray-100 min-w-[50%] justify-evenly">
+            <div className="w-3/4">
+              <div className="flex text-black font-[450] text-[0.9rem] justify-between mb-4 ">
+                <div>Create event</div>
+                <button
+                  onClick={handleClose}
+                  className="bg-gray-100 rounded px-1"
+                >
+                  <XMarkIcon className="w-3 h-3 fill-gray-900 " />
+                </button>
               </div>
-              <div className="text-sm">All Day</div>
+
+              <div className="flex ">
+                <input
+                  type="text"
+                  placeholder="Title..."
+                  value={taskTitle}
+                  onChange={handleTitleChange}
+                  className=" text-gray-900 text-[1.4rem] font-[500] rounded-lg block w-full mb-2"
+                  style={{ border: "none", outline: "none" }}
+                />
+              </div>
+
+              <div className="flex text-[11px]">
+                <textarea
+                  placeholder="Description..."
+                  value={taskDescription}
+                  onChange={handleDescriptionChange}
+                  rows="5"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 resize-none"
+                />
+              </div>
+
+              <div className="flex justify-center items-center space-x-10 mt-4">
+              <div>
+                <HourInput/>
+              </div>
+
+              <div>
+                <HourInput/>
+              </div>
+              </div>
+
+              <div className="flex items-center text-sm mt-2 text-black">
+                <div
+                  className={`relative inline-block w-9 h-5 mr-2 align-middle select-none transition duration-200 ease-in ${
+                    allDay ? "bg-blue-600" : "bg-gray-200"
+                  } rounded-full p-0.5 cursor-pointer`}
+                  onClick={handleAllDayToggle}
+                >
+                  <div
+                    className={`absolute w-4 h-4 bg-white rounded-full shadow-sm transform transition-transform ${
+                      allDay ? "translate-x-full" : "translate-x-0"
+                    }`}
+                  ></div>
+                </div>
+                <div className="text-sm">All Day</div>
+              </div>
+
+              <div className="flex justify-center mt-4 text-[0.85rem]">
+                <button
+                  onClick={handleAddTask}
+                  className="bg-blue-600 text-white px-3 py-1 rounded-md mr-2 hover:bg-blue-700"
+                >
+                  Add Event
+                </button>
+              </div>
+
             </div>
 
-            <div className="flex justify-center mt-4 text-[0.85rem]">
-              <button
-                onClick={handleAddTask}
-                className="bg-blue-600 text-white px-3 py-1 rounded-md mr-2 hover:bg-blue-700"
-              >
-                Add Event
-              </button>
+            <div className="relative h-full">
+              <Calendar/>
             </div>
+
           </div>
+          
         </div>
       )}
     </div>
