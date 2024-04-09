@@ -1,3 +1,4 @@
+import { CheckBadgeIcon } from "@heroicons/react/24/solid";
 import React from "react";
 import { Link } from "react-router-dom";
 
@@ -5,42 +6,64 @@ function Profile() {
   const AvatarURL = localStorage.getItem("avatar_url");
   const FirstNameSpan = localStorage.getItem("first_name");
   const LastNameSpan = localStorage.getItem("last_name");
+  const FullName = `${FirstNameSpan} ${LastNameSpan}`;
   const UsernameSpan = localStorage.getItem("username");
-  const EmailSpan = localStorage.getItem("email");
 
   return (
     <div className="w-full h-screen flex flex-col items-center justify-center m-auto bg-gray-100">
-      <div className="w-lg bg-white shadow-md rounded-lg flex flex-col items-center justify-center py-8 px-8 space-y-4">
-        <h1 className="text-2xl font-bold">Profile</h1>
+      <div className="max-w-screen-lg bg-white shadow-md rounded-lg flex flex-col items-center justify-center">
+        <div className="w-full">
+          <div className="h-60 w-[1000px] bg-blue-500 rounded-t-lg"></div>
+          <div className="w-40 h-40 bg-white rounded-full absolute -mt-20 ml-4">
+            <img
+              className="w-40 h-40 p-1 rounded-full"
+              src={AvatarURL}
+              alt="Bordered avatar"
+            />
+          </div>
 
-        <div className="profile-pic w-24 h-24 bg-gray-300 rounded-full">
-          <img
-            src={AvatarURL}
-            alt="User Avatar"
-            className="w-24 h-24 rounded-full"
-          />
+          <div
+            id="buttons"
+            className="flex flex-row space-x-4 items-center justify-center absolute mt-5 ml-[700px]"
+          >
+            <Link to="/app/change-avatar">
+              <button className="border border-blue-700 text-blue-500 font-semibold rounded-lg px-4 py-2 hover:bg-blue-500 hover:text-white">
+                Change Avatar
+              </button>
+            </Link>
+
+            <Link to="/app/account">
+              <button className="border border-blue-700 text-blue-500 font-semibold rounded-lg px-4 py-2 hover:bg-blue-500 hover:text-white">
+                Edit Profile
+              </button>
+            </Link>
+          </div>
         </div>
 
-        <div className="flex flex-col items-center justify-center space-y-2">
-          <p className="text-lg font-semibold">
-            First Name:{" "}
-            <span className="text-gray-500 font-normal">{FirstNameSpan}</span>
-          </p>
+        <div className="w-full flex flex-col items-left justify-center space-y-1 pt-20 mt-1 px-4 pb-8">
+          <h2 className="text-2xl font-bold leading-none flex flex-row">
+            {FullName} <CheckBadgeIcon className="w-6 h-6 fill-blue-500 ml-2" />
+          </h2>
+          <h3 className="text-sm text-gray-500 font-normal leading-none">
+            @{UsernameSpan}
+          </h3>
+        </div>
 
-          <p className="text-lg font-semibold">
-            Last Name:{" "}
-            <span className="text-gray-500 font-normal">{LastNameSpan}</span>
-          </p>
+        <div className="w-full flex flex-col items-left justify-center space-y-1 pt-2 mt-1 px-4 pb-8">
+          <h2 className="text-2xl font-bold leading-none flex flex-row">
+            Friends
+          </h2>
+          <h3 className="text-sm text-gray-500 font-normal leading-none">
+            No friends yet
+          </h3>
 
-          <p className="text-lg font-semibold">
-            Username:{" "}
-            <span className="text-gray-500 font-normal">@{UsernameSpan}</span>
-          </p>
+          <h3 className="text-sm text-gray-500 font-normal leading-none">
+            Add friends to see their events
+          </h3>
 
-          <p className="text-lg font-semibold">
-            Email:{" "}
-            <span className="text-gray-500 font-normal">{EmailSpan}</span>
-          </p>
+          <Link to="/app/friends" className="text-blue-500 hover:underline">
+            Add Friends
+          </Link>
         </div>
       </div>
     </div>

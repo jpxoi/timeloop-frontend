@@ -20,10 +20,6 @@ function AccountSettings() {
           Change Password
         </Link>
 
-        <Link to="/change-avatar" className="text-blue-500 hover:underline">
-          Change Avatar
-        </Link>
-
         <Link to="/delete-account" className="text-red-500 hover:underline">
           Delete Account
         </Link>

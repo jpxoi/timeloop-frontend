@@ -22,7 +22,6 @@ const DropdownMenu = () => {
   const user_first_name = localStorage.getItem("first_name");
   const username = localStorage.getItem("username");
   const AvatarImg = localStorage.getItem("avatar_url");
-  const user_email = localStorage.getItem("email");
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);

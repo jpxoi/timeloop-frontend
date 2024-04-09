@@ -7,6 +7,7 @@ import WeekView from "../Templates/WeekView";
 import NotFound from "./NotFound";
 import AccountSettings from "../Templates/AccountSettings";
 import Profile from "../Templates/Profile";
+import ChangeAvatar from "../Templates/ChangeAvatar";
 
 function App() {
   const [NavCurrentMonth, NavSetCurrentMonth] = useState(
@@ -51,6 +52,7 @@ function App() {
         />
         <Route path="/account" element={<AccountSettings />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/change-avatar" element={<ChangeAvatar />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
