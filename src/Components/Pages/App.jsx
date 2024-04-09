@@ -8,6 +8,7 @@ import NotFound from "./NotFound";
 import AccountSettings from "../Templates/AccountSettings";
 import Profile from "../Templates/Profile";
 import ChangeAvatar from "../Templates/ChangeAvatar";
+import AddFriend from "../Templates/AddFriend";
 
 function App() {
   const [NavCurrentMonth, NavSetCurrentMonth] = useState(
@@ -53,6 +54,7 @@ function App() {
         <Route path="/account" element={<AccountSettings />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/change-avatar" element={<ChangeAvatar />} />
+        <Route path="/friends" element={<AddFriend />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div>

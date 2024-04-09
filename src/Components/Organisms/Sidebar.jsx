@@ -4,8 +4,13 @@ import DropdownMenu from "../Atoms/DropdownMenu";
 import EventCard from "../Atoms/EventCard";
 import WeatherCard from "../Atoms/Weather";
 import CalendarComponent from "../Molecules/MiniCalendarDropdown";
+import Pomodoro from "../Molecules/Pomodoro";
 
-export default function Sidebar({ currentMonth, setCurrentMonth, onTodayButtonClick}) {
+export default function Sidebar({
+  currentMonth,
+  setCurrentMonth,
+  onTodayButtonClick,
+}) {
   const [showCard, setShowCard] = useState(false);
   const [dateClick, setDateClick] = useState(null);
 
@@ -19,7 +24,7 @@ export default function Sidebar({ currentMonth, setCurrentMonth, onTodayButtonCl
       className="flex w-[26%] h-screen overflow-y-auto border-r py-2 min-w-[300px] max-w-[400px] bg-slate-100"
     >
       <div className="flex flex-col justify-between w-full">
-        <div className="px-3">
+        <div className="px-3 max-h-screen overflow-y-scroll">
           <div className="flex rounded  mt-2 mb-4 space-x-4 items-center">
             <DisplayDayWeek params="" />
             <div className="w-full rounded-[0.5rem] px-2 py-1 bg-white border text-gray-600 text-[0.9rem] font-[400]">
@@ -31,7 +36,7 @@ export default function Sidebar({ currentMonth, setCurrentMonth, onTodayButtonCl
           </div>
 
           <div>
-            <WeatherCard/>
+            <WeatherCard />
           </div>
 
           <div className="mt-4">
@@ -40,6 +45,10 @@ export default function Sidebar({ currentMonth, setCurrentMonth, onTodayButtonCl
               setCurrentMonth={setCurrentMonth}
               todayButton={onTodayButtonClick}
             />
+          </div>
+
+          <div className="mt-4">
+            <Pomodoro />
           </div>
         </div>
 
