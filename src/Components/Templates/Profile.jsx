@@ -10,10 +10,12 @@ function Profile() {
   const UsernameSpan = localStorage.getItem("username");
 
   return (
-    <div className="w-full h-screen flex flex-col items-center justify-center m-auto bg-gray-100">
+    <div className="w-full h-screen flex flex-col items-center justify-center m-auto bg-slate-200">
       <div className="max-w-screen-lg bg-white shadow-md rounded-lg flex flex-col items-center justify-center">
         <div className="w-full">
-          <div className="h-60 w-[1000px] bg-blue-500 rounded-t-lg"></div>
+          <div className="h-60 w-[1000px] bg-blue-500 rounded-t-lg">
+            <img src="https://images.unsplash.com/photo-1614850715649-1d0106293bd1?q=80&w=1500&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Cover" className="w-full h-60 rounded-t-lg" />
+          </div>
           <div className="w-40 h-40 bg-white rounded-full absolute -mt-20 ml-4">
             <img
               className="w-40 h-40 p-1 rounded-full"
