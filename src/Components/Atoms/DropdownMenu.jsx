@@ -40,17 +40,14 @@ const DropdownMenu = () => {
 
   return (
     <div className="flex flex-col rounded-[0.5rem] relative bg-white p-2 border">
-
-      <div className="flex items-center justify-between text-[0.9rem] mx-1 ">
+      <div
+        className="flex items-center justify-between text-[0.9rem] mx-1 cursor-pointer"
+        onClick={toggleMenu}
+      >
         <div className="flex items-center space-x-5 font-[500]">
-          <button onClick={toggleMenu}>
-            <Avatar Img={AvatarImg} />
-          </button>
+          <Avatar Img={AvatarImg} />
           <div className="">
-            <button
-              onClick={toggleMenu}
-              className="flex flex-col justify-start"
-            >
+            <div className="flex flex-col justify-start">
               <div className="flex items-center space-x-1">
                 <div>Hello, {user_first_name}</div>
                 <CheckBadgeIcon className="w-4 h-4 fill-blue-500" />
@@ -58,17 +55,17 @@ const DropdownMenu = () => {
               <div className="text-gray-500 font-light text-[0.8rem]">
                 @{username}
               </div>
-            </button>
+            </div>
           </div>
         </div>
         <div>
-          <button onClick={toggleMenu} className="flex items-center ">
+          <div className="flex items-center ">
             {isOpen ? (
               <ChevronDownIcon className="h-4 w-4 " />
             ) : (
               <ChevronUpIcon className="h-4 w-4 " />
             )}
-          </button>
+          </div>
         </div>
       </div>
 
@@ -78,20 +75,32 @@ const DropdownMenu = () => {
         } overflow-hidden`}
       >
         <ul className="flex flex-col mt-4 text-[1rem] font-[400]">
-          <Link className="flex   rounded-[0.5rem] py-2 px-2 hover:bg-gray-100 space-x-2" to="/app/profile">
+          <Link
+            className="flex   rounded-[0.5rem] py-2 px-2 hover:bg-gray-100 space-x-2"
+            to="/app/profile"
+          >
             <UserCircleIcon className="w-5 h-5" />
             <div className="">Profile</div>
           </Link>
-          <Link className="flex   rounded-[0.5rem] py-2 px-2 hover:bg-gray-100 space-x-2" to="/app">
+          <Link
+            className="flex   rounded-[0.5rem] py-2 px-2 hover:bg-gray-100 space-x-2"
+            to="/app"
+          >
             <CalendarIcon className="w-5 h-5" />
             <div className="">Calendar</div>
           </Link>
-          <Link className="flex   rounded-[0.5rem] py-2 px-2 hover:bg-gray-100 space-x-2" to="/app/account">
+          <Link
+            className="flex   rounded-[0.5rem] py-2 px-2 hover:bg-gray-100 space-x-2"
+            to="/app/account"
+          >
             <Cog8ToothIcon className="w-5 h-5" />
             <div className="">Settings</div>
           </Link>
           <div className="border-b border-gray-300 w-full my-2" />
-          <li id="log-out-handler" className="flex   justify-between rounded-[0.5rem] py-2 px-2 hover:bg-gray-100 text-red-600 space-x-2 font-[500] cursor-pointer">
+          <li
+            id="log-out-handler"
+            className="flex   justify-between rounded-[0.5rem] py-2 px-2 hover:bg-gray-100 text-red-600 space-x-2 font-[500] cursor-pointer"
+          >
             <div className="cursor-pointer">Log out</div>
             <div>
               <ArrowRightEndOnRectangleIcon className="w-5 h-5" />
