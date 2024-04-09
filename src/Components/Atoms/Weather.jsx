@@ -133,15 +133,9 @@ const Weather = () => {
       {error && <p className="text-[0.8rem] text-red-500">{error}</p>}
       {weatherData && (
         <div className="text-[0.8rem] flex flex-col">
-          <div className="flex justify-between font-[450] mb-1">
-            <div className="text-[0.9rem]">Weather</div>
-            <div className="text-[0.9rem]">
-              {dayjs().format("dddd, MMMM D")}
-            </div>
-          </div>
-          <div className="flex p-2 justify-between items-center text-[0.7rem] font-[400] mt-2">
+          <div className="flex p-2 pt-0 justify-between items-center text-[0.7rem] font-[400]">
             <div className="font-[500]">
-              <div className="text-[1.2rem] text-orange-500">
+              <div className="text-[1.4rem] text-blue-500">
                 {weatherData.weather[0].description.charAt(0).toUpperCase() +
                   weatherData.weather[0].description.slice(1)}
               </div>
@@ -161,16 +155,16 @@ const Weather = () => {
           <div className="flex mt-3 rounded-[0.5rem] p-2">
             <div className="flex w-1/2 flex-col items-center justify-center">
               <div className="flex space-x-3 text-[0.9rem] items-center">
-                <HumidityWeather /> <div>Humidity</div>
+                <HumidityWeather /> <div >Humidity</div>
               </div>
-              <div className="text-[1.2rem]">{weatherData.main.humidity}%</div>
+              <div className="text-[1.2rem] text-blue-600">{weatherData.main.humidity}%</div>
             </div>
 
             <div className="flex w-1/2 flex-col items-center justify-center">
               <div className="flex space-x-3 text-[0.9rem] items-center">
-                <WindSvg /> <div>Wind</div>
+                <WindSvg /> <div >Wind</div>
               </div>
-              <div className="text-[1.2rem]">
+              <div className="text-[1.2rem] text-blue-600">
                 {weatherData.wind.speed}{" "}
                 <span className="text-[0.75rem]">m/s</span>
               </div>

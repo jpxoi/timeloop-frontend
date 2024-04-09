@@ -1,7 +1,13 @@
 import React, { useState } from "react";
-import { XMarkIcon, ArrowRightIcon} from "@heroicons/react/24/solid";
+import { XMarkIcon } from "@heroicons/react/24/solid";
 import HourInput from "../Atoms/HourSlider";
 import Calendar from "./Calendar";
+import {
+  ClockIcon,
+  TagIcon,
+  MapPinIcon,
+  ChatBubbleLeftEllipsisIcon,
+} from "@heroicons/react/24/outline";
 
 function DayColumn({ day, events, addEvent }) {
   const [selectedHour, setSelectedHour] = useState(null);
@@ -13,7 +19,7 @@ function DayColumn({ day, events, addEvent }) {
   const [endTime, setEndTime] = useState("");
 
   const hourBlockStyle =
-    "border-b border-l border-gray-200 min-h-12 hover:bg-gray-100";
+    "flex border-l border-b border-gray-200 min-h-32 hover:bg-gray-100  justify-center";
   const dayHours = Array.from({ length: 24 }).map((_, index) => {
     const hour = index % 12 === 0 ? 12 : index % 12;
     const period = index < 12 ? "am" : "pm";
@@ -27,7 +33,6 @@ function DayColumn({ day, events, addEvent }) {
     setStartTime(hour);
     setEndTime(hour);
   };
-  
 
   const handleTitleChange = (event) => {
     setTaskTitle(event.target.value);
@@ -71,69 +76,103 @@ function DayColumn({ day, events, addEvent }) {
   };
 
   return (
-    <div className="min-w-full">
-      {dayHours.map((hour, index) => (
-        <div
-          key={index}
-          className={hourBlockStyle}
-          onClick={() => handleBlockClick(hour)}
-        >
-          {events && events[hour] && (
-            <div className="px-2 py-1 flex flex-col text-wrap border-t-4 border-t-blue-600 bg-blue-50 max-h-[42px] mb-1 mr-2 rounded-md">
-              <h3 className="text-[0.75rem] leading-none">
-                <strong>{events[hour].title}</strong>
-              </h3>
-              <p className="text-[0.65rem]">
-                {`${events[hour].startTime} - ${events[hour].endTime}`}
-              </p>
-            </div>
-          )}
-        </div>
-      ))}
+    <div className="min-w-full flex">
+      <div className="flex-grow">
+        {dayHours.map((hour, index) => (
+          <div
+            key={index}
+            className={hourBlockStyle}
+            onClick={() => handleBlockClick(hour)}
+          >
+            {events && events[hour] && (
+              <div className="flex flex-col p-3 pt-2 text-wrap bg-blue-100 h-auto w-[11.5rem] rounded-[0.5rem]">
+                <h3 className="text-[1rem] font-[500]">{events[hour].title}</h3>
+                <p className="text-[0.9rem] text-gray-800">
+                  {`${events[hour].startTime} - ${events[hour].endTime}`}
+                </p>
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
 
       {isOpen && (
         <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center">
-          <div className="flex flex-row p-6 bg-white rounded-md text-gray-100 min-w-[50%] justify-evenly">
-            <div className="w-3/4">
-              <div className="flex text-black font-[450] text-[0.9rem] justify-between mb-4 ">
+          <div className=" p-6 pt-5 bg-white rounded-[1.5rem] text-gray-100 min-w-[37%]">
+            <div className="flex flex-col">
+              <div className="flex text-black font-[450] text-[1rem] justify-between mb-3 ">
                 <div>Create event</div>
-                <button
-                  onClick={handleClose}
-                  className="bg-gray-100 rounded px-1"
-                >
-                  <XMarkIcon className="w-3 h-3 fill-gray-900 " />
+                <button onClick={handleClose} className="flex">
+                  <XMarkIcon className="w-6 h-6 fill-red-600 " />
                 </button>
               </div>
 
-              <div className="flex ">
+              <div className="text-black">
                 <input
                   type="text"
-                  placeholder="Title..."
+                  placeholder="Title"
                   value={taskTitle}
                   onChange={handleTitleChange}
-                  className=" text-gray-900 text-[1.4rem] font-[500] rounded-lg block w-full mb-2"
-                  style={{ border: "none", outline: "none" }}
+                  className="text-[1.8rem] font-[550] pl-0 rounded-lg focus:ring-blue-500 focus:border-transparent block w-full"
+                  style={{
+                    border: "none",
+                    outline: "none",
+                    boxShadow: "none", // Remove the default focus styling
+                  }}
                 />
               </div>
 
-              <div className="flex text-[11px]">
+              <div className="relative text-black mt-4 flex w-full ">
+                <span className="absolute inset-y-0 left-0 pl-3 flex items-center space-x-2 text-gray-600">
+                  <TagIcon className="h-5 w-5 text-gray-600" />
+                </span>
+                <input
+                  type="text"
+                  placeholder="Add Label"
+                  className="pl-10 w-full pr-4 py-2 rounded-[0.75rem] border border-gray-300 focus:outline-none focus:border-blue-500"
+                />
+              </div>
+
+              <div className="relative text-black mt-4 flex w-full">
+                <span className="absolute inset-y-0 left-0 pl-3 flex items-center space-x-2 text-gray-600">
+                  <MapPinIcon className="h-5 w-5 text-gray-600" />
+                </span>
+                <input
+                  type="text"
+                  placeholder="Add Location"
+                  className="pl-10 w-full pr-4 py-2 rounded-[0.75rem] border border-gray-300 focus:outline-none focus:border-blue-500"
+                />
+              </div>
+
+              <div className="relative text-black mt-4 flex w-full">
+                <span className="absolute left-0 top-[1.3rem] transform -translate-y-1/2 pl-3 flex items-center space-x-2 text-gray-600">
+                  <ChatBubbleLeftEllipsisIcon className="h-5 w-5 text-gray-600" />
+                </span>
                 <textarea
-                  placeholder="Description..."
+                  placeholder="Add Description"
                   value={taskDescription}
                   onChange={handleDescriptionChange}
-                  rows="5"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 resize-none"
+                  rows="4"
+                  className="pl-10 pr-4 py-2 rounded-[0.75rem] border border-gray-300 focus:outline-none focus:border-blue-500 w-full"
                 />
               </div>
 
-              <div className="flex justify-center items-center space-x-10 mt-4">
-              <div>
-                <HourInput/>
-              </div>
+              <div className="flex justify-center text-black items-center space-x-10 mt-4">
+                <div className="flex flex-col items-center justify-center">
+                  <div className="flex items-center space-x-1">
+                    <ClockIcon className="w-4 h-4" />
+                    <div>Start time</div>
+                  </div>
+                  <HourInput className="" />
+                </div>
 
-              <div>
-                <HourInput/>
-              </div>
+                <div className="flex flex-col items-center justify-center">
+                  <div className="flex items-center space-x-1">
+                    <ClockIcon className="w-4 h-4" />
+                    <div>End time</div>
+                  </div>
+                  <HourInput />
+                </div>
               </div>
 
               <div className="flex items-center text-sm mt-2 text-black">
@@ -152,23 +191,16 @@ function DayColumn({ day, events, addEvent }) {
                 <div className="text-sm">All Day</div>
               </div>
 
-              <div className="flex justify-center mt-4 text-[0.85rem]">
+              <div className="flex justify-end mt-4 text-[1rem] font-[500]">
                 <button
                   onClick={handleAddTask}
-                  className="bg-blue-600 text-white px-3 py-1 rounded-md mr-2 hover:bg-blue-700"
+                  className="bg-blue-600 text-white px-6 py-3 rounded-[0.5rem]"
                 >
-                  Add Event
+                  Save
                 </button>
               </div>
-
             </div>
-
-            <div className="relative h-full">
-              <Calendar/>
-            </div>
-
           </div>
-          
         </div>
       )}
     </div>
@@ -176,6 +208,3 @@ function DayColumn({ day, events, addEvent }) {
 }
 
 export default DayColumn;
-
-
-
