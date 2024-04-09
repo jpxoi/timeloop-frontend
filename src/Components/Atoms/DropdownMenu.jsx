@@ -9,6 +9,7 @@ import {
   ArrowRightEndOnRectangleIcon,
   Cog8ToothIcon,
   UserCircleIcon,
+  CalendarIcon,
 } from "@heroicons/react/24/outline";
 import Avatar from "./Avatar";
 import { logout } from "../../Helpers/Auth";
@@ -81,6 +82,10 @@ const DropdownMenu = () => {
           <Link className="flex   rounded-[0.5rem] py-2 px-2 hover:bg-gray-100 space-x-2" to="/app/profile">
             <UserCircleIcon className="w-5 h-5" />
             <div className="">Profile</div>
+          </Link>
+          <Link className="flex   rounded-[0.5rem] py-2 px-2 hover:bg-gray-100 space-x-2" to="/app">
+            <CalendarIcon className="w-5 h-5" />
+            <div className="">Calendar</div>
           </Link>
           <Link className="flex   rounded-[0.5rem] py-2 px-2 hover:bg-gray-100 space-x-2" to="/app/account">
             <Cog8ToothIcon className="w-5 h-5" />

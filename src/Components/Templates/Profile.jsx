@@ -42,16 +42,6 @@ function Profile() {
             <span className="text-gray-500 font-normal">{EmailSpan}</span>
           </p>
         </div>
-
-        <div className="flex flex-col items-center justify-center space-y-2">
-          <Link to="/app/account" className="text-blue-500 hover:underline">
-            Account Settings
-          </Link>
-        </div>
-
-        <Link to="/app" className="text-blue-500 hover:underline">
-          Return to App
-        </Link>
       </div>
     </div>
   );

@@ -16,10 +16,6 @@ function AccountSettings() {
           />
         </div>
 
-        <Link to="/app/profile" className="text-blue-500 hover:underline">
-          View Profile
-        </Link>
-
         <Link to="/change-password" className="text-blue-500 hover:underline">
           Change Password
         </Link>
@@ -30,10 +26,6 @@ function AccountSettings() {
 
         <Link to="/delete-account" className="text-red-500 hover:underline">
           Delete Account
-        </Link>
-
-        <Link to="/app" className="text-blue-500 hover:underline">
-          Return to App
         </Link>
       </div>
     </div>
