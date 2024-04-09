@@ -52,7 +52,7 @@ function Profile() {
         </div>
 
         <div className="w-full flex flex-col items-left justify-center space-y-1 pt-2 mt-1 px-4 pb-8">
-          <h2 className="text-2xl font-bold leading-none flex flex-row">
+          <h2 className="text-xl font-bold leading-none flex flex-row">
             Friends
           </h2>
           <h3 className="text-sm text-gray-500 font-normal leading-none">
