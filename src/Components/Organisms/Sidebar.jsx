@@ -16,7 +16,7 @@ export default function Sidebar({ currentMonth, setCurrentMonth, onTodayButtonCl
   return (
     <nav
       id="app-sidebar"
-      className="flex w-[26%] h-screen overflow-y-auto border-r py-2 min-w-[300px] max-w-[400px] bg-gray-100"
+      className="flex w-[26%] h-screen overflow-y-auto border-r py-2 min-w-[300px] max-w-[400px] bg-slate-100"
     >
       <div className="flex flex-col justify-between w-full">
         <div className="px-3">

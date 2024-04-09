@@ -46,7 +46,7 @@ function WeekView() {
   return (
     <div className="flex flex-col h-full w-full pb-2 pr-2">
       {/* Navigation */}
-      <div className="flex justify-between px-4 py-2">
+      <div className="flex justify-between items-center  px-4 py-2 h-[10rem] border-b">
         <button onClick={goToPreviousWeek}>
           <ChevronLeftIcon className="w-6 h-6" />
         </button>
@@ -60,7 +60,7 @@ function WeekView() {
       </div>
 
       {/* Header */}
-      <div className="week-header grid grid-cols-[1fr_14fr] ">
+      <div className="week-header grid grid-cols-[1fr_14fr] h-[15rem]">
         <div className="week-timezone flex justify-center items-center border-b border-gray-200">
           <div className="px-4">
             <p className="text-xs text-gray-500">{gmt}</p>
@@ -91,9 +91,9 @@ function WeekView() {
           {Array.from({ length: 24 }).map((_, index) => (
             <div
               key={index}
-              className="hour h-12 flex justify-end items-start px-4"
+              className="hour h-32 flex justify-center items-start px-4"
             >
-              <span className="text-sm text-gray-500 translate-y--1">
+              <span className="text-sm text-gray-500 -translate-y-1">
                 {index % 12 === 0
                   ? "12" + (index < 12 ? " am" : " pm")
                   : (index % 12) + (index < 12 ? " am" : " pm")}
