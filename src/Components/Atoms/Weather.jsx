@@ -132,19 +132,19 @@ const Weather = () => {
       {loading && <p>Loading...</p>}
       {error && <p className="text-[0.8rem] text-red-500">{error}</p>}
       {weatherData && (
-        <div className="text-[0.8rem] flex flex-col">
-          <div className="flex p-2 pt-0 justify-between items-center text-[0.7rem] font-[400]">
+        <div className="flex flex-col">
+          <div className="flex p-2 pt-0 justify-between items-center font-[400]">
             <div className="font-[500]">
-              <div className="text-[1.4rem] text-blue-500">
+              <div className="text-xl">
                 {weatherData.weather[0].description.charAt(0).toUpperCase() +
                   weatherData.weather[0].description.slice(1)}
               </div>
-              <div className="text-[1rem]">
+              <div className="text-base">
                 {weatherData.name}, {weatherData.sys.country}
               </div>
             </div>
 
-            <div className="text-[2.2rem] font-[450]">
+            <div className="text-4xl font-[450]">
               {unit === "metric"
                 ? Math.round(weatherData.main.temp)
                 : Math.round(celsiusToFahrenheit(weatherData.main.temp))}
@@ -154,19 +154,19 @@ const Weather = () => {
 
           <div className="flex mt-3 rounded-[0.5rem] p-2">
             <div className="flex w-1/2 flex-col items-center justify-center">
-              <div className="flex space-x-3 text-[0.9rem] items-center">
+              <div className="flex space-x-3 text-base items-center">
                 <HumidityWeather /> <div >Humidity</div>
               </div>
-              <div className="text-[1.2rem] text-blue-600">{weatherData.main.humidity}%</div>
+              <div className="text-base text-blue-600">{weatherData.main.humidity}%</div>
             </div>
 
             <div className="flex w-1/2 flex-col items-center justify-center">
-              <div className="flex space-x-3 text-[0.9rem] items-center">
+              <div className="flex space-x-3 text-base items-center">
                 <WindSvg /> <div >Wind</div>
               </div>
-              <div className="text-[1.2rem] text-blue-600">
+              <div className="text-base text-blue-600">
                 {weatherData.wind.speed}{" "}
-                <span className="text-[0.75rem]">m/s</span>
+                <span className="text-sm">m/s</span>
               </div>
             </div>
           </div>

@@ -11,7 +11,10 @@
   },
   "dependencies": {
     "@heroicons/react": "^2.1.1",
+    "@mui/lab": "^5.0.0-alpha.170",
+    "@mui/material": "^5.15.15",
     "@tailwindcss/forms": "^0.5.7",
+    "chroma-js": "^2.4.2",
     "classnames": "^2.5.1",
     "dayjs": "^1.11.10",
     "react": "^18.2.0",
