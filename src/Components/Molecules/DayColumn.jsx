@@ -17,14 +17,40 @@ function DayColumn({ day, events, addEvent }) {
   const [allDay, setAllDay] = useState(false);
   const [startTime, setStartTime] = useState("");
   const [endTime, setEndTime] = useState("");
+  const [label, setLabel] = useState("");
+  const [labels, setLabels] = useState([]);
 
   const hourBlockStyle =
-    "flex border-l border-b border-gray-200 min-h-32 hover:bg-gray-100  justify-center";
+    "flex border-l border-b border-gray-200 min-h-20 hover:bg-gray-100  justify-center";
   const dayHours = Array.from({ length: 24 }).map((_, index) => {
     const hour = index % 12 === 0 ? 12 : index % 12;
     const period = index < 12 ? "am" : "pm";
     return `${hour} ${period}`;
   });
+
+  const [tags, setTags] = useState([]);
+  const [tagInput, setTagInput] = useState("");
+
+  const handleInputChange = (e) => {
+    setTagInput(e.target.value);
+  };
+
+  const handleInputKeyDown = (e) => {
+    if (e.key === "Enter" || e.key === ",") {
+      e.preventDefault();
+      const tag = tagInput.trim();
+      if (tag) {
+        setTags([...tags, tag]);
+        setTagInput("");
+      }
+    }
+  };
+
+  const removeTag = (index) => {
+    const newTags = [...tags];
+    newTags.splice(index, 1);
+    setTags(newTags);
+  };
 
   const handleBlockClick = (hour) => {
     setSelectedHour(hour);
@@ -54,24 +80,50 @@ function DayColumn({ day, events, addEvent }) {
     setEndTime(event.target.value);
   };
 
+  const handleLabelChange = (event) => {
+    setLabel(event.target.value);
+  };
+
+
+  const handleCloseLabel = (labelIndex) => {
+    setLabels(labels.filter((_, index) => index !== labelIndex));
+  };
+
   const handleAddTask = () => {
-    if (selectedHour && taskTitle.trim() && taskDescription.trim() !== "") {
+    if (
+      selectedHour &&
+      taskTitle.trim() &&
+      taskDescription.trim() !== "" &&
+      labels.length > 0
+    ) {
       addEvent(selectedHour, {
         title: taskTitle,
         description: taskDescription,
         startTime,
         endTime,
+        labels,
       });
       setTaskTitle("");
       setTaskDescription("");
+      setLabels([]);
       setOpen(false); // Close the modal after adding event
     }
   };
+
+  const lightColors = [
+    "bg-red-50",
+    "bg-blue-50",
+    "bg-green-50",
+    "bg-violet-50",
+    "bg-yellow-50",
+    "bg-zinc-50",
+  ];
 
   const handleClose = () => {
     setOpen(false);
     setTaskTitle("");
     setTaskDescription("");
+    setLabels([]);
     setAllDay(false);
   };
 
@@ -98,16 +150,17 @@ function DayColumn({ day, events, addEvent }) {
 
       {isOpen && (
         <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center">
-          <div className=" p-6 pt-5 bg-white rounded-[1.5rem] text-gray-100 min-w-[37%]">
+          <div className=" p-6 pt-5 bg-white rounded-[1.5rem] text-gray-100 min-w-[32%]">
             <div className="flex flex-col">
-              <div className="flex text-black font-[450] text-[1rem] justify-between mb-3 ">
+
+              <div className="flex text-gray-600 font-normal text-base justify-between ">
                 <div>Create event</div>
                 <button onClick={handleClose} className="flex">
                   <XMarkIcon className="w-6 h-6 fill-red-600 " />
                 </button>
               </div>
 
-              <div className="text-black">
+              <div className="text-black mt-2">
                 <input
                   type="text"
                   placeholder="Title"
@@ -122,38 +175,60 @@ function DayColumn({ day, events, addEvent }) {
                 />
               </div>
 
-              <div className="relative text-black mt-4 flex w-full ">
-                <span className="absolute inset-y-0 left-0 pl-3 flex items-center space-x-2 text-gray-600">
-                  <TagIcon className="h-5 w-5 text-gray-600" />
-                </span>
-                <input
-                  type="text"
-                  placeholder="Add Label"
-                  className="pl-10 w-full pr-4 py-2 rounded-[0.75rem] border border-gray-300 focus:outline-none focus:border-blue-500"
-                />
+              <div className="flex flex-wrap gap-2 mt-2">
+                {tags.map((tag, index) => {
+
+                  const bgColorClass = lightColors[index % lightColors.length];
+                  const colorName = bgColorClass.split("-")[1];
+                  const textColorClass = `text-${colorName}-600`;
+                  return (
+                    <div
+                      key={index}
+                      className={
+                        "rounded-full text-sm flex items-center border " +
+                        bgColorClass +
+                        " px-3 py-1"
+                      }
+                    >
+                      <span className={ textColorClass + " mr-1 "}>
+                        {tag}
+                      </span>
+
+                      <button
+                        className="text-gray-400"
+                        onClick={() => removeTag(index)}
+                      >
+                        &times;
+                      </button>
+                    </div>
+                  );
+                })}
               </div>
 
               <div className="relative text-black mt-4 flex w-full">
                 <span className="absolute inset-y-0 left-0 pl-3 flex items-center space-x-2 text-gray-600">
-                  <MapPinIcon className="h-5 w-5 text-gray-600" />
+                  <TagIcon className="h-5 w-5 text-gray-500" />
+                </span>
+                <input
+                  type="text"
+                  className={`pl-10 p-2 pr-4 w-full border-gray-300 border rounded-[0.75rem] ${
+                    tags.length ? "border" : "border-gray-300"
+                  } focus:outline-none focus:border-blue-500`}
+                  value={tagInput}
+                  onChange={handleInputChange}
+                  onKeyDown={handleInputKeyDown}
+                  placeholder="Add Label"
+                />
+              </div>
+
+              <div className="relative text-black mt-3 flex w-full">
+                <span className="absolute inset-y-0 left-0 pl-3 flex items-center space-x-2 text-gray-600">
+                  <MapPinIcon className="h-5 w-5 text-gray-500" />
                 </span>
                 <input
                   type="text"
                   placeholder="Add Location"
-                  className="pl-10 w-full pr-4 py-2 rounded-[0.75rem] border border-gray-300 focus:outline-none focus:border-blue-500"
-                />
-              </div>
-
-              <div className="relative text-black mt-4 flex w-full">
-                <span className="absolute left-0 top-[1.3rem] transform -translate-y-1/2 pl-3 flex items-center space-x-2 text-gray-600">
-                  <ChatBubbleLeftEllipsisIcon className="h-5 w-5 text-gray-600" />
-                </span>
-                <textarea
-                  placeholder="Add Description"
-                  value={taskDescription}
-                  onChange={handleDescriptionChange}
-                  rows="4"
-                  className="pl-10 pr-4 py-2 rounded-[0.75rem] border border-gray-300 focus:outline-none focus:border-blue-500 w-full"
+                  className="pl-10 w-full pr-4 py-2 border rounded-[0.75rem] border-gray-300 focus:outline-none focus:border-blue-500"
                 />
               </div>
 
@@ -189,6 +264,21 @@ function DayColumn({ day, events, addEvent }) {
                   ></div>
                 </div>
                 <div className="text-sm">All Day</div>
+              </div>
+
+
+              <div className="relative text-black mt-3 flex w-full">
+                <span className="absolute left-0 top-[1.3rem] transform -translate-y-1/2 pl-3 flex items-center space-x-2 text-gray-600">
+                  <ChatBubbleLeftEllipsisIcon className="h-5 w-5 text-gray-500" />
+                </span>
+                <textarea
+                  placeholder="Add Description"
+                  value={taskDescription}
+                  onChange={handleDescriptionChange}
+                  rows="4"
+                  className="pl-10 pr-4 py-2 rounded-[0.75rem] border border-gray-300 focus:outline-none focus:border-blue-500 w-full"
+                  
+                />
               </div>
 
               <div className="flex justify-end mt-4 text-[1rem] font-[500]">

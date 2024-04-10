@@ -116,7 +116,7 @@ export default function CalendarComponent({
             })}
           </div>
 
-          <div className="h-[12rem] grid grid-cols-7 mt-1 mb-2">
+          <div className="h-[11rem] grid grid-cols-7 mt-1 mb-2">
             {MiniCalendar({
               month: dayjs(currentMonth).month(),
               year: dayjs(currentMonth).year(),
@@ -124,13 +124,13 @@ export default function CalendarComponent({
               return (
                 <div
                   key={index}
-                  className="text-[0.7rem] font-[600] grid place-content-center"
+                  className="text-xs font-[500] grid place-content-center"
                 >
                   <button
                     className={cn(
                       currentMonth
-                        ? "font-[500] text-[0.7rem]"
-                        : "text-gray-400 font-[500]",
+                        ? ""
+                        : "text-gray-400",
                       today ? "bg-green-500 text-white font-bold" : "",
                       "h-5 w-5 grid place-content-center rounded hover:border-green-500 hover:border-2 hover:bg-white hover:text-black transition-all cursor-pointer"
                     )}

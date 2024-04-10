@@ -21,15 +21,15 @@ export default function Sidebar({
   return (
     <nav
       id="app-sidebar"
-      className="flex w-[26%] h-screen overflow-y-auto border-r py-2 min-w-[300px] max-w-[400px] bg-slate-100"
+      className="flex w-[26%] h-screen overflow-y-auto border-r py-2 min-w-[300px] max-w-[400px]"
     >
       <div className="flex flex-col justify-between w-full">
-        <div className="px-3 max-h-screen overflow-y-scroll">
+        <div className="px-3 max-h-screen">
           <div className="flex rounded  mt-2 mb-4 space-x-4 items-center">
             <DisplayDayWeek params="" />
-            <div className="w-full rounded-[0.5rem] px-2 py-1 bg-white border text-gray-600 text-[0.9rem] font-[400]">
+            <div className="w-full rounded-[0.5rem] px-2 py-1 bg-white border text-gray-600 text-base font-[400]">
               <div className="font-[500]">Today</div>
-              <div className="font-normal text-[0.9rem] leading-5">
+              <div className="font-normal text-sm leading-5">
                 No events scheduled
               </div>
             </div>
