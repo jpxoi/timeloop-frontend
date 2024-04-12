@@ -11,6 +11,7 @@ import NotFound from "./Components/Pages/NotFound.jsx";
 import "./index.css";
 import ChangePassword from "./Components/Pages/ChangePassword.jsx";
 import DeleteAccount from "./Components/Pages/DeleteAccount.jsx";
+import ChangePersonal from "./Components/Pages/ChangePersonal.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <BrowserRouter>
@@ -23,6 +24,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <Route element={<PrivateRoutes />} >
         <Route path="/app/*" element={<App />} />
         <Route path="/change-password" element={<ChangePassword />} />
+        <Route path="/change-name" element={<ChangePersonal />} />
+        <Route path="/change-email" element={<ChangePersonal />} />
         <Route path="/delete-account" element={<DeleteAccount />} />
       </Route>
       <Route path="*" element={<NotFound />} />

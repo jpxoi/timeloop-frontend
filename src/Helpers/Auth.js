@@ -222,6 +222,10 @@ export function checkToken() {
   const token = localStorage.getItem("AuthToken");
 
   // Check if JWT Token is still valid and has not expired
+  if (!token) {
+    return false;
+  }
+
   const payload = JSON.parse(atob(token.split(".")[1]));
   if (payload.exp < Date.now() / 1000) {
     removeAuthToken();
