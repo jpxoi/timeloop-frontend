@@ -31,6 +31,7 @@ function WeekView() {
       },
     }));
   };
+  
 
   const daysWeek = Array.from({ length: 7 }).map((_, index) => ({
     name: currentWeek.add(index, "day").format("ddd").toUpperCase(),
