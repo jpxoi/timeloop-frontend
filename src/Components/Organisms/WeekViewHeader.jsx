@@ -6,7 +6,7 @@ function WeekViewHeader({ currentWeek }) {
   const days = [];
 
   for (let i = 0; i < 7; i++) {
-    days.push(startOfWeek.add(i, 'day'));
+    days.push(startOfWeek.add(i, "day"));
   }
 
   return (
@@ -17,7 +17,10 @@ function WeekViewHeader({ currentWeek }) {
         </div>
         <div className="grid grid-cols-7">
           {days.map((day, index) => (
-            <div key={index} className="pl-[8.5rem] flex flex-col justify-center items-center">
+            <div
+              key={index}
+              className="pl-[8.5rem] flex flex-col justify-center items-center"
+            >
               <div>{day.format("ddd")}</div>
               <div>{day.format("D")}</div>
             </div>
@@ -29,12 +32,3 @@ function WeekViewHeader({ currentWeek }) {
 }
 
 export default WeekViewHeader;
-
-
-
-
-
-
-
-
-

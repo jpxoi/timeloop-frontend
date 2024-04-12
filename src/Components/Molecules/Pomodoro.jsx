@@ -26,7 +26,10 @@ export default function Pomodoro() {
         } overflow-hidden pr-1`}
       >
         <div className="flex flex-col items-center justify-center mt-4">
-          <iframe src="https://pomofocus.io/" className="w-full h-[200px]"></iframe>
+          <iframe
+            src="https://pomofocus.io/"
+            className="w-full h-[200px]"
+          ></iframe>
         </div>
       </div>
     </div>

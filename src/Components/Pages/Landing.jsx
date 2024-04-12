@@ -1,15 +1,18 @@
 import React from "react";
 import LandingHeader from "../Organisms/LandingHeader";
-import LandingBackground from "/src/assets/images/LandingBackground.webp";
+import LandingBackground from "../../assets/images/LandingBackground.webp";
 import LandingTimePanel from "../Atoms/LandingTimePanel";
 import LandingFooter from "../Organisms/LandingFooter";
 
-import Card1 from "/src/assets/illustrations/Card1.svg";
-import Card2 from "/src/assets/illustrations/Card2.svg";
-import GlobeSymbol from "/src/assets/illustrations/GlobeSymbol.svg";
-import WeekWrappedSymbol from "/src/assets/illustrations/WeekWrappedSymbol.svg";
-import PeopleSymbol from "/src/assets/images/People.webp";
-import Logo from "/src/assets/images/logo.webp";
+import Card1 from "../../assets/illustrations/Card1.svg";
+import Card2 from "../../assets/illustrations/Card2.svg";
+import GlobeSymbol from "../../assets/illustrations/GlobeSymbol.svg";
+import WeekWrappedSymbol from "../../assets/illustrations/WeekWrappedSymbol.svg";
+import PeopleSymbol from "../../assets/images/People.webp";
+import Logo from "../../assets/images/logo.webp";
+import SocialImage from "../../assets/images/Social.webp";
+import WeekViewImage from "../../assets/images/WeekView.webp";
+import PomodoroImage from "../../assets/images/Pomodoro.webp";
 
 import { Link } from "react-router-dom";
 
@@ -46,7 +49,8 @@ function Landing() {
         TimeLoop provides you with an organised calendar environment to plan
         your time with.
       </p>
-      <p className="flex justify-center">(Week view image here)</p>
+
+      <img src={WeekViewImage} className="p-28 pb-0"></img>
 
       <div className="min-w-max max-w-screen grid grid-cols-3 gap-10 auto-cols-max justify-evenly justify-items-stretch items-center my-28 mx-28 p-10 bg-[#F1FBFF] rounded-lg">
         <div className="h-96 bg-white rounded-lg shadow-xl min-w-40">
@@ -83,19 +87,19 @@ function Landing() {
           />
         </div>
 
-        <div className="h-96 bg-white rounded-lg shadow-xl min-w-40">
+        <div className="h-96 bg-white rounded-lg shadow-xl min-w-40 flex flex-col">
           <h1 className="font-semibold text-2xl p-4">
             {" "}
-            <img src={WeekWrappedSymbol} className="inline"></img> Your Week
-            Wrapped
+            <img src={WeekWrappedSymbol} className="inline"></img> Focus Time
           </h1>
           <p className="p-4 w-80">
-            View a summary of how much time you spend doing what in your week,
-            letting you optimise your schedule.
+            Set time aside for what is important to you. The TimeLoop Pomodoro
+            helps you concentrate for a period of time.
           </p>
+          <img src={PomodoroImage} className="self-center w-[220px]"></img>
         </div>
 
-        <div className="h-96 bg-white rounded-lg shadow-xl min-w-40">
+        <div className="h-96 bg-white rounded-lg shadow-xl min-w-40 flex flex-col">
           <h1 className="font-semibold text-2xl p-4">
             {" "}
             <img src={PeopleSymbol} className="inline w-8 h-8"></img> Get Social
@@ -104,6 +108,7 @@ function Landing() {
             Share events with other people on TimeLoop, making coordination
             effortless.{" "}
           </p>
+          <img src={SocialImage} className="h-[200px] self-center"></img>
         </div>
       </div>
 

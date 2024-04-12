@@ -1,6 +1,5 @@
 export function checkAuth() {
-  const token = localStorage.getItem("AuthToken");
-  return !!token;
+  return !!checkToken();
 }
 
 // Path: src/Helpers/Auth.js
@@ -168,6 +167,27 @@ export function updateProfile(user_id, first_name, last_name, email, avatar_url)
 
 // Path: src/Helpers/Auth.js
 
+export function getUserData(user_id) {
+  return new Promise((resolve, reject) => {
+    fetch(`https://timeloop-backend.onrender.com/api/v1/users/${user_id}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("AuthToken")}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.status === "success") {
+          resolve(data);
+        } else {
+          reject(data);
+        }
+      })
+      .catch((error) => reject(error));
+  });
+}
+
 export function setAuthToken(token) {
   // Store the token in cookie of the browser
   localStorage.setItem("AuthToken", token);
@@ -196,4 +216,21 @@ export function setUserData(
   localStorage.setItem("last_name", last_name);
   localStorage.setItem("email", email);
   localStorage.setItem("avatar_url", avatar_url);
+}
+
+export function checkToken() {
+  const token = localStorage.getItem("AuthToken");
+
+  // Check if JWT Token is still valid and has not expired
+  if (!token) {
+    return false;
+  }
+
+  const payload = JSON.parse(atob(token.split(".")[1]));
+  if (payload.exp < Date.now() / 1000) {
+    removeAuthToken();
+    localStorage.clear();
+    return false;
+  }
+  return token;
 }

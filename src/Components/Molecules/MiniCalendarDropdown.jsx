@@ -124,9 +124,7 @@ export default function CalendarComponent({
                 >
                   <button
                     className={cn(
-                      currentMonth
-                        ? ""
-                        : "text-gray-400",
+                      currentMonth ? "" : "text-gray-400",
                       today ? "bg-green-500 text-white font-bold" : "",
                       "h-5 w-5 grid place-content-center rounded hover:border-green-500 hover:border-2 hover:bg-white hover:text-black transition-all cursor-pointer"
                     )}

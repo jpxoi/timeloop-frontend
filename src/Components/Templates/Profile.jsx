@@ -1,6 +1,7 @@
 import { CheckBadgeIcon } from "@heroicons/react/24/solid";
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { getUserData } from "../../Helpers/Auth";
 
 function Profile() {
   const AvatarURL = localStorage.getItem("avatar_url");
@@ -9,12 +10,21 @@ function Profile() {
   const FullName = `${FirstNameSpan} ${LastNameSpan}`;
   const UsernameSpan = localStorage.getItem("username");
 
+  // Get a list of friends from local storage, checking for items that start with "friend_"
+  const friends = Object.keys(localStorage)
+    .filter((key) => key.startsWith("friend_"))
+    .map((key) => localStorage.getItem(key));
+
   return (
     <div className="w-full h-screen flex flex-col items-center justify-center m-auto bg-slate-200">
       <div className="max-w-screen-lg bg-white shadow-md rounded-lg flex flex-col items-center justify-center">
         <div className="w-full">
           <div className="h-60 w-[1000px] bg-blue-500 rounded-t-lg">
-            <img src="https://images.unsplash.com/photo-1614850715649-1d0106293bd1?q=80&w=1500&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Cover" className="w-full h-60 rounded-t-lg" />
+            <img
+              src="https://images.unsplash.com/photo-1614850715649-1d0106293bd1?q=80&w=1500&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              alt="Cover"
+              className="w-full h-60 rounded-t-lg"
+            />
           </div>
           <div className="w-40 h-40 bg-white rounded-full absolute -mt-20 ml-4">
             <img
@@ -56,8 +66,34 @@ function Profile() {
             Friends
           </h2>
           <h3 className="text-sm text-gray-500 font-normal leading-none">
-            No friends yet
+            {friends.length > 0 ? friends.length : "No "} friends{" "}
+            {friends.length > 0 ? "" : "yet"}
           </h3>
+
+          {friends.map((friend) => (
+            <div
+              key={friend}
+              className="flex flex-row items-center justify-start space-x-2"
+            >
+              <name className="text-sm font-semibold leading-none">
+                User {friend}
+              </name>
+              <img
+                src={`https://api.dicebear.com/8.x/pixel-art/svg?seed=${friend}`}
+                alt="Friend avatar"
+                className="w-6 h-6 rounded-full"
+              />
+              <button
+                className="text-red-500 hover:underline"
+                onClick={() => {
+                  localStorage.removeItem(`friend_${friend}`);
+                  window.location.reload();
+                }}
+              >
+                Remove
+              </button>
+            </div>
+          ))}
 
           <h3 className="text-sm text-gray-500 font-normal leading-none">
             Add friends to see their events
