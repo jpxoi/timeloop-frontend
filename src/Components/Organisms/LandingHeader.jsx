@@ -13,14 +13,18 @@ function LandingHeader() {
       </div>
       <Link to="/Signup" className="absolute right-2">
         <Button
-          params={"text-white bg-[#0094FF] px-4 rounded-lg min-h-8 hover:bg-[#0072E3]"}
+          params={
+            "text-white bg-[#0094FF] px-4 rounded-lg min-h-8 hover:bg-[#0072E3]"
+          }
           text={"Sign up"}
         />
       </Link>
 
       <Link to="/Login" className="absolute right-28">
         <Button
-          params={"text-black px-4 rounded-lg min-h-8 border border-gray-700 hover:bg-gray-200"}
+          params={
+            "text-black px-4 rounded-lg min-h-8 border border-gray-700 hover:bg-gray-200"
+          }
           text={"Log in"}
         />
       </Link>

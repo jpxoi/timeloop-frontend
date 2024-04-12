@@ -66,17 +66,30 @@ function Profile() {
             Friends
           </h2>
           <h3 className="text-sm text-gray-500 font-normal leading-none">
-            {friends.length > 0 ? friends.length : "No "} friends {friends.length > 0 ? "" : "yet"}
+            {friends.length > 0 ? friends.length : "No "} friends{" "}
+            {friends.length > 0 ? "" : "yet"}
           </h3>
 
           {friends.map((friend) => (
-            <div key={friend} className="flex flex-row items-center justify-start space-x-2">
-              <name className="text-sm font-semibold leading-none">User {friend}</name>
-              <img src={`https://api.dicebear.com/8.x/pixel-art/svg?seed=${friend}`} alt="Friend avatar" className="w-6 h-6 rounded-full" />
-              <button className="text-red-500 hover:underline" onClick={() => {
-                localStorage.removeItem(`friend_${friend}`)
-                window.location.reload()
-              }}>
+            <div
+              key={friend}
+              className="flex flex-row items-center justify-start space-x-2"
+            >
+              <name className="text-sm font-semibold leading-none">
+                User {friend}
+              </name>
+              <img
+                src={`https://api.dicebear.com/8.x/pixel-art/svg?seed=${friend}`}
+                alt="Friend avatar"
+                className="w-6 h-6 rounded-full"
+              />
+              <button
+                className="text-red-500 hover:underline"
+                onClick={() => {
+                  localStorage.removeItem(`friend_${friend}`);
+                  window.location.reload();
+                }}
+              >
                 Remove
               </button>
             </div>

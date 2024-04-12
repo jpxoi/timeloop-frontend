@@ -155,18 +155,19 @@ const Weather = () => {
           <div className="flex mt-3 rounded-[0.5rem] p-2">
             <div className="flex w-1/2 flex-col items-center justify-center">
               <div className="flex space-x-3 text-base items-center">
-                <HumidityWeather /> <div >Humidity</div>
+                <HumidityWeather /> <div>Humidity</div>
               </div>
-              <div className="text-base text-blue-600">{weatherData.main.humidity}%</div>
+              <div className="text-base text-blue-600">
+                {weatherData.main.humidity}%
+              </div>
             </div>
 
             <div className="flex w-1/2 flex-col items-center justify-center">
               <div className="flex space-x-3 text-base items-center">
-                <WindSvg /> <div >Wind</div>
+                <WindSvg /> <div>Wind</div>
               </div>
               <div className="text-base text-blue-600">
-                {weatherData.wind.speed}{" "}
-                <span className="text-sm">m/s</span>
+                {weatherData.wind.speed} <span className="text-sm">m/s</span>
               </div>
             </div>
           </div>

@@ -84,7 +84,6 @@ function DayColumn({ day, events, addEvent }) {
     setLabel(event.target.value);
   };
 
-
   const handleCloseLabel = (labelIndex) => {
     setLabels(labels.filter((_, index) => index !== labelIndex));
   };
@@ -152,7 +151,6 @@ function DayColumn({ day, events, addEvent }) {
         <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center">
           <div className=" p-6 pt-5 bg-white rounded-[1.5rem] text-gray-100 min-w-[32%]">
             <div className="flex flex-col">
-
               <div className="flex text-gray-600 font-normal text-base justify-between ">
                 <div>Create event</div>
                 <button onClick={handleClose} className="flex">
@@ -177,7 +175,6 @@ function DayColumn({ day, events, addEvent }) {
 
               <div className="flex flex-wrap gap-2 mt-2">
                 {tags.map((tag, index) => {
-
                   const bgColorClass = lightColors[index % lightColors.length];
                   const colorName = bgColorClass.split("-")[1];
                   const textColorClass = `text-${colorName}-600`;
@@ -190,9 +187,7 @@ function DayColumn({ day, events, addEvent }) {
                         " px-3 py-1"
                       }
                     >
-                      <span className={ textColorClass + " mr-1 "}>
-                        {tag}
-                      </span>
+                      <span className={textColorClass + " mr-1 "}>{tag}</span>
 
                       <button
                         className="text-gray-400"
@@ -266,7 +261,6 @@ function DayColumn({ day, events, addEvent }) {
                 <div className="text-sm">All Day</div>
               </div>
 
-
               <div className="relative text-black mt-3 flex w-full">
                 <span className="absolute left-0 top-[1.3rem] transform -translate-y-1/2 pl-3 flex items-center space-x-2 text-gray-600">
                   <ChatBubbleLeftEllipsisIcon className="h-5 w-5 text-gray-500" />
@@ -277,7 +271,6 @@ function DayColumn({ day, events, addEvent }) {
                   onChange={handleDescriptionChange}
                   rows="4"
                   className="pl-10 pr-4 py-2 rounded-[0.75rem] border border-gray-300 focus:outline-none focus:border-blue-500 w-full"
-                  
                 />
               </div>
 

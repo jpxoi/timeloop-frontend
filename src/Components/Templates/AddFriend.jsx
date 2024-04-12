@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 function AddFriend() {
-
   const userID = localStorage.getItem("user_id");
 
   const handleCopy = () => {
@@ -12,7 +11,7 @@ function AddFriend() {
     setTimeout(() => {
       copyAlert.classList.add("hidden");
     }, 2000);
-  }
+  };
 
   const handleAddFriend = (e) => {
     e.preventDefault();
@@ -21,8 +20,8 @@ function AddFriend() {
 
     addAlert.classList.add("hidden");
     errorAlert.classList.add("hidden");
-  
-    const friendID = e.target[0].value;    
+
+    const friendID = e.target[0].value;
     if (friendID.length !== 4) {
       errorAlert.classList.remove("hidden");
       return;
@@ -35,7 +34,7 @@ function AddFriend() {
 
     localStorage.setItem(`friend_${friendID}`, friendID);
     addAlert.classList.remove("hidden");
-  }
+  };
 
   return (
     <div className="w-full h-screen flex flex-col items-center justify-center m-auto bg-slate-200">
@@ -76,7 +75,10 @@ function AddFriend() {
       <div className="w-lg bg-white shadow-md rounded-lg flex flex-col items-center justify-center py-8 px-8 space-y-4 mt-4">
         <h1 className="text-2xl font-bold">Add Friend</h1>
 
-        <form className="flex flex-col items-center justify-center space-y-4 w-[500px]" onSubmit={handleAddFriend}>
+        <form
+          className="flex flex-col items-center justify-center space-y-4 w-[500px]"
+          onSubmit={handleAddFriend}
+        >
           <input
             type="text"
             placeholder="User ID"

@@ -20,7 +20,11 @@ function LandingFooter() {
       </div>
       <div className="bg-gray-100 pb-5 relative">
         <p className="text-sm font-light absolute right-[70px] bottom-5">
-          <a target="_blank" rel="noreferrer" href="https://icons8.com/icon/85369/people">
+          <a
+            target="_blank"
+            rel="noreferrer"
+            href="https://icons8.com/icon/85369/people"
+          >
             Community
           </a>{" "}
           icon by{" "}

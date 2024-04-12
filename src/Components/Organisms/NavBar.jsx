@@ -26,19 +26,15 @@ export default function NavBar({
     setCurrentMonth(newMonth);
   };
 
-
   return (
     <div className="flex px-4 pr-6 min-h-16 items-center border-b border-b-gray-200">
       <div className="flex w-full items-center justify-between space-x-3">
-        
         <div className="flex space-x-3 items-center">
           <SidebarIcon />
           <Logo />
-
         </div>
 
         <div className="flex space-x-6 items-center">
-
           <DisplayMonthYear
             params="text-black font-[500] text-[1.2rem]"
             date={currentMonth}
@@ -63,10 +59,7 @@ export default function NavBar({
             action={onTodayButtonClick}
           />
         </div>
-
       </div>
-
     </div>
   );
 }
-
