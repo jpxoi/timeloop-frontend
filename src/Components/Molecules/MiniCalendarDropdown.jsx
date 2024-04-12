@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import {
-  CalendarDaysIcon,
+  CalendarIcon,
   ChevronRightIcon,
   ChevronDownIcon,
 } from "@heroicons/react/24/outline";
@@ -18,7 +18,7 @@ export default function CalendarComponent({
   setCurrentMonth,
   todayButton,
 }) {
-  const [showCalendar, setShowCalendar] = useState(true);
+  const [showCalendar, setShowCalendar] = useState(false);
   const day = ["SU", "MO", "TU", "WE", "TH", "FR", "SA"];
 
   const toggleCalendar = () => {
@@ -40,20 +40,20 @@ export default function CalendarComponent({
   };
 
   return (
-    <div className="flex flex-col p-2 rounded-[0.5rem] text-gray-700 bg-white border relative">
+    <div
+      className={`flex flex-col p-2 pl-0 text-gray-900 rounded-[0.5rem] relative ${
+        showCalendar
+          ? "border border-gray-400,"
+          : "hover:bg-gray-100 hover:shadow-sm"
+      }`}
+    >
       <div
         className="flex space-x-3  items-center  text-[0.9rem] font-[400] cursor-pointer"
         onClick={toggleCalendar}
       >
-        <div className="flex space-x-3 items-center justify-center font-[350] cursor-pointer ">
-          {showCalendar ? (
-            <ChevronDownIcon className="w-4 h-4 cursor-pointer" />
-          ) : (
-            <ChevronRightIcon className="w-4 h-4 cursor-pointer " />
-          )}
-        </div>
-        <CalendarDaysIcon className=" w-5 h-5 cursor-pointer " />
-        <div className="text-[1.1rem]">Calendar</div>
+        <div className="flex space-x-3 items-center justify-center font-[350] cursor-pointer "></div>
+        <CalendarIcon className=" w-6 h-6 cursor-pointer " />
+        <div className="text-lg">Calendar</div>
       </div>
 
       <div
@@ -61,7 +61,7 @@ export default function CalendarComponent({
           showCalendar ? "max-h-[500px]" : "max-h-0"
         } overflow-hidden `}
       >
-        <div className="rounded-[0.5rem] pt-2 items-center">
+        <div className="rounded-[0.5rem] pt-2 pl-2 items-center">
           <div className="flex flex-col text-gray-800 rounded-[0.5rem]">
             <div className="flex justify-between items-center pl-2 py-2">
               <div>
@@ -116,7 +116,7 @@ export default function CalendarComponent({
             })}
           </div>
 
-          <div className="h-[12rem] grid grid-cols-7 mt-1 mb-2">
+          <div className="h-[11rem] grid grid-cols-7 mt-1 mb-2">
             {MiniCalendar({
               month: dayjs(currentMonth).month(),
               year: dayjs(currentMonth).year(),
@@ -124,13 +124,11 @@ export default function CalendarComponent({
               return (
                 <div
                   key={index}
-                  className="text-[0.7rem] font-[600] grid place-content-center"
+                  className="text-xs font-[500] grid place-content-center"
                 >
                   <button
                     className={cn(
-                      currentMonth
-                        ? "font-[500] text-[0.7rem]"
-                        : "text-gray-400 font-[500]",
+                      currentMonth ? "" : "text-gray-400",
                       today ? "bg-green-500 text-white font-bold" : "",
                       "h-5 w-5 grid place-content-center rounded hover:border-green-500 hover:border-2 hover:bg-white hover:text-black transition-all cursor-pointer"
                     )}

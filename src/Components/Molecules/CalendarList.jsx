@@ -1,4 +1,4 @@
-import react from "react";
+import React from "react";
 import CalendarSelect from "../Atoms/CalendarSelect";
 
 function CalendarList({ calendarsObjects }) {
@@ -6,8 +6,14 @@ function CalendarList({ calendarsObjects }) {
 
   return (
     <div className="grid grid-cols-1 mt-6">
-      {calendarsObjects.map((entry) => {
-        return <CalendarSelect name={entry.name} colour={entry.colour} />;
+      {calendarsObjects.map((entry, index) => {
+        return (
+          <CalendarSelect
+            key={index}
+            name={entry.name}
+            colour={entry.colour}
+          />
+        );
       })}
     </div>
   );

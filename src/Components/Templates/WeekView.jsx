@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import DayColumn from "../Molecules/DayColumn";
 import dayjs from "dayjs";
+import weekOfYear from "dayjs/plugin/weekOfYear";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
+
+dayjs.extend(weekOfYear);
 
 function WeekView() {
   const [currentWeek, setCurrentWeek] = useState(dayjs().startOf("week"));
@@ -43,16 +46,19 @@ function WeekView() {
     gmt += currentTimezone;
   }
 
+  const weekOfYear = currentWeek.week();
+
   return (
     <div className="flex flex-col h-full w-full pb-2 pr-2">
       {/* Navigation */}
-      <div className="flex justify-between px-4 py-2">
+      <div className="flex justify-between items-center  px-4 py-2 h-[7rem] border-b">
         <button onClick={goToPreviousWeek}>
           <ChevronLeftIcon className="w-6 h-6" />
         </button>
-        <div className="text-center text-[1rem]">
-          {currentWeek.format("MMM DD")} -{" "}
-          {currentWeek.endOf("week").format("MMM DD, YYYY")}
+        <div className="text-center text-lg">
+          <span className="">{currentWeek.format("MMM YYYY")}</span>
+          {" / W"}
+          {weekOfYear}
         </div>
         <button onClick={goToNextWeek}>
           <ChevronRightIcon className="w-6 h-6" />
@@ -60,7 +66,7 @@ function WeekView() {
       </div>
 
       {/* Header */}
-      <div className="week-header grid grid-cols-[1fr_14fr] ">
+      <div className="week-header grid grid-cols-[1fr_14fr] h-[10rem]">
         <div className="week-timezone flex justify-center items-center border-b border-gray-200">
           <div className="px-4">
             <p className="text-xs text-gray-500">{gmt}</p>
@@ -72,7 +78,10 @@ function WeekView() {
             <div
               key={index}
               className={`text-center py-2 flex flex-col justify-center items-center ${
-                day.name === dayjs().format("ddd").toUpperCase() && day.date === dayjs().format("DD") ? 'text-red-500' : 'text-gray-700'
+                day.name === dayjs().format("ddd").toUpperCase() &&
+                day.date === dayjs().format("DD")
+                  ? "text-red-500"
+                  : "text-gray-700"
               }`}
             >
               <div className="text-[0.9rem] font-[500] flex space-x-2">
@@ -82,7 +91,6 @@ function WeekView() {
             </div>
           ))}
         </div>
-        
       </div>
 
       {/* Grid */}
@@ -91,9 +99,9 @@ function WeekView() {
           {Array.from({ length: 24 }).map((_, index) => (
             <div
               key={index}
-              className="hour h-12 flex justify-end items-start px-4"
+              className="hour h-20 flex justify-center items-start px-4"
             >
-              <span className="text-sm text-gray-500 translate-y--1">
+              <span className="text-sm text-gray-500 -translate-y-1">
                 {index % 12 === 0
                   ? "12" + (index < 12 ? " am" : " pm")
                   : (index % 12) + (index < 12 ? " am" : " pm")}
@@ -106,7 +114,11 @@ function WeekView() {
             <div key={index} className="flex justify-center items-center">
               <DayColumn
                 day={day.name}
-                events={events[dayjs(currentWeek).add(index, "day").format("YYYY-MM-DD")]}
+                events={
+                  events[
+                    dayjs(currentWeek).add(index, "day").format("YYYY-MM-DD")
+                  ]
+                }
                 addEvent={(hour, event) => addEvent(index, hour, event)}
               />
             </div>
@@ -118,4 +130,3 @@ function WeekView() {
 }
 
 export default WeekView;
-

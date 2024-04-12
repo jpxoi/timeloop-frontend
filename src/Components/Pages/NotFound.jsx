@@ -4,7 +4,7 @@ import not_found_image from "../../assets/illustrations/not-found.svg";
 
 function NotFound() {
   return (
-    <div className="grid h-screen place-content-center bg-white px-4">
+    <div className="grid h-screen place-content-center bg-white px-4 w-full">
       <div className="text-center">
         <object
           className="mx-auto w-96"

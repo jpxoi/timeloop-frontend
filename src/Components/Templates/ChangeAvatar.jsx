@@ -7,8 +7,7 @@ function ChangeAvatar() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    const submitButton = document.querySelector("button");
+    const submitButton = document.getElementById("change-avatar-button");
     submitButton.disabled = true;
     setLoading(true);
 
@@ -28,7 +27,6 @@ function ChangeAvatar() {
         console.error(error);
         alert("An error occurred. Please try again.");
         submitButton.disabled = false;
-        
       })
       .finally(() => setLoading(false));
   };
@@ -39,7 +37,7 @@ function ChangeAvatar() {
         <h1 className="text-2xl font-bold">Change Avatar</h1>
 
         <form
-          className="flex flex-col items-center justify-center space-y-4 w-[300px]"
+          className="flex flex-col items-center justify-center space-y-4 w-[500px]"
           onSubmit={handleSubmit}
         >
           <input
@@ -50,13 +48,14 @@ function ChangeAvatar() {
 
           <button
             type="submit"
-            className="w-full p-2 bg-blue-500 text-white font-semibold rounded-md"
+            id="change-avatar-button"
+            className="w-full p-2 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
           >
             {loading ? "Changing Avatar..." : "Change Avatar"}
           </button>
         </form>
 
-        <Link to="/app/account" className="text-red-500 hover:underline">
+        <Link to="/app/profile" className="text-red-500 hover:underline">
           Cancel Change
         </Link>
       </div>

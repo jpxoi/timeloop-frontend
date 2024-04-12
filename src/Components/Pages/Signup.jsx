@@ -22,7 +22,7 @@ function Signup() {
     const firstName = document.getElementById("first-name").value;
     const lastName = document.getElementById("last-name").value;
     const email = document.getElementById("email").value;
-    const username = document.getElementById("username").value
+    const username = document.getElementById("username").value;
     const password = document.getElementById("password").value;
 
     // Disable the button
