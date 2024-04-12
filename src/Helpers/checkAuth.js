@@ -1,4 +1,5 @@
+import { checkToken } from "./Auth";
+
 export const checkAuth = () => {
-  const token = localStorage.getItem("AuthToken");
-  return !!token;
+  return !!checkToken();
 };

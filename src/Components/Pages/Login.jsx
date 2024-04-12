@@ -15,7 +15,7 @@ function Login() {
   function handleClick() {
     setIsLoading(true);
 
-    const button = document.getElementById("login-button")
+    const button = document.getElementById("login-button");
     const errormsg = document.getElementById("error-message");
     const errorbox = document.getElementById("error-box");
 

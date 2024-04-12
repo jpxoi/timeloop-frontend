@@ -27,7 +27,6 @@ function ChangeAvatar() {
         console.error(error);
         alert("An error occurred. Please try again.");
         submitButton.disabled = false;
-        
       })
       .finally(() => setLoading(false));
   };

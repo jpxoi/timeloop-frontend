@@ -1,5 +1,5 @@
 import React from "react";
-import { PencilSquareIcon, StarIcon } from "@heroicons/react/24/solid";
+import { PencilSquareIcon } from "@heroicons/react/24/solid";
 
 const Dashboard = () => {
   return (

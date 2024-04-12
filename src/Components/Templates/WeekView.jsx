@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import DayColumn from "../Molecules/DayColumn";
 import dayjs from "dayjs";
-import weekOfYear from 'dayjs/plugin/weekOfYear';
+import weekOfYear from "dayjs/plugin/weekOfYear";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
-
 
 dayjs.extend(weekOfYear);
 
@@ -49,7 +48,6 @@ function WeekView() {
 
   const weekOfYear = currentWeek.week();
 
-
   return (
     <div className="flex flex-col h-full w-full pb-2 pr-2">
       {/* Navigation */}
@@ -58,8 +56,9 @@ function WeekView() {
           <ChevronLeftIcon className="w-6 h-6" />
         </button>
         <div className="text-center text-lg">
-          <span className="">{currentWeek.format("MMM YYYY")}</span>{" / W"}{weekOfYear}
-
+          <span className="">{currentWeek.format("MMM YYYY")}</span>
+          {" / W"}
+          {weekOfYear}
         </div>
         <button onClick={goToNextWeek}>
           <ChevronRightIcon className="w-6 h-6" />
@@ -79,7 +78,10 @@ function WeekView() {
             <div
               key={index}
               className={`text-center py-2 flex flex-col justify-center items-center ${
-                day.name === dayjs().format("ddd").toUpperCase() && day.date === dayjs().format("DD") ? 'text-red-500' : 'text-gray-700'
+                day.name === dayjs().format("ddd").toUpperCase() &&
+                day.date === dayjs().format("DD")
+                  ? "text-red-500"
+                  : "text-gray-700"
               }`}
             >
               <div className="text-[0.9rem] font-[500] flex space-x-2">
@@ -89,7 +91,6 @@ function WeekView() {
             </div>
           ))}
         </div>
-        
       </div>
 
       {/* Grid */}
@@ -113,7 +114,11 @@ function WeekView() {
             <div key={index} className="flex justify-center items-center">
               <DayColumn
                 day={day.name}
-                events={events[dayjs(currentWeek).add(index, "day").format("YYYY-MM-DD")]}
+                events={
+                  events[
+                    dayjs(currentWeek).add(index, "day").format("YYYY-MM-DD")
+                  ]
+                }
                 addEvent={(hour, event) => addEvent(index, hour, event)}
               />
             </div>
@@ -125,4 +130,3 @@ function WeekView() {
 }
 
 export default WeekView;
-
