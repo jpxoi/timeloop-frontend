@@ -1,18 +1,18 @@
 import React from "react";
 import LandingHeader from "../Organisms/LandingHeader";
-import LandingBackground from "/src/assets/images/LandingBackground.webp";
+import LandingBackground from "../../assets/images/LandingBackground.webp";
 import LandingTimePanel from "../Atoms/LandingTimePanel";
 import LandingFooter from "../Organisms/LandingFooter";
 
-import Card1 from "/src/assets/illustrations/Card1.svg";
-import Card2 from "/src/assets/illustrations/Card2.svg";
-import GlobeSymbol from "/src/assets/illustrations/GlobeSymbol.svg";
-import WeekWrappedSymbol from "/src/assets/illustrations/WeekWrappedSymbol.svg";
-import PeopleSymbol from "/src/assets/images/People.webp";
-import Logo from "/src/assets/images/logo.webp";
-import SocialImage from "/src/assets/images/Social.webp";
-import WeekViewImage from "/src/assets/images/Weekview.webp";
-import PomodoroImage from "/src/assets/images/Pomodoro.webp";
+import Card1 from "../../assets/illustrations/Card1.svg";
+import Card2 from "../../assets/illustrations/Card2.svg";
+import GlobeSymbol from "../../assets/illustrations/GlobeSymbol.svg";
+import WeekWrappedSymbol from "../../assets/illustrations/WeekWrappedSymbol.svg";
+import PeopleSymbol from "../../assets/images/People.webp";
+import Logo from "../../assets/images/logo.webp";
+import SocialImage from "../../assets/images/Social.webp";
+import WeekViewImage from "../../assets/images/WeekView.webp";
+import PomodoroImage from "../../assets/images/Pomodoro.webp";
 
 import { Link } from "react-router-dom";
 
@@ -93,7 +93,8 @@ function Landing() {
             <img src={WeekWrappedSymbol} className="inline"></img> Focus Time
           </h1>
           <p className="p-4 w-80">
-            Set time aside for what is important to you. The TimeLoop Pomodoro helps you concentrate for a period of time.
+            Set time aside for what is important to you. The TimeLoop Pomodoro
+            helps you concentrate for a period of time.
           </p>
           <img src={PomodoroImage} className="self-center w-[220px]"></img>
         </div>
