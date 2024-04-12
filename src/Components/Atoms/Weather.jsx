@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { WEATHER_API_URL, WEATHER_API_KEY } from "../../../env";
 import WindSvg from "./WindWeather";
-import { MapPinIcon} from "@heroicons/react/24/solid";
+import { MapPinIcon } from "@heroicons/react/24/solid";
 import { GlobeAsiaAustraliaIcon } from "@heroicons/react/24/outline";
 import dayjs from "dayjs";
 import HumidityWeather from "./HumidityWeather";
@@ -113,7 +113,13 @@ const Weather = () => {
   };
 
   return (
-    <div className={`bg-white p-2 pl-0 text-gray-900 rounded-[1rem] relative   ${showWeather ? 'border border-gray-400,' : 'hover:bg-gray-100 hover:shadow-sm'} `}>
+    <div
+      className={`bg-white p-2 pl-0 text-gray-900 rounded-[1rem] relative   ${
+        showWeather
+          ? "border border-gray-400,"
+          : "hover:bg-gray-100 hover:shadow-sm"
+      } `}
+    >
       <div
         className="flex space-x-3  items-center  text-[0.9rem] font-[400] cursor-pointer"
         onClick={toggleWeather}
@@ -125,7 +131,7 @@ const Weather = () => {
 
       <div
         className={`transition-all duration-[700ms] ${
-          showWeather? "max-h-[500px]" : "max-h-0"
+          showWeather ? "max-h-[500px]" : "max-h-0"
         } overflow-hidden `}
       >
         <div className="flex items-center ">

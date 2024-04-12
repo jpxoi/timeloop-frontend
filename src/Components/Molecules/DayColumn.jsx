@@ -20,7 +20,6 @@ function DayColumn({ day, events, addEvent }) {
   const [endTime, setEndTime] = useState("");
   const [tags, setTags] = useState([]);
   const [tagInput, setTagInput] = useState("");
-  
 
   const hourBlockStyle =
     "flex border-l border-b border-gray-200 min-h-20 hover:bg-gray-100  justify-center";
@@ -119,7 +118,6 @@ function DayColumn({ day, events, addEvent }) {
     setTags([]);
     setTaskLocation("");
     setAllDay(false);
-    
   };
 
   return (
@@ -152,7 +150,6 @@ function DayColumn({ day, events, addEvent }) {
                 <XMarkIcon className="w-6 h-6 fill-red-600 " />
               </button>
             </div>
-
 
             <div className="flex flex-col p-6 pt-3">
               <div className="text-black">
@@ -243,7 +240,6 @@ function DayColumn({ day, events, addEvent }) {
               </div>
 
               <div className="flex px-4 justify-between text-gray-500 items-center w-full">
-
                 <div className="flex items-center justify-center">
                   <div className="flex items-center space-x-1">
                     <ClockIcon className="w-5 h-5" />

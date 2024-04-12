@@ -18,7 +18,7 @@ export default function CalendarComponent({
   setCurrentMonth,
   todayButton,
 }) {
-  const [showCalendar, setShowCalendar] = useState(true);
+  const [showCalendar, setShowCalendar] = useState(false);
   const day = ["SU", "MO", "TU", "WE", "TH", "FR", "SA"];
 
   const toggleCalendar = () => {
@@ -40,14 +40,18 @@ export default function CalendarComponent({
   };
 
   return (
-    <div className={`flex flex-col p-2 pl-0 text-gray-900 rounded-[0.5rem] relative ${showCalendar ? 'border border-gray-400,' : 'hover:bg-gray-100 hover:shadow-sm'}`}>
+    <div
+      className={`flex flex-col p-2 pl-0 text-gray-900 rounded-[0.5rem] relative ${
+        showCalendar
+          ? "border border-gray-400,"
+          : "hover:bg-gray-100 hover:shadow-sm"
+      }`}
+    >
       <div
         className="flex space-x-3  items-center  text-[0.9rem] font-[400] cursor-pointer"
         onClick={toggleCalendar}
       >
-        <div className="flex space-x-3 items-center justify-center font-[350] cursor-pointer ">
-          
-        </div>
+        <div className="flex space-x-3 items-center justify-center font-[350] cursor-pointer "></div>
         <CalendarIcon className=" w-6 h-6 cursor-pointer " />
         <div className="text-lg">Calendar</div>
       </div>

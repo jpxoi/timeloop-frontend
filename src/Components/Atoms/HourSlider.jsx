@@ -1,18 +1,24 @@
 import React, { useState } from "react";
-import {ChevronUpIcon, ChevronDownIcon } from"@heroicons/react/24/outline";
+import { ChevronUpIcon, ChevronDownIcon } from "@heroicons/react/24/outline";
 
 function HourInput({ mode, Time, onTimeChange }) {
   const [isOpen, setIsOpen] = useState(false);
-  const [hours, setHours] = useState(Time ? parseInt(Time.split(":")[0]) % 12 || 12 : 1);
-  const [minutes, setMinutes] = useState(Time ? parseInt(Time.split(":")[1]) : 0);
-  const [period, setPeriod] = useState(Time && Time.includes("pm") ? "pm" : "am");
+  const [hours, setHours] = useState(
+    Time ? parseInt(Time.split(":")[0]) % 12 || 12 : 1
+  );
+  const [minutes, setMinutes] = useState(
+    Time ? parseInt(Time.split(":")[1]) : 0
+  );
+  const [period, setPeriod] = useState(
+    Time && Time.includes("pm") ? "pm" : "am"
+  );
 
   const toggleHourScroller = () => {
     setIsOpen(!isOpen);
   };
 
   const handleHourChange = (increment) => {
-    let newHours = hours + increment*2;
+    let newHours = hours + increment * 2;
     if (newHours < 1) {
       newHours = 12;
     } else if (newHours > 12) {
@@ -28,8 +34,9 @@ function HourInput({ mode, Time, onTimeChange }) {
   };
 
   const updateValue = () => {
-
-    const formatTime =`${hours < 10 ? `${hours}` : hours}:${minutes < 10 ? `0${minutes}` : minutes} ${period}`;
+    const formatTime = `${hours < 10 ? `${hours}` : hours}:${
+      minutes < 10 ? `0${minutes}` : minutes
+    } ${period}`;
     onTimeChange(formatTime, mode);
   };
 
@@ -37,11 +44,18 @@ function HourInput({ mode, Time, onTimeChange }) {
     <div className="relative flex flex-col items-center">
       <input
         type="text"
-        value={`${hours < 10 ? `0${hours}` : hours}:${minutes < 10 ? `0${minutes}` : minutes} ${period}`}
+        value={`${hours < 10 ? `0${hours}` : hours}:${
+          minutes < 10 ? `0${minutes}` : minutes
+        } ${period}`}
         onClick={toggleHourScroller}
         readOnly
         className="hover:bg-gray-100 text-gray-900 text-base rounded-full mx-3 py-1.5 items-center text-center" // Add text-center class here
-        style={{ border: "none", outline: "none", width: "7rem", boxShadow: "none" }}
+        style={{
+          border: "none",
+          outline: "none",
+          width: "7rem",
+          boxShadow: "none",
+        }}
       />
 
       {isOpen && (
@@ -57,7 +71,7 @@ function HourInput({ mode, Time, onTimeChange }) {
               </button>
             </div>
             <span className="text-2xl mx-2">:</span>
- 
+
             <div className="flex flex-col items-center mx-2">
               <button className="mb-1" onClick={handlePeriodChange}>
                 <span className="text-2xl">▲</span>
@@ -75,7 +89,3 @@ function HourInput({ mode, Time, onTimeChange }) {
 }
 
 export default HourInput;
-
-
-
-
