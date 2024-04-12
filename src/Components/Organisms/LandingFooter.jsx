@@ -6,7 +6,7 @@ import Logo from "/src/assets/images/logo.webp";
 function LandingFooter() {
   return (
     <div>
-      <div className="bg-gray-100 border-t-2 border-t-gray-200 p-10 flex justify-around items-center">
+      <div className="bg-gray-100 border-t-2 border-t-gray-200 p-10 flex gap-x-12 items-center">
         <img src={Logo} className="w-[75px]"></img>
         <Link to="/app" className="hover:text-sky-500 hover:underline">
           Calendar
@@ -19,12 +19,8 @@ function LandingFooter() {
         </Link>
       </div>
       <div className="bg-gray-100 pb-5 relative">
-        <p className="text-sm font-light absolute right-[70px] bottom-5">
-          <a
-            target="_blank"
-            rel="noreferrer"
-            href="https://icons8.com/icon/85369/people"
-          >
+        <p className="text-sm font-light absolute left-[44px] bottom-5">
+          <a target="_blank" rel="noreferrer" href="https://icons8.com/icon/85369/people">
             Community
           </a>{" "}
           icon by{" "}
