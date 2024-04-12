@@ -34,7 +34,7 @@ export default function Pomodoro() {
         <div className="flex flex-col items-center justify-center mt-4">
           <iframe
             src="https://pomofocus.io/"
-            className="w-full h-[200px]"
+            className="w-full h-[200px] rounded-[0.5rem] border-none"
           ></iframe>
         </div>
       </div>

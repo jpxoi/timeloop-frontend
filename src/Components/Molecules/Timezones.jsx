@@ -1,5 +1,5 @@
 import { GlobeAmericasIcon } from "@heroicons/react/24/outline";
-import React, { useEffect } from "react";
+import React from "react";
 
 export default function Timezones() {
   const [showSync2City, setShowSync2City] = React.useState(false);
@@ -7,13 +7,6 @@ export default function Timezones() {
   const toggleSync2City = () => {
     setShowSync2City(!showSync2City);
   };
-
-  useEffect(() => {
-    const banner = document.getElementsByClassName("sc-dZoequ");
-    return () => {
-      banner[0].remove();
-    };
-  }, []);
 
   return (
     <div
