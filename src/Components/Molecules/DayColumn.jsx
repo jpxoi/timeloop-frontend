@@ -7,29 +7,33 @@ import {
   TagIcon,
   MapPinIcon,
   ChatBubbleLeftEllipsisIcon,
+  ArrowRightIcon,
 } from "@heroicons/react/24/outline";
 
 function DayColumn({ day, events, addEvent }) {
-  const [selectedHour, setSelectedHour] = useState(null);
   const [isOpen, setOpen] = useState(false);
   const [taskTitle, setTaskTitle] = useState("");
   const [taskDescription, setTaskDescription] = useState("");
+  const [taskLocation, setTaskLocation] = useState("");
   const [allDay, setAllDay] = useState(false);
   const [startTime, setStartTime] = useState("");
   const [endTime, setEndTime] = useState("");
-  const [label, setLabel] = useState("");
-  const [labels, setLabels] = useState([]);
+  const [tags, setTags] = useState([]);
+  const [tagInput, setTagInput] = useState("");
+  
 
   const hourBlockStyle =
     "flex border-l border-b border-gray-200 min-h-20 hover:bg-gray-100  justify-center";
+
   const dayHours = Array.from({ length: 24 }).map((_, index) => {
     const hour = index % 12 === 0 ? 12 : index % 12;
     const period = index < 12 ? "am" : "pm";
-    return `${hour} ${period}`;
+    const startTime = `${hour}:00 ${period}`;
+    const endTime = `${(hour + 1) % 12 === 0 ? 12 : (hour + 1) % 12}:00 ${
+      index + 1 < 12 ? "am" : "pm"
+    }`;
+    return { hour, period, startTime, endTime };
   });
-
-  const [tags, setTags] = useState([]);
-  const [tagInput, setTagInput] = useState("");
 
   const handleInputChange = (e) => {
     setTagInput(e.target.value);
@@ -52,12 +56,11 @@ function DayColumn({ day, events, addEvent }) {
     setTags(newTags);
   };
 
-  const handleBlockClick = (hour) => {
-    setSelectedHour(hour);
-    setOpen(true);
+  const handleBlockClick = (startTime, endTime) => {
     // Set start and end times to the clicked hour
-    setStartTime(hour);
-    setEndTime(hour);
+    setStartTime(startTime);
+    setEndTime(endTime);
+    setOpen(true);
   };
 
   const handleTitleChange = (event) => {
@@ -68,75 +71,67 @@ function DayColumn({ day, events, addEvent }) {
     setTaskDescription(event.target.value);
   };
 
+  const handleLocationChange = (event) => {
+    setTaskLocation(event.target.value);
+  };
+
   const handleAllDayToggle = () => {
     setAllDay(!allDay);
   };
 
-  const handleStartTimeChange = (event) => {
-    setStartTime(event.target.value);
-  };
-
-  const handleEndTimeChange = (event) => {
-    setEndTime(event.target.value);
-  };
-
-  const handleLabelChange = (event) => {
-    setLabel(event.target.value);
-  };
-
-
-  const handleCloseLabel = (labelIndex) => {
-    setLabels(labels.filter((_, index) => index !== labelIndex));
+  const handleTimeChange = (time, mode) => {
+    if (mode === "start") {
+      setStartTime(time);
+    } else if (mode === "end") {
+      setEndTime(time);
+    }
   };
 
   const handleAddTask = () => {
-    if (
-      selectedHour &&
-      taskTitle.trim() &&
-      taskDescription.trim() !== "" &&
-      labels.length > 0
-    ) {
-      addEvent(selectedHour, {
-        title: taskTitle,
-        description: taskDescription,
+    // Check if either startTime or endTime is not empty
+    if (startTime !== "" && endTime !== "" && taskTitle.trim() !== "") {
+      const event = {
+        title: taskTitle.trim(),
+        description: taskDescription.trim(),
+        location: taskLocation, // Add taskLocation to the event object
         startTime,
         endTime,
-        labels,
-      });
-      setTaskTitle("");
-      setTaskDescription("");
-      setLabels([]);
-      setOpen(false); // Close the modal after adding event
+        tags,
+      };
+      addEvent(startTime.split(":")[0], event);
+      handleClose();
     }
   };
 
   const lightColors = [
-    "bg-red-50",
-    "bg-blue-50",
-    "bg-green-50",
-    "bg-violet-50",
-    "bg-yellow-50",
-    "bg-zinc-50",
+    "bg-red-100",
+    "bg-blue-100",
+    "bg-green-100",
+    "bg-violet-100",
+    "bg-yellow-100",
+    "bg-zinc-100",
   ];
 
   const handleClose = () => {
     setOpen(false);
     setTaskTitle("");
     setTaskDescription("");
-    setLabels([]);
+    setTags([]);
+    setTaskLocation("");
     setAllDay(false);
+    
   };
 
   return (
     <div className="min-w-full flex">
       <div className="flex-grow">
-        {dayHours.map((hour, index) => (
+        {dayHours.map(({ hour, period, startTime, endTime }, index) => (
           <div
             key={index}
             className={hourBlockStyle}
-            onClick={() => handleBlockClick(hour)}
+            onClick={() => handleBlockClick(startTime, endTime)}
           >
-            {events && events[hour] && (
+            {events && events[hour] && events[hour].startTime == startTime && (
               <div className="flex flex-col p-3 pt-2 text-wrap bg-blue-100 h-auto w-[11.5rem] rounded-[0.5rem]">
                 <h3 className="text-[1rem] font-[500]">{events[hour].title}</h3>
                 <p className="text-[0.9rem] text-gray-800">
@@ -150,17 +145,17 @@ function DayColumn({ day, events, addEvent }) {
 
       {isOpen && (
         <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center">
-          <div className=" p-6 pt-5 bg-white rounded-[1.5rem] text-gray-100 min-w-[32%]">
-            <div className="flex flex-col">
+          <div className=" bg-white rounded-[1.5rem] text-gray-100 min-w-[33%]">
+            <div className="flex p-6 pt-4 text-gray-600 font-normal text-base justify-between pb-3 border-b ">
+              <div>Create event</div>
+              <button onClick={handleClose} className="flex">
+                <XMarkIcon className="w-6 h-6 fill-red-600 " />
+              </button>
+            </div>
 
-              <div className="flex text-gray-600 font-normal text-base justify-between ">
-                <div>Create event</div>
-                <button onClick={handleClose} className="flex">
-                  <XMarkIcon className="w-6 h-6 fill-red-600 " />
-                </button>
-              </div>
 
-              <div className="text-black mt-2">
+            <div className="flex flex-col p-6 pt-3">
+              <div className="text-black">
                 <input
                   type="text"
                   placeholder="Title"
@@ -177,7 +172,6 @@ function DayColumn({ day, events, addEvent }) {
 
               <div className="flex flex-wrap gap-2 mt-2">
                 {tags.map((tag, index) => {
-
                   const bgColorClass = lightColors[index % lightColors.length];
                   const colorName = bgColorClass.split("-")[1];
                   const textColorClass = `text-${colorName}-600`;
@@ -190,9 +184,7 @@ function DayColumn({ day, events, addEvent }) {
                         " px-3 py-1"
                       }
                     >
-                      <span className={ textColorClass + " mr-1 "}>
-                        {tag}
-                      </span>
+                      <span className={textColorClass + " mr-1 "}>{tag}</span>
 
                       <button
                         className="text-gray-400"
@@ -211,7 +203,7 @@ function DayColumn({ day, events, addEvent }) {
                 </span>
                 <input
                   type="text"
-                  className={`pl-10 p-2 pr-4 w-full border-gray-300 border rounded-[0.75rem] ${
+                  className={`pl-10 p-3 pr-4 w-full border-gray-300 border rounded-[0.75rem] ${
                     tags.length ? "border" : "border-gray-300"
                   } focus:outline-none focus:border-blue-500`}
                   value={tagInput}
@@ -226,31 +218,16 @@ function DayColumn({ day, events, addEvent }) {
                   <MapPinIcon className="h-5 w-5 text-gray-500" />
                 </span>
                 <input
+                  value={taskLocation}
+                  onChange={handleLocationChange}
                   type="text"
                   placeholder="Add Location"
-                  className="pl-10 w-full pr-4 py-2 border rounded-[0.75rem] border-gray-300 focus:outline-none focus:border-blue-500"
+                  className="pl-10 w-full pr-4 py-3 border rounded-[0.75rem] border-gray-300 focus:outline-none focus:border-blue-500"
                 />
               </div>
 
-              <div className="flex justify-center text-black items-center space-x-10 mt-4">
-                <div className="flex flex-col items-center justify-center">
-                  <div className="flex items-center space-x-1">
-                    <ClockIcon className="w-4 h-4" />
-                    <div>Start time</div>
-                  </div>
-                  <HourInput className="" />
-                </div>
-
-                <div className="flex flex-col items-center justify-center">
-                  <div className="flex items-center space-x-1">
-                    <ClockIcon className="w-4 h-4" />
-                    <div>End time</div>
-                  </div>
-                  <HourInput />
-                </div>
-              </div>
-
-              <div className="flex items-center text-sm mt-2 text-black">
+              <div className=" p-4 flex justify-between items-center text-sm mt-2 text-black">
+                <div className="text-base">All Day</div>
                 <div
                   className={`relative inline-block w-9 h-5 mr-2 align-middle select-none transition duration-200 ease-in ${
                     allDay ? "bg-blue-600" : "bg-gray-200"
@@ -263,12 +240,37 @@ function DayColumn({ day, events, addEvent }) {
                     }`}
                   ></div>
                 </div>
-                <div className="text-sm">All Day</div>
               </div>
 
+              <div className="flex px-4 justify-between text-gray-500 items-center w-full">
 
-              <div className="relative text-black mt-3 flex w-full">
-                <span className="absolute left-0 top-[1.3rem] transform -translate-y-1/2 pl-3 flex items-center space-x-2 text-gray-600">
+                <div className="flex items-center justify-center">
+                  <div className="flex items-center space-x-1">
+                    <ClockIcon className="w-5 h-5" />
+                  </div>
+                  <HourInput
+                    mode="start"
+                    Time={startTime}
+                    onTimeChange={handleTimeChange}
+                  />
+                </div>
+
+                <ArrowRightIcon className="w-5 h-5 text-black" />
+
+                <div className="flex items-center justify-center">
+                  <div className="flex items-center space-x-1">
+                    <ClockIcon className="w-5 h-5" />
+                  </div>
+                  <HourInput
+                    mode="end"
+                    Time={endTime}
+                    onTimeChange={handleTimeChange}
+                  />
+                </div>
+              </div>
+
+              <div className="relative text-black mt-4 flex w-full">
+                <span className="absolute left-0 top-[1.55rem] transform -translate-y-1/2 pl-3 flex items-center space-x-2 text-gray-600">
                   <ChatBubbleLeftEllipsisIcon className="h-5 w-5 text-gray-500" />
                 </span>
                 <textarea
@@ -276,8 +278,7 @@ function DayColumn({ day, events, addEvent }) {
                   value={taskDescription}
                   onChange={handleDescriptionChange}
                   rows="4"
-                  className="pl-10 pr-4 py-2 rounded-[0.75rem] border border-gray-300 focus:outline-none focus:border-blue-500 w-full"
-                  
+                  className="pl-10 pr-4 py-3 rounded-[0.75rem] border border-gray-300 focus:outline-none focus:border-blue-500 w-full"
                 />
               </div>
 
