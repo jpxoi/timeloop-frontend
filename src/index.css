@@ -3,18 +3,18 @@
 @tailwind utilities;
 
 #app-container {
-    max-height: calc(100vh - 4rem);
+  max-height: calc(100vh - 4rem);
 }
 
 .heroicon-sw-2 path {
-    stroke-width: 2 !important;
-  }
-  .heroicon-sw-1\.75 path {
-    stroke-width: 1.75 !important;
-  }
-  .heroicon-sw-1\.5 path {
-    stroke-width: 1.5 !important;
-  }
-  .heroicon-sw-1\.2 path {
-    stroke-width: 1.2 !important;
-  }
+  stroke-width: 2 !important;
+}
+.heroicon-sw-1\.75 path {
+  stroke-width: 1.75 !important;
+}
+.heroicon-sw-1\.5 path {
+  stroke-width: 1.5 !important;
+}
+.heroicon-sw-1\.2 path {
+  stroke-width: 1.2 !important;
+}

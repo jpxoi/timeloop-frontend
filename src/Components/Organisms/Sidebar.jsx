@@ -5,6 +5,7 @@ import EventCard from "../Atoms/EventCard";
 import WeatherCard from "../Atoms/Weather";
 import CalendarComponent from "../Molecules/MiniCalendarDropdown";
 import Pomodoro from "../Molecules/Pomodoro";
+import Timezones from "../Molecules/Timezones";
 
 export default function Sidebar({
   currentMonth,
@@ -59,7 +60,10 @@ export default function Sidebar({
             <div className="mt-8 mb-3 text-base text-gray-500 font-medium">
               WORKSPACE
             </div>
-            
+
+            <div className="">
+              <Timezones />
+            </div>
           </div>
         </div>
 

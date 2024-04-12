@@ -11,7 +11,13 @@ export default function Pomodoro() {
     setShowPomodoro(!showPomodoro);
   };
   return (
-    <div className={`flex flex-col p-2 pl-3 text-gray-900 rounded-[0.5rem] relative ${showPomodoro ? 'border border-gray-400,' : 'hover:bg-gray-100 hover:shadow-sm'}`}>
+    <div
+      className={`flex flex-col p-2 pl-3 text-gray-900 rounded-[0.5rem] relative ${
+        showPomodoro
+          ? "border border-gray-400,"
+          : "hover:bg-gray-100 hover:shadow-sm"
+      }`}
+    >
       <div
         className="flex space-x-3  items-center  text-[0.9rem] font-[400] cursor-pointer"
         onClick={togglePomodoro}
